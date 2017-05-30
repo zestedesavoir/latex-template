@@ -1,6 +1,7 @@
 # About
 
-This is a proposal for the [zmarkown](https://github.com/zestedesavoir/zmarkdown) template to convert MDAST to LaTeX.
+This is a proposal for the [zmarkown](https://github.com/zestedesavoir/zmarkdown) template to convert MDAST to LaTeX. 
+Credits goes to [Karnaj](https://zestedesavoir.com/forums/sujet/8699/experts-latex-zeste-de-savoir-a-besoin-de-vous/?page=2#p151726) for the original template.
 
 # Installation
 
