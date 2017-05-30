@@ -6,9 +6,11 @@
 + Bold: `\textbf{text}`
 + Strikethrough: `\sout{text}`
 + Superscript and subscripts: `\textsubscript{x}` and `\textsuperscript{x}`
-+ Inline source code: `\verb\`text\``
++ Inline source code: "\verb\`text\`"
 + Links: `\href{url}{text}`
 + Keys: `\keys{x}`
++ Footnotes: `\footnote{text}`
++ Maths (obviously)
 
 ## Environements
 
