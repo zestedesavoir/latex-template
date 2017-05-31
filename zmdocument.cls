@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{zmdocument}
 
-\LoadClass[fontsize=12pt,twoside=false,numbers=enddot,parskip=half]{scrartcl}
+\LoadClass[fontsize=12pt,twoside=false,numbers=enddot,parskip=half]{scrbook}
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
