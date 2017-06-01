@@ -45,7 +45,9 @@
    \let\LevelFiveTitle\subparagraph
    \let\Introduction\addsec
    \let\Conclusion\addsec
-   \def\thesection{\arabic{section}} 
+   \def\thesection{\arabic{section}}
+   \def\thefigure{\arabic{section}} 
+   \def\thetable{\arabic{section}} 
    \automark[subsection]{section}
 }
 
