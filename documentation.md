@@ -26,7 +26,7 @@ Create an horizontal line.
 
 # Class environements
 
-## `Information`, `Question`, `Attention` and `Erreur`
+## `Information`, `Question`, `Warning` and `Error`
 
 Mimick the corresponding markdown blocks.
 
