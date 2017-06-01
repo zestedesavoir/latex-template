@@ -13,6 +13,7 @@ cache:
   apt: true
   directories:
     - $HOME/.texlive
+    - $HOME/bin
 
 install:
   - mkdir -p $HOME/bin

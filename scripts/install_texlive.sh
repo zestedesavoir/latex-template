@@ -3,8 +3,12 @@
 # Forked from Zeste de Savoir:
 # https://github.com/zestedesavoir/zds-site/blob/dev/scripts/install_texlive.sh
 
+EXTRA_PACKAGES="xpatch"
+
 if [[ -f $HOME/.texlive/bin/x86_64-linux/tlmgr ]]; then
   echo "Using cached texlive install"
+
+./bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
 else
   # force cache upload after successful build
   touch $HOME/.cache_updated
@@ -27,7 +31,7 @@ else
   ./install-tl*/install-tl -profile texlive.profile
 
   # Install extra latex packages
-  ./bin/x86_64-linux/tlmgr install wallpaper titlesec
+  ./bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
 
   echo "Installation complete !"
 fi
