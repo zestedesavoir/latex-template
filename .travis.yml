@@ -20,5 +20,4 @@ install:
   - export PATH=$HOME/.texlive/bin/x86_64-linux:$PATH
 
 script:
-    - make travis > generation_pdf.log
-    - cat generation_pdf.log
+    - make travis
