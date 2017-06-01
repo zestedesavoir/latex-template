@@ -14,7 +14,6 @@
 \RequirePackage[babel=true]{microtype}
 \RequirePackage{capt-of}
 \RequirePackage{ulem}
-\RequirePackage{menukeys}
 \RequirePackage{etoolbox}
 
 %%% TABLE PACKAGES
@@ -25,11 +24,10 @@
 %%% GRAPHIC PACKAGES
 \RequirePackage{graphicx}
 \RequirePackage{adjustbox}
-\RequirePackage{tikz}
 
-\RequirePackage[bookmarks=true,pdftex=true,hyperindex=true,colorlinks=true,linkcolor=YellowOrange,bookmarksopen=true,bookmarksnumbered=true]{hyperref}
+\RequirePackage[bookmarks=true,pdftex=true,hyperindex=true,linkcolor=YellowOrange,bookmarksopen=true,bookmarksnumbered=true]{hyperref}
 \RequirePackage[thmmarks,amsmath,hyperref]{ntheorem}
-
+\RequirePackage[hyperrefcolorlinks]{menukeys}
 
 
 %%% SECTIONNING 
