@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{zmdocument}
 
-\LoadClass[fontsize=12pt,twoside=false,numbers=enddot,parskip=half]{scrartcl}
+\LoadClass[fontsize=12pt,twoside=false,numbers=enddot,parskip=half]{scrbook}
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
@@ -31,8 +31,50 @@
 \RequirePackage[thmmarks,amsmath,hyperref]{ntheorem}
 
 
-
 %%% SECTIONNING 
+
+\lohead{\headmark}
+\chead{}
+\pagestyle{scrheadings}
+   
+\DeclareOption{small}{
+   \let\LevelOneTitle\section
+   \let\LevelTwoTitle\subsection
+   \let\LevelThreeTitle\subsubsection
+   \let\LevelFourTitle\paragraph
+   \let\LevelFiveTitle\subparagraph
+   \let\Introduction\addsec
+   \let\Conclusion\addsec
+   \def\thesection{\arabic{section}}
+   \def\thefigure{\arabic{section}} 
+   \def\thetable{\arabic{section}} 
+   \automark[subsection]{section}
+}
+
+\DeclareOption{middle}{
+   \let\LevelOneTitle\chapter
+   \let\LevelTwoTitle\section
+   \let\LevelThreeTitle\subsection
+   \let\LevelFourTitle\subsubsection
+   \let\LevelFiveTitle\paragraph
+   \let\LevelSixTitle\subparagaph
+   \let\Introduction\addchap
+   \let\Conclusion\addchap
+   \automark[section]{chapter}
+}
+\DeclareOption{big}{
+   \let\LevelOneTitle\part  
+   \let\LevelTwoTitle\chapter
+   \let\LevelThreeTitle\section
+   \let\LevelFourTitle\subsection
+   \let\LevelFiveTitle\subsubsection
+   \let\LevelSixTitle\paragraph
+   \let\LevelSevenTitle\subparagaph
+   \let\Introduction\addpart
+   \let\Conclusion\addpart
+   \automark[chapter]{part}
+}
+\ProcessOptions
 
 \definecolor{chaptercolor}{HTML}{EA9408}
 \definecolor{sectioncolor}{HTML}{EA9408}
@@ -41,7 +83,7 @@
 \definecolor{paragraphcolor}{HTML}{000000}
 \definecolor{subparagraphcolor}{HTML}{000000}
 
-%\addtokomafont{chapter}{\color{chaptercolor}}
+\addtokomafont{chapter}{\color{chaptercolor}}
 \addtokomafont{section}{\color{sectioncolor}}
 \addtokomafont{subsection}{\color{subsectioncolor}}
 \addtokomafont{subsubsection}{\color{sectioncolor}}
