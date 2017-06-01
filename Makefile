@@ -8,10 +8,7 @@ help:
 	@echo "  help       to get this help"
 
 test:
-	pdflatex -shell-escape test.tex
+	pdflatex -shell-escape -interaction=nonstopmode test.tex
 
 clean:
 	rm *.aux *.log *.out *.pdf *.thm *.toc
-
-travis:
-	pdflatex -shell-escape -interaction=nonstopmode test.tex
