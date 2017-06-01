@@ -68,15 +68,15 @@
 \newtheorem*{#1}{\textcolor{#3}{#2}}
 }}
 
-\newZdSbox{Info}{Information}{SkyBlue}
-\newZdSbox{Ques}{Question}{Orchid}
-\newZdSbox{Err}{Erreur}{RedOrange}
-\newZdSbox{Atten}{Attention}{Apricot}
+\newZdSbox{InformationBox}{Information}{SkyBlue}
+\newZdSbox{QuestionBox}{Question}{Orchid}
+\newZdSbox{ErrorBox}{Erreur}{RedOrange}
+\newZdSbox{WarningBox}{Attention}{Apricot}
 
-\newenvironment{Attention}{\begin{minipage}{\linewidth}\begin{Atten}}{\end{Atten}\end{minipage}}
-\newenvironment{Question}{\begin{minipage}{\linewidth}\begin{Ques}}{\end{Ques}\end{minipage}}
-\newenvironment{Information}{\begin{minipage}{\linewidth}\begin{Info}}{\end{Info}\end{minipage}}
-\newenvironment{Erreur}{\begin{minipage}{\linewidth}\begin{Err}}{\end{Err}\end{minipage}}
+\newenvironment{Warning}{\begin{minipage}{\linewidth}\begin{WarningBox}}{\end{WarningBox}\end{minipage}}
+\newenvironment{Question}{\begin{minipage}{\linewidth}\begin{QuestionBox}}{\end{QuestionBox}\end{minipage}}
+\newenvironment{Information}{\begin{minipage}{\linewidth}\begin{InformationBox}}{\end{InformationBox}\end{minipage}}
+\newenvironment{Error}{\begin{minipage}{\linewidth}\begin{ErrorBox}}{\end{ErrorBox}\end{minipage}}
 
 %%%
 
@@ -103,11 +103,6 @@
 \hypersetup{pdfauthor={\@author}}
 
 %%%
-
-\lohead{\headmark}
-\chead{} 
-\automark{section}
-
 
 \setlength{\tabcolsep}{0.2cm}
 \renewcommand{\arraystretch}{1.5}                                    
