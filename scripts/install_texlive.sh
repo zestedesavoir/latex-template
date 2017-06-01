@@ -3,7 +3,7 @@
 # Forked from Zeste de Savoir:
 # https://github.com/zestedesavoir/zds-site/blob/dev/scripts/install_texlive.sh
 
-EXTRA_PACKAGES="xpatch minted fvextra ifplatform"
+EXTRA_PACKAGES="xpatch minted fvextra ifplatform xstring"
 
 #if [[ -f $HOME/.texlive/bin/x86_64-linux/tlmgr ]]; then
 #  echo "Using cached texlive install"
