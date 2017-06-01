@@ -1,0 +1,20 @@
+# Copied from Zeste de Savoir,
+# https://github.com/zestedesavoir/zds-site/blob/dev/.travis.yml
+
+dist: trusty
+sudo: required
+
+cache:
+  apt: true
+  directories:
+    - $HOME/.texlive
+
+install:
+  - mkdir -p $HOME/bin
+  - ./scripts/install_texlive.sh
+  - export PATH=$HOME/.texlive/bin/x86_64-linux:$PATH
+
+script:
+    - wget https://raw.github.com/lehmannro/assert.sh/v1.1/assert.sh
+    - make test > generation_pdf.log
+    - cat generation_pdf.log
