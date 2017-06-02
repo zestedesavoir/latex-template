@@ -46,6 +46,6 @@ For introduction and conclusion, `\Introduction` and `\Conclusion` are also defi
 
 # Class environements
 
-## `Information`, `Question`, `Attention` and `Erreur`
+## `Information`, `Question`, `Warning` and `Error`
 
 Mimick the corresponding markdown blocks.
