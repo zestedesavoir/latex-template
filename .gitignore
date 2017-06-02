@@ -1,0 +1,17 @@
+# LaTeX stuffs:
+*.aux
+*.log 
+*.out
+*.pdf
+*.gz
+*.thm
+*.toc
+_minted_test
+
+# Other craps:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+*.*~

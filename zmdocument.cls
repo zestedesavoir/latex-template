@@ -25,7 +25,7 @@
 \RequirePackage{graphicx}
 \RequirePackage{adjustbox}
 
-\RequirePackage[bookmarks=true,pdftex=true,hyperindex=true,linkcolor=YellowOrange,bookmarksopen=true,bookmarksnumbered=true]{hyperref}
+\RequirePackage[bookmarks=true,hyperindex=true,linkcolor=YellowOrange,bookmarksopen=true,bookmarksnumbered=true]{hyperref}
 \RequirePackage[thmmarks,amsmath,hyperref]{ntheorem}
 \RequirePackage[hyperrefcolorlinks]{menukeys}
 

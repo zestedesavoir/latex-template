@@ -2,7 +2,7 @@
 
 ## Macros
 
-+ Italic: `\emph{text}`
++ Italic: `\textit{text}`
 + Bold: `\textbf{text}`
 + Strikethrough: `\sout{text}`
 + Superscript and subscripts: `\textsubscript{x}` and `\textsuperscript{x}`
@@ -18,13 +18,19 @@
 + Aligned text: text is justifed by default, `flushright` and `center` environements are available to change that.
 + Code: the `minted` environement.
 
+# Class options
+
++ `big`, `middle` or `small` give access to different level of sectioning (see section macros below).  
+
 # Class macros
 
 ## `\horizontalLine`
 
 Create an horizontal line.
 
-## section macros
+## Section macros
+
+The differents title level are adapted depending on the class option.
 
 | | `small` | `middle` | `big` |
 |-|---------|----------------|-----|
@@ -35,16 +41,11 @@ Create an horizontal line.
 |`\LevelFiveTitle` |  `\subparagraph` | `\paragraph` | `\subsubsection`|
 |`\LevelSixTitle` | *n.a.* |  `\subparagraph` | `\paragraph` |
 |`\LevelSevenTitle` | *n.a.* | *n.a.* |  `\subparagraph`|
-| `\Introduction` | `\Introduction` | `\Introduction` | 
-| `Conclusion` | `Conclusion` | `Conclusion` |
+
+For introduction and conclusion, `\Introduction` and `\Conclusion` are also defined.
 
 # Class environements
 
 ## `Information`, `Question`, `Attention` and `Erreur`
 
 Mimick the corresponding markdown blocks.
-
-
-# Class options
-
-+ `big`, `middle` or `small` give access to different level of sectioning (see section macros).  

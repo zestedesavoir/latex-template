@@ -3,11 +3,13 @@ all: help
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
 	@echo "  test       to generate the test pdf"
+	@echo "  travis     to test the repository with travis"
 	@echo "  clean      to clean all LaTeX auxiliary files"
 	@echo "  help       to get this help"
 
 test:
-	pdflatex -shell-escape test.tex
+	pdflatex -shell-escape -interaction=nonstopmode test.tex
 
 clean:
-	rm *.aux *.log *.out *.pdf *.thm *.toc
+	rm *.aux *.log *.out *.pdf *.thm *.toc 
+	rm -r _minted-test

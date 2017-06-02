@@ -1,7 +1,13 @@
+[![Travis status](https://travis-ci.org/zestedesavoir/latex-template.svg?branch=master)](https://travis-ci.org/zestedesavoir/latex-template#)
+
 # About
 
-This is a proposal for the [zmarkown](https://github.com/zestedesavoir/zmarkdown) template to convert MDAST to LaTeX. 
-Credits goes to [Karnaj](https://zestedesavoir.com/forums/sujet/8699/experts-latex-zeste-de-savoir-a-besoin-de-vous/?page=2#p151726) for the original template.
+This is a proposal for the [zmarkown](https://github.com/zestedesavoir/zmarkdown) template to help convert MDAST to LaTeX. 
+
+Credits go to :
+
++ [Karnaj](https://github.com/Karnaj), for the original template, and many improvements.
++ [pierre-24](https://github.com/pierre-24), maintainer of the repository.
 
 # Installation
 
@@ -17,14 +23,14 @@ Since this template use the [minted](https://github.com/gpoore/minted/) package,
 pip install Pygments
 ```
 
-Note that this package require latex to be called with the `-shell-escape` option.
+Note that this package requires latex to be called with the `-shell-escape` option.
 
 # Testing and using
 
-The different macros and environement are defined in `zmdocument.cls` and documented [here](./documentation.md). 
+The different macros and environment are defined in [`zmdocument.cls`](./zmdocument.cls) and documented in [`documentation.md`](./documentation.md). 
 This file can be placed in the same directory as the `.tex` file (or in [your `texmf` directory](http://www.math.illinois.edu/~ajh/tex/tips-customstyles.html)).
 
-Here is a skeleton on what your LaTeX document should contains
+Here is a skeleton on what your LaTeX document should contain
 
 ```latex
 \documentclass{zmdocument}
@@ -50,9 +56,10 @@ See [`test.tex`](./test.tex) for an example on how to use the document class.
 There is a Makefile to ease the tests:
 
 ```bash
-make clean # clean all the LaTeX auxilliary files
+make clean # clean all the LaTeX auxiliary files
 make test # compile test.tex into a pdf using zmdocument.cls
 ```
 
-+ Via Issues and/or Pull Requests (PR) on the `master` branch.
-+ If a new macro/environement is defined, it should be used in `test.tex` (which should, obviously, compile), and documented in `documentation.md`.
++ Contribution via Issues and/or Pull Requests (PR) on the `master` branch.
++ If a new macro/environment is defined, it should be used in `test.tex`, and documented in [`documentation.md`](./documentation.md).
++ The travis build should succeed. If you add new packages, please update `EXTRA_PACKAGES` in [`scripts/install_texlive.sh`](scripts/install_texlive.sh).
