@@ -130,7 +130,7 @@
 \newcommand{\authorlink}[1]{\def\@authorlink{#1}}
 
 \renewcommand{\maketitle}{%
-   \ifcsdef{\authorlink}{}{\def\@logo{https://zestedesavoir.com/membres/voir}}
+   \ifcsdef{\authorlink}{}{\def\@authorlink{https://zestedesavoir.com/membres/voir}}
    \ifcsdef{\website}{}{\def\@website{https://zestedesavoir.com}}
    \ifcsdef{\editor}{}{\def\@editor{Zeste de Savoir}}   
     {\centering
