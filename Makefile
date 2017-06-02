@@ -11,4 +11,5 @@ test:
 	pdflatex -shell-escape -interaction=nonstopmode test.tex
 
 clean:
-	rm *.aux *.log *.out *.pdf *.thm *.toc
+	rm *.aux *.log *.out *.pdf *.thm *.toc 
+	rm -r _minted-test
