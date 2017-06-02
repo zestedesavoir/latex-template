@@ -124,7 +124,7 @@
 \newZdSbox{InformationBox}{Information}{informationcolor}
 \newZdSbox{QuestionBox}{Question}{questioncolor}
 \newZdSbox{ErrorBox}{Erreur}{errorcolor}
-\newZdSbox{WarningBox}{Attention}{warningbox}
+\newZdSbox{WarningBox}{Attention}{warningcolor}
 
 \newenvironment{Warning}{\begin{minipage}{\linewidth}\begin{WarningBox}}{\end{WarningBox}\end{minipage}}
 \newenvironment{Question}{\begin{minipage}{\linewidth}\begin{QuestionBox}}{\end{QuestionBox}\end{minipage}}
