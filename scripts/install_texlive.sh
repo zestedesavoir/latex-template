@@ -5,9 +5,9 @@
 
 EXTRA_PACKAGES="xpatch minted fvextra ifplatform xstring framed capt-of menukeys multirow longtable tabu adjustbox collectbox relsize tikz ntheorem catoptions varwidth blindtext cm-super"
 
-#if [[ -f $HOME/.texlive/bin/x86_64-linux/tlmgr ]]; then
-#  echo "Using cached texlive install"
-#else
+if [[ -f $HOME/.texlive/bin/x86_64-linux/tlmgr ]]; then
+  echo "Using cached texlive install"
+else
   # force cache upload after successful build
   touch $HOME/.cache_updated
   echo "Installing texlive to \$HOME/.texlive"
@@ -32,7 +32,7 @@ EXTRA_PACKAGES="xpatch minted fvextra ifplatform xstring framed capt-of menukeys
   ./bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
 
   echo "Installation complete !"
-#fi
+fi
 
 # Symlink the binaries to ~/bin
 for i in $HOME/.texlive/bin/x86_64-linux/*; do
