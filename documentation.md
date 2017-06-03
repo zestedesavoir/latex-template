@@ -55,3 +55,7 @@ If there is multiple authors, use `\author` with a comma-separated list of them:
 ## `Information`, `Question`, `Warning` and `Error`
 
 Mimick the corresponding markdown blocks.
+
+## Quotes
+
+The `Quote` environement takes an extra parameter, being the source of the quote.

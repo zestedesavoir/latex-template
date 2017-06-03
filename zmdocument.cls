@@ -45,6 +45,7 @@
 \definecolor{errorcolor}{HTML}{FF3B21}        %RedOrange
 \definecolor{informationcolor}{HTML}{55E0E0}  %SkyBlue
 \definecolor{questioncolor}{HTML}{Ad5CFF}     %Orchid
+\definecolor{quotecolor}{HTML}{555555}
 
 \hypersetup{linkcolor=internallinkcolor}
 
@@ -111,7 +112,7 @@
 
 %%% ZDS BOX
 
-\newcommand{\newZdSbox}[3]{{
+\newcommand{\newZdSBox}[3]{{
 \theoremprework{~\\ \textcolor{#3}{\rule{0.6\linewidth}{1pt}}}
 \theorempostwork{\hfill \textcolor{#3}{\rule{0.6\linewidth}{1pt}} \\}
 \theoremindent=2em
@@ -122,15 +123,26 @@
 \newtheorem*{#1}{\textcolor{#3}{#2}}
 }}
 
-\newZdSbox{InformationBox}{Information}{informationcolor}
-\newZdSbox{QuestionBox}{Question}{questioncolor}
-\newZdSbox{ErrorBox}{Erreur}{errorcolor}
-\newZdSbox{WarningBox}{Attention}{warningcolor}
+\newcommand{\newZdSBoxEnvironement}[2]{\newenvironment{#1}{~\\ \begin{minipage}{\linewidth}\begin{#2}}{\end{#2}\end{minipage}}}
 
-\newenvironment{Warning}{~\\ \begin{minipage}{\linewidth}\begin{WarningBox}}{\end{WarningBox}\end{minipage}}
-\newenvironment{Question}{~\\ \begin{minipage}{\linewidth}\begin{QuestionBox}}{\end{QuestionBox}\end{minipage}}
-\newenvironment{Information}{~\\ \begin{minipage}{\linewidth}\begin{InformationBox}}{\end{InformationBox}\end{minipage}}
-\newenvironment{Error}{~\\ \begin{minipage}{\linewidth}\begin{ErrorBox}}{\end{ErrorBox}\end{minipage}}
+\newZdSBox{InformationBox}{Information}{informationcolor}
+\newZdSBox{QuestionBox}{Question}{questioncolor}
+\newZdSBox{ErrorBox}{Erreur}{errorcolor}
+\newZdSBox{WarningBox}{Attention}{warningcolor}
+\newZdSBox{QuoteBox}{Citation}{quotecolor}
+
+\newZdSBoxEnvironement{Warning}{WarningBox}
+\newZdSBoxEnvironement{Question}{QuestionBox}
+\newZdSBoxEnvironement{Information}{InformationBox}
+\newZdSBoxEnvironement{Error}{ErrorBox}
+
+\newenvironment{Quote}[1]{
+    \def\quoteAuthor{#1}~\\ 
+    \begin{minipage}{\linewidth}\begin{QuoteBox}
+}{
+    \hfill(\quoteAuthor)
+    \end{QuoteBox}\end{minipage}
+}
 
 %%%
 
