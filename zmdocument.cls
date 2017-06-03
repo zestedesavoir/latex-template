@@ -16,7 +16,6 @@
 \RequirePackage{ulem}
 
 \RequirePackage{etoolbox}
-\RequirePackage{xparse}
 
 %%% TABLE PACKAGES
 \RequirePackage{multirow}
