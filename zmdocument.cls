@@ -129,19 +129,19 @@
 \newZdSBox{QuestionBox}{Question}{questioncolor}
 \newZdSBox{ErrorBox}{Erreur}{errorcolor}
 \newZdSBox{WarningBox}{Attention}{warningcolor}
-\newZdSBox{QuoteBox}{Citation}{quotecolor}
+\newZdSBox{QuotationBox}{Citation}{quotecolor}
 
 \newZdSBoxEnvironement{Warning}{WarningBox}
 \newZdSBoxEnvironement{Question}{QuestionBox}
 \newZdSBoxEnvironement{Information}{InformationBox}
 \newZdSBoxEnvironement{Error}{ErrorBox}
 
-\newenvironment{Quote}[1]{
+\newenvironment{Quotation}[1]{
     \def\quoteAuthor{#1}~\\ 
-    \begin{minipage}{\linewidth}\begin{QuoteBox}
+    \begin{minipage}{\linewidth}\begin{QuotationBox}
 }{
     \hfill(\quoteAuthor)
-    \end{QuoteBox}\end{minipage}
+    \end{QuotationBox}\end{minipage}
 }
 
 %%%

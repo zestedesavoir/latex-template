@@ -58,4 +58,4 @@ Mimick the corresponding markdown blocks.
 
 ## Quotes
 
-The `Quote` environement takes an extra parameter, being the source of the quote.
+The `Quotation` environement takes an extra parameter, being the source of the quote.
