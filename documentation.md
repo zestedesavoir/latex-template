@@ -52,15 +52,15 @@ If there is multiple authors, use `\author` with a comma-separated list of them:
 
 ## Smilies
 
-Smilies need two commands to works:
+Smilies need two commands to works (which should be defined in the preamble of the document):
 
 ```latex
-\SmiliesPath{./smilies} % path to the directory containing the images of the smilies
-\Smilies{clin,diable} % the different smilies (one smiley = one image)
+\smiliesPath{/path/to/smilies} % path to the directory containing the images of the smilies
+\smilies{blink,devil} % the different smilies (one smiley = one image)
 ```
 
-Then, the `\xxxSmiley` command is defined in the document, when `xxx` is one of the smiley in `\Smilies`. 
-In the above example, it defines `\clinSmiley` and `\diableSmiley`.
+Then, the `\xxxSmiley` command is defined in the document, when `xxx` is one of the smiley in `\smilies`. 
+In the above example, it defines `\blinkSmiley` and `\devilSmiley`.
 
 # Class environements
 
