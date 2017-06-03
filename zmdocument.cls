@@ -46,6 +46,7 @@
 \definecolor{informationcolor}{HTML}{55E0E0}  %SkyBlue
 \definecolor{questioncolor}{HTML}{Ad5CFF}     %Orchid
 \definecolor{quotecolor}{HTML}{555555}
+\definecolor{spoilercolor}{HTML}{555555}
 
 \hypersetup{linkcolor=internallinkcolor}
 
@@ -71,26 +72,26 @@
 }
 
 \DeclareOption{middle}{
-   \let\LevelOneTitle\chapter
+   \newcommand{\LevelOneTitle}[1]{\displaySpoilers \chapter{#1}}
    \let\LevelTwoTitle\section
    \let\LevelThreeTitle\subsection
    \let\LevelFourTitle\subsubsection
    \let\LevelFiveTitle\paragraph
    \let\LevelSixTitle\subparagaph
    \let\Introduction\addchap
-   \let\Conclusion\addchap
+   \newcommand{\Conclusion}[1]{\displaySpoilers \addchap{#1}}
    \automark[section]{chapter}
 }
 \DeclareOption{big}{
-   \let\LevelOneTitle\part  
-   \let\LevelTwoTitle\chapter
+   \newcommand\LevelOneTitle[1]{\displaySpoilers \part{#1}}
+   \newcommand\LevelTwoTitle[1]{\displaySpoilers \chapter{#1}}
    \let\LevelThreeTitle\section
    \let\LevelFourTitle\subsection
    \let\LevelFiveTitle\subsubsection
    \let\LevelSixTitle\paragraph
    \let\LevelSevenTitle\subparagaph
    \let\Introduction\addpart
-   \let\Conclusion\addpart
+   \newcommand{\Conclusion}[1]{\displaySpoilers \addpart{#1}}
    \automark[chapter]{part}
 }
 \ProcessOptions
@@ -130,11 +131,13 @@
 \newZdSBox{ErrorBox}{Erreur}{errorcolor}
 \newZdSBox{WarningBox}{Attention}{warningcolor}
 \newZdSBox{QuotationBox}{Citation}{quotecolor}
+\newZdSBox{SpoilerBox}{Secret}{spoilercolor}
 
 \newZdSBoxEnvironement{Warning}{WarningBox}
 \newZdSBoxEnvironement{Question}{QuestionBox}
 \newZdSBoxEnvironement{Information}{InformationBox}
 \newZdSBoxEnvironement{Error}{ErrorBox}
+\newZdSBoxEnvironement{Spoiler}{SpoilerBox}
 
 \newenvironment{Quotation}[1]{
     \def\quoteAuthor{#1}~\\ 
@@ -143,6 +146,40 @@
     \hfill(\quoteAuthor)
     \end{QuotationBox}\end{minipage}
 }
+
+%%%
+
+
+%%% SPOILER MANAGEMENT
+
+\let\levelSpoilerTitle\addsec
+\let\levelSpoiler\subsection
+
+\newcounter{spoilerCounter}
+
+\newcommand{\addSpoiler}[1]{%
+   \addtocounter{spoilerCounter}{1}
+   \hypertarget{voir:\thepart\thechapter\thespoilerCounter}{}
+   \begin{Spoiler}
+   \hyperlink{secret:\thepart\thechapter\thespoilerCounter}{Voir le secret \thespoilerCounter.}
+   \end{Spoiler}
+   \listadd{\liste}{\expandafter#1}
+}
+
+\newcommand{\displaySpoilers}{%
+   \setcounter{spoilerCounter}{1}
+   \levelSpoilerTitle{Blocs secrets}
+   \renewcommand{\do}[1]{\hypertarget{secret:\thepart\thechapter\thespoilerCounter}{} 
+                         \levelSpoiler*{Secret \thespoilerCounter}
+                         \expandafter{##1} \\ \hfill \hyperlink{voir:\thepart\thechapter\thespoilerCounter}{Retourner au texte.}
+                         \addtocounter{spoilerCounter}{1}}
+   \expandafter\dolistloop{\liste}
+   \def\liste{}
+   \setcounter{spoilerCounter}{0}
+}
+
+\def\liste{}
+\AtEndDocument{\displaySpoilers}
 
 %%%
 
