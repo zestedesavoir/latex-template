@@ -109,7 +109,7 @@
 %%%
 
 
-%%% ZDS BOX 
+%%% ZDS BOX
 
 \newcommand{\newZdSbox}[3]{{
 \theoremprework{~\\ \textcolor{#3}{\rule{0.6\linewidth}{1pt}}}
@@ -138,18 +138,25 @@
 
 \newcommand{\licence}[1]{\def\@licence{#1}}
 \newcommand{\logo}[1]{\def\@logo{#1}}
-
+\newcommand{\website}[1]{\def\@website{#1}}
+\newcommand{\editor}[1]{\def\@editor{#1}}
+\newcommand{\authorlink}[1]{\def\@authorlink{#1}}
 
 \renewcommand{\maketitle}{%
+    \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/membres/voir}}
+    \ifcsdef{@website}{}{\website{https://zestedesavoir.com}}
+    \ifcsdef{@editor}{}{\editor{Zeste de Savoir}}
+    \ifcsdef{@logo}{}{\logo{default_logo.png}}
     {\centering
     \vspace*{0.5 cm}
-    \ifcsdef{@logo}{\includegraphics[width=\linewidth]{\@logo}}{$ $}\\[1.0 cm]
-    \LARGE \href{https://zestedesavoir.com/membres/voir/\@author/}{\bsc{\@author}}\\[2.0 cm]
-    \Large \href{https://zestedesavoir.com}{Zeste de Savoir}\\[0.5 cm] 
+    \includegraphics[width=\linewidth]{\@logo}\\[1.0 cm]
+    \LARGE \renewcommand*{\do}[1]{\href{\@authorlink/##1/}{\bsc{##1}} \qquad}
+           \expandafter\docsvlist\expandafter{\@author}\\[2.0 cm]
+    \Large \href{\@website}{\@editor}\\[0.5 cm]
     \rule{\linewidth}{0.2 mm} \\[0.4 cm]
     \huge\textbf{\@title}\\
-    \rule{\linewidth}{0.2 mm} \\[1.5 cm]  
-   \large\textbf{Ce tutoriel est sous licence \@licence}\\[2 cm]}
+    \rule{\linewidth}{0.2 mm} \\[1.5 cm]
+    \large\textbf{Ce tutoriel est sous licence \@licence}\\[2 cm]}
 }
 
 \hypersetup{pdftitle={\@title}}
@@ -158,6 +165,6 @@
 %%%
 
 \setlength{\tabcolsep}{0.2cm}
-\renewcommand{\arraystretch}{1.5}                                    
+\renewcommand{\arraystretch}{1.5}
 
-\newcommand{\horizontalLine}{{\color{gray}\rule{\textwidth}{0.2pt}}} 
+\newcommand{\horizontalLine}{{\color{gray}\rule{\textwidth}{0.2pt}}}
