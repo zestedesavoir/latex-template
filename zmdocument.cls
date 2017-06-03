@@ -25,9 +25,29 @@
 \RequirePackage{graphicx}
 \RequirePackage{adjustbox}
 
-\RequirePackage[bookmarks=true,hyperindex=true,linkcolor=YellowOrange,bookmarksopen=true,bookmarksnumbered=true]{hyperref}
+\RequirePackage[bookmarks=true,hyperindex=true,bookmarksopen=true,bookmarksnumbered=true]{hyperref}
 \RequirePackage[thmmarks,amsmath,hyperref]{ntheorem}
 \RequirePackage[hyperrefcolorlinks]{menukeys}
+
+
+%%% COLOR DEFINITION
+
+\definecolor{internallinkcolor}{HTML}{FF9400}
+
+\definecolor{chaptercolor}{HTML}{EA9408}
+\definecolor{sectioncolor}{HTML}{EA9408}
+\definecolor{subsectioncolor}{HTML}{EA9408}
+\definecolor{subsubsectioncolor}{HTML}{EA9408}
+\definecolor{paragraphcolor}{HTML}{000000}
+\definecolor{subparagraphcolor}{HTML}{000000}
+
+\definecolor{warningcolor}{HTML}{FFAD7A}      %Apricot
+\definecolor{errorcolor}{HTML}{FF3B21}        %RedOrange
+\definecolor{informationcolor}{HTML}{55E0E0}  %SkyBlue
+\definecolor{questioncolor}{HTML}{Ad5CFF}     %Orchid
+
+\hypersetup{linkcolor=internallinkcolor}
+
 
 %%% SECTIONNING 
 
@@ -74,13 +94,6 @@
 }
 \ProcessOptions
 
-\definecolor{chaptercolor}{HTML}{EA9408}
-\definecolor{sectioncolor}{HTML}{EA9408}
-\definecolor{subsectioncolor}{HTML}{EA9408}
-\definecolor{subsubsectioncolor}{HTML}{EA9408}
-\definecolor{paragraphcolor}{HTML}{000000}
-\definecolor{subparagraphcolor}{HTML}{000000}
-
 \addtokomafont{chapter}{\color{chaptercolor}}
 \addtokomafont{section}{\color{sectioncolor}}
 \addtokomafont{subsection}{\color{subsectioncolor}}
@@ -108,10 +121,10 @@
 \newtheorem*{#1}{\textcolor{#3}{#2}}
 }}
 
-\newZdSbox{InformationBox}{Information}{SkyBlue}
-\newZdSbox{QuestionBox}{Question}{Orchid}
-\newZdSbox{ErrorBox}{Erreur}{RedOrange}
-\newZdSbox{WarningBox}{Attention}{Apricot}
+\newZdSbox{InformationBox}{Information}{informationcolor}
+\newZdSbox{QuestionBox}{Question}{questioncolor}
+\newZdSbox{ErrorBox}{Erreur}{errorcolor}
+\newZdSbox{WarningBox}{Attention}{warningcolor}
 
 \newenvironment{Warning}{\begin{minipage}{\linewidth}\begin{WarningBox}}{\end{WarningBox}\end{minipage}}
 \newenvironment{Question}{\begin{minipage}{\linewidth}\begin{QuestionBox}}{\end{QuestionBox}\end{minipage}}
