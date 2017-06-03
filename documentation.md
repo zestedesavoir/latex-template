@@ -46,7 +46,7 @@ For introduction and conclusion, `\Introduction` and `\Conclusion` are also defi
 
 ## Title page macros (`\website`, `\authorlink`, `\editor` and `\logo`)
 
-These macros shoud be used before `\maketitle` (ideally in the preamble). If they are not used, there are default values. Be careful that `\logo` take in parameter the path of an image (and not an image).
+These macros shoud be used before `\maketitle` (ideally in the preamble). If they are not used, there are default values. Be careful that `\logo` take in parameter the path of an image (and not an image). The default logo is `default_logo.png`. 
 
 If there is multiple authors, use `\author` with a comma-separated list of them: `\author{author1, author2}`. 
 
