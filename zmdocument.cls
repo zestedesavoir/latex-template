@@ -155,30 +155,32 @@
 \let\levelSpoilerTitle\addsec
 \let\levelSpoiler\subsection
 
-\newcounter{spoilerCounter}
+\newcounter{@spoilerCounter}
+\def\@spoilerList{}
 
 \newcommand{\addSpoiler}[1]{%
-   \addtocounter{spoilerCounter}{1}
-   \hypertarget{voir:\thepart\thechapter\thespoilerCounter}{}
+   \addtocounter{@spoilerCounter}{1}
+   \hypertarget{voir:\thepart\thechapter\the@spoilerCounter}{}
    \begin{Spoiler}
-   \hyperlink{secret:\thepart\thechapter\thespoilerCounter}{Voir le secret \thespoilerCounter.}
+   \hyperlink{secret:\thepart\thechapter\the@spoilerCounter}{Voir le secret \the@spoilerCounter.}
    \end{Spoiler}
-   \listadd{\liste}{\expandafter#1}
+   \listadd{\@spoilerList}{\expandafter#1}
 }
 
 \newcommand{\displaySpoilers}{%
-   \setcounter{spoilerCounter}{1}
-   \levelSpoilerTitle{Blocs secrets}
-   \renewcommand{\do}[1]{\hypertarget{secret:\thepart\thechapter\thespoilerCounter}{} 
-                         \levelSpoiler*{Secret \thespoilerCounter}
-                         \expandafter{##1} \\ \hfill \hyperlink{voir:\thepart\thechapter\thespoilerCounter}{Retourner au texte.}
-                         \addtocounter{spoilerCounter}{1}}
-   \expandafter\dolistloop{\liste}
-   \def\liste{}
-   \setcounter{spoilerCounter}{0}
+   \setcounter{@spoilerCounter}{1}
+   \ifdefvoid{\@spoilerList}{}{\levelSpoilerTitle{Blocs secrets}}
+   \def\do{}
+   \renewcommand{\do}[1]{\hypertarget{secret:\thepart\thechapter\the@spoilerCounter}{} 
+                         \levelSpoiler*{Secret \the@spoilerCounter}
+                         \expandafter{##1}\\ \hfill \hyperlink{voir:\thepart\thechapter\the@spoilerCounter}
+                                                              {Retourner au texte.}
+                         \addtocounter{@spoilerCounter}{1}}
+   \expandafter\dolistloop{\@spoilerList}
+   \def\@spoilerList{}
+   \setcounter{@spoilerCounter}{0}
 }
 
-\def\liste{}
 \AtEndDocument{\displaySpoilers}
 
 %%%
