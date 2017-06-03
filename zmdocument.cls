@@ -34,7 +34,6 @@
 %%% ABBREVIATIONS PACKAGES
 \RequirePackage{glossaries}
 
-
 %%% COLORS DEFINITION
 
 \definecolor{internallinkcolor}{HTML}{FF9400}
@@ -261,15 +260,9 @@
 
 %%% Abbreviation
 
-\newcommand{\udensdot}[1]{
-    \tikz[baseline=(todotted.base)]{
-        \node[inner sep=2pt,outer sep=0pt] (todotted) {#1};
-        \draw[densely dotted] (todotted.south west) -- (todotted.south east);
-    }
-}
-\newcommand{\abbr}[2]{\udensdot{\gls{#1}}\newglossaryentry{#1}{
-    name=#1,
-    description={#2}
-  }
-}
+\newcommand{\abbr}[2]{\dotuline{\gls{#1}}\newglossaryentry{#1}{
+  name=#1,
+  description={#2}
+}}
+
 \AtEndDocument{\printglossary[title=Liste des abbréviations]}
