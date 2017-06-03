@@ -67,3 +67,7 @@ In the above example, it defines `\blinkSmiley` and `\devilSmiley`.
 ## `Information`, `Question`, `Warning` and `Error`
 
 Mimick the corresponding markdown blocks.
+
+## Quotes
+
+The `Quotation` environement takes an extra parameter, being the source of the quote.
