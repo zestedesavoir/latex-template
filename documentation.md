@@ -62,6 +62,10 @@ Smilies need two commands to works (which should be defined in the preamble of t
 Then, the `\xxxSmiley` command is defined in the document, when `xxx` is one of the smiley in `\smilies`. 
 In the above example, it defines `\blinkSmiley` and `\devilSmiley`.
 
+## Spoilers
+
+To add a spoiler, use `\addSoiler`: `\addSpoiler{Hide text}`. Spoilers will be in a "Spoiler" section (each chapter will have its "Spoiler" section). 
+
 # Class environements
 
 ## `Information`, `Question`, `Warning` and `Error`
