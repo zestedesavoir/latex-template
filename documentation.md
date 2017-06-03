@@ -50,6 +50,18 @@ These macros shoud be used before `\maketitle` (ideally in the preamble). If the
 
 If there is multiple authors, use `\author` with a comma-separated list of them: `\author{author1, author2}`. 
 
+## Smilies
+
+Smilies need two commands to works (which should be defined in the preamble of the document):
+
+```latex
+\smiliesPath{/path/to/smilies} % path to the directory containing the images of the smilies
+\smilies{blink,devil} % the different smilies (one smiley = one image)
+```
+
+Then, the `\xxxSmiley` command is defined in the document, when `xxx` is one of the smiley in `\smilies`. 
+In the above example, it defines `\blinkSmiley` and `\devilSmiley`.
+
 # Class environements
 
 ## `Information`, `Question`, `Warning` and `Error`
