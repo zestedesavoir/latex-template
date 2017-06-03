@@ -114,7 +114,8 @@
 \newcommand{\newZdSbox}[3]{{
 \theoremprework{~\\ \textcolor{#3}{\rule{0.6\linewidth}{1pt}}}
 \theorempostwork{\hfill \textcolor{#3}{\rule{0.6\linewidth}{1pt}} \\}
-\theoremheaderfont{\scshape}
+\theoremindent=2em
+\theoremheaderfont{\scshape\hspace{-2em}}
 \theoremseparator{ ---}
 \theoremstyle{break}
 \theorembodyfont{\normalfont}
@@ -126,10 +127,10 @@
 \newZdSbox{ErrorBox}{Erreur}{errorcolor}
 \newZdSbox{WarningBox}{Attention}{warningcolor}
 
-\newenvironment{Warning}{\begin{minipage}{\linewidth}\begin{WarningBox}}{\end{WarningBox}\end{minipage}}
-\newenvironment{Question}{\begin{minipage}{\linewidth}\begin{QuestionBox}}{\end{QuestionBox}\end{minipage}}
-\newenvironment{Information}{\begin{minipage}{\linewidth}\begin{InformationBox}}{\end{InformationBox}\end{minipage}}
-\newenvironment{Error}{\begin{minipage}{\linewidth}\begin{ErrorBox}}{\end{ErrorBox}\end{minipage}}
+\newenvironment{Warning}{~\\ \begin{minipage}{\linewidth}\begin{WarningBox}}{\end{WarningBox}\end{minipage}}
+\newenvironment{Question}{~\\ \begin{minipage}{\linewidth}\begin{QuestionBox}}{\end{QuestionBox}\end{minipage}}
+\newenvironment{Information}{~\\ \begin{minipage}{\linewidth}\begin{InformationBox}}{\end{InformationBox}\end{minipage}}
+\newenvironment{Error}{~\\ \begin{minipage}{\linewidth}\begin{ErrorBox}}{\end{ErrorBox}\end{minipage}}
 
 %%%
 
