@@ -130,13 +130,13 @@
 \newcommand{\authorlink}[1]{\def\@authorlink{#1}}
 
 \renewcommand{\maketitle}{%
-   \ifcsdef{\authorlink}{}{\def\@authorlink{https://zestedesavoir.com/membres/voir}}
-   \ifcsdef{\website}{}{\def\@website{https://zestedesavoir.com}}
-   \ifcsdef{\editor}{}{\def\@editor{Zeste de Savoir}}   
+    \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/membres/voir}}
+    \ifcsdef{@website}{}{\website{https://zestedesavoir.com}}
+    \ifcsdef{@editor}{}{\editor{Zeste de Savoir}}   
     {\centering
     \vspace*{0.5 cm}
     \ifcsdef{@logo}{\includegraphics[width=\linewidth]{\@logo}}{$ $}\\[1.0 cm]
-    \LARGE \renewcommand*{\do}[1]{\href{\ifcsdef{\authorlink}{\@authorlink/##1/}{\bsc{##1}} \qquad}
+    \LARGE \renewcommand*{\do}[1]{\href{\@authorlink/##1/}{\bsc{##1}} \qquad}
            \expandafter\docsvlist\expandafter{\@author}\\[2.0 cm]
     \Large \href{\@website}{\@editor}\\[0.5 cm] 
     \rule{\linewidth}{0.2 mm} \\[0.4 cm]
