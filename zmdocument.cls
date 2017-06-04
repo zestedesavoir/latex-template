@@ -50,6 +50,18 @@
 \hypersetup{linkcolor=internallinkcolor}
 
 
+\newcommand{\externalLink}[2]{\href{#2}{#1}}
+
+
+%%% PRINTING OPTION
+
+\DeclareOption{print}{
+   \renewcommand{\externalLink}[2]{\textbf{[#1](#2)}}
+}
+
+%%%
+
+
 %%% SECTIONNING 
 
 \lohead{\headmark}
