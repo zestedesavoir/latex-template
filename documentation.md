@@ -7,7 +7,6 @@
 + Strikethrough: `\sout{text}`
 + Superscript and subscripts: `\textsubscript{x}` and `\textsuperscript{x}`
 + Inline source code: "\verb\`text\`"
-+ Links: `\href{url}{text}`
 + Keys: `\keys{x}`
 + Footnotes: `\footnote{text}`
 + Maths (obviously)
@@ -21,12 +20,17 @@
 # Class options
 
 + `big`, `middle` or `small` give access to different level of sectioning (see section macros below).  
++ `print` permit to have a document to print. The link are not clickable, there are formatted as **\[text](link)**.
 
 # Class macros
 
 ## `\horizontalLine`
 
 Create an horizontal line.
+
+## `\externalLink`
+
+Create a linke with `\externalLink{text}{link}`. 
 
 ## Section macros
 
