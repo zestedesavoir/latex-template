@@ -50,6 +50,13 @@ These macros shoud be used before `\maketitle` (ideally in the preamble). If the
 
 If there is multiple authors, use `\author` with a comma-separated list of them: `\author{author1, author2}`. 
 
+## Images
+
+There is two way to include image.
+
+- With `\image{path}[caption]`, the image is centered and can have a caption.
+- With `\image{path}`, the image is in the text, not centered.  
+
 ## Smilies
 
 Smilies need two commands to works (which should be defined in the preamble of the document):
