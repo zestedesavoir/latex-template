@@ -14,7 +14,9 @@
 \RequirePackage[babel=true]{microtype}
 \RequirePackage{capt-of}
 \RequirePackage{ulem}
+
 \RequirePackage{etoolbox}
+\RequirePackage{xparse}
 
 %%% TABLE PACKAGES
 \RequirePackage{multirow}
@@ -30,7 +32,7 @@
 \RequirePackage[hyperrefcolorlinks]{menukeys}
 
 
-%%% COLOR DEFINITION
+%%% COLORS DEFINITION
 
 \definecolor{internallinkcolor}{HTML}{FF9400}
 
@@ -47,6 +49,7 @@
 \definecolor{questioncolor}{HTML}{Ad5CFF}     %Orchid
 \definecolor{quotecolor}{HTML}{555555}
 \definecolor{spoilercolor}{HTML}{555555}
+\definecolor{iframecolor}{HTML}{009700}
 
 \hypersetup{linkcolor=internallinkcolor}
 
@@ -144,12 +147,15 @@
 \newZdSBox{WarningBox}{Attention}{warningcolor}
 \newZdSBox{QuotationBox}{Citation}{quotecolor}
 \newZdSBox{SpoilerBox}{Secret}{spoilercolor}
+\newZdSBox{IframeBox}{Élément externe}{iframecolor}
 
 \newZdSBoxEnvironement{Warning}{WarningBox}
 \newZdSBoxEnvironement{Question}{QuestionBox}
 \newZdSBoxEnvironement{Information}{InformationBox}
 \newZdSBoxEnvironement{Error}{ErrorBox}
 \newZdSBoxEnvironement{Spoiler}{SpoilerBox}
+
+%%% QUOTATION
 
 \newenvironment{Quotation}[1]{
     \def\quoteAuthor{#1}~\\ 
@@ -159,8 +165,15 @@
     \end{QuotationBox}\end{minipage}
 }
 
-%%%
+%%% IFRAMES
 
+\newenvironment{Iframe}[1]{~\\ \begin{minipage}{\linewidth}\begin{IframeBox}[#1]}{\end{IframeBox}\end{minipage}}
+
+\NewDocumentCommand\iframe{mO{vidéo}o}{%
+    \begin{Iframe}{#2}
+    Consultez cet élément à l'adresse \url{#1}.\IfNoValueTF{#3}{}{\\ #3}
+    \end{Iframe}
+}
 
 %%% SPOILER MANAGEMENT
 

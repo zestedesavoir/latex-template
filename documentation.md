@@ -70,6 +70,12 @@ In the above example, it defines `\blinkSmiley` and `\devilSmiley`.
 
 To add a spoiler, use `\addSoiler`: `\addSpoiler{Hide text}`. Spoilers will be in a "Spoiler" section (each chapter will have its "Spoiler" section). 
 
+## Iframes
+
+To add an iframe block (for example Youtube videos), use `\iframe`: `\iframe{url}[iframe type][caption]`. 
+
+Argument in square brackets are optionnal (`\iframe{url}` is enough). The default value of `iframe type` is "Vidéo" and the default value for `caption` is blank.
+
 # Class environements
 
 ## `Information`, `Question`, `Warning` and `Error`
