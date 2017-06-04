@@ -178,10 +178,10 @@
 
 %%% IMAGES
 
-\newcommand{\image}[2]{
+\NewDocumentCommand{\image}{mo}{
    \begin{center}
       \includegraphics[max size={\textwidth}{0.9\textheight}, keepaspectratio]{#1}
-      \captionof{figure}{#2}
+      \IfNoValueTF{#2}{}{\captionof{figure}{#2}}
    \end{center}
 }
 
