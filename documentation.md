@@ -54,8 +54,8 @@ If there is multiple authors, use `\author` with a comma-separated list of them:
 
 There is two way to include image.
 
-- With `\image{path}[caption]`, the image is centered and can have a caption.
-- With `\image{path}`, the image is in the text, not centered.  
++ With `\image{path}[caption]`, the image is centered and can have a caption.
++ With `\image{path}`, the image is in the text, not centered.
 
 ## Smilies
 
