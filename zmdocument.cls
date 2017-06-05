@@ -25,7 +25,7 @@
 
 %%% GRAPHIC PACKAGES
 \RequirePackage{graphicx}
-\RequirePackage{adjustbox}
+\RequirePackage[export]{adjustbox}
 
 \RequirePackage[bookmarks=true,hyperindex=true,bookmarksopen=true,bookmarksnumbered=true]{hyperref}
 \RequirePackage[thmmarks,amsmath,hyperref]{ntheorem}
@@ -241,6 +241,21 @@
 
 \hypersetup{pdftitle={\@title}}
 \hypersetup{pdfauthor={\@author}}
+
+
+%%% IMAGES
+
+\NewDocumentCommand{\image}{mo}{
+   \begin{center}
+      \includegraphics[max size={\textwidth}{0.9\textheight}, keepaspectratio]{#1}
+      \IfValueT{#2}{\captionof{figure}{#2}}
+   \end{center}
+}
+
+\newcommand{\inlineImage}[1]{\includegraphics[max size={\textwidth}{\textheight}, keepaspectratio]{#1}}
+
+%%%
+
 
 %% smilies
 \newcommand{\smilies}[1]{\def\@smilies{#1}}
