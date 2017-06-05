@@ -3,10 +3,13 @@
 # Forked from Zeste de Savoir:
 # https://github.com/zestedesavoir/zds-site/blob/dev/scripts/install_texlive.sh
 
-EXTRA_PACKAGES="adjustbox blindtext capt-of catoptions cm-super collectbox framed fvextra glossaries ifplatform longtable menukeys minted multirow ntheorem relsize tabu varwidth xpatch xstring"
+EXTRA_PACKAGES="adjustbox blindtext capt-of catoptions cm-super collectbox framed fvextra glossaries mfirstuc ifplatform menukeys minted multirow ntheorem relsize tabu varwidth xpatch xstring"
 
 if [[ -f $HOME/.texlive/bin/x86_64-linux/tlmgr ]]; then
   echo "Using cached texlive install"
+  $HOME/.texlive/bin/x86_64-linux/tlmgr update --self --all
+  DEPENDENCIES = 
+  $HOME/.texlive/bin/x86_64-linux/tlmgr install
 else
   # force cache upload after successful build
   touch $HOME/.cache_updated
@@ -29,10 +32,14 @@ else
   ./install-tl*/install-tl -profile texlive.profile
 
   # Install extra latex packages
-  ./bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
+  $HOME/.texlive/bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
 
   echo "Installation complete !"
 fi
+
+ # Install texliveonfly (permit to install missing packages on the fly)
+ $HOME/.texlive/bin/x86_64-linux/tlmgr install texliveonfly
+
 
 # Symlink the binaries to ~/bin
 for i in $HOME/.texlive/bin/x86_64-linux/*; do
