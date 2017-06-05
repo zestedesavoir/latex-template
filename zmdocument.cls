@@ -31,6 +31,8 @@
 \RequirePackage[thmmarks,amsmath,hyperref]{ntheorem}
 \RequirePackage[hyperrefcolorlinks]{menukeys}
 
+%%% ABBREVIATIONS PACKAGES
+\RequirePackage{glossaries}
 
 %%% COLORS DEFINITION
 
@@ -66,12 +68,12 @@
 %%%
 
 
-%%% SECTIONNING 
+%%% SECTIONNING
 
 \lohead{\headmark}
 \chead{}
 \pagestyle{scrheadings}
-   
+
 \DeclareOption{small}{
    \let\LevelOneTitle\section
    \let\LevelTwoTitle\subsection
@@ -81,8 +83,8 @@
    \let\Introduction\addsec
    \let\Conclusion\addsec
    \def\thesection{\arabic{section}}
-   \def\thefigure{\arabic{section}} 
-   \def\thetable{\arabic{section}} 
+   \def\thefigure{\arabic{section}}
+   \def\thetable{\arabic{section}}
    \automark[subsection]{section}
 }
 
@@ -158,7 +160,7 @@
 %%% QUOTATION
 
 \newenvironment{Quotation}[1]{
-    \def\quoteAuthor{#1}~\\ 
+    \def\quoteAuthor{#1}~\\
     \begin{minipage}{\linewidth}\begin{QuotationBox}
 }{
     \hfill(\quoteAuthor)
@@ -196,7 +198,7 @@
    \setcounter{@spoilerCounter}{1}
    \ifdefvoid{\@spoilerList}{}{\levelSpoilerTitle{Blocs secrets}}
    \def\do{}
-   \renewcommand{\do}[1]{\hypertarget{secret:\thepart\thechapter\the@spoilerCounter}{} 
+   \renewcommand{\do}[1]{\hypertarget{secret:\thepart\thechapter\the@spoilerCounter}{}
                          \levelSpoiler*{Secret \the@spoilerCounter}
                          \expandafter{##1}\\ \hfill \hyperlink{voir:\thepart\thechapter\the@spoilerCounter}
                                                               {Retourner au texte.}
@@ -206,7 +208,8 @@
    \setcounter{@spoilerCounter}{0}
 }
 
-\AtEndDocument{\displaySpoilers}
+\AtEndDocument{\displaySpoilers
+\printglossary[title=Liste des abbréviations]}
 
 %%%
 
@@ -245,7 +248,7 @@
 \newcommand{\createSmiley}[1]{\expandafter\def\csname#1Smiley\endcsname{\raisebox{-3pt}{\includegraphics[height=15pt]{\@smiliesPath/#1}} }}
 
 \AtBeginDocument{%
-\renewcommand*{\do}[1]{\createSmiley{#1}} 
+\renewcommand*{\do}[1]{\createSmiley{#1}}
 \expandafter\docsvlist\expandafter{\@smilies}
 }
 
@@ -255,3 +258,10 @@
 \renewcommand{\arraystretch}{1.5}
 
 \newcommand{\horizontalLine}{{\color{gray}\rule{\textwidth}{0.2pt}}}
+
+%%% Abbreviation
+
+\newcommand{\abbr}[2]{\dotuline{\gls{#1}}\newglossaryentry{#1}{
+  name=#1,
+  description={#2}
+}}

@@ -8,8 +8,11 @@ help:
 	@echo "  help       to get this help"
 
 test:
-	pdflatex -shell-escape -interaction=nonstopmode test.tex
+	-pdflatex -shell-escape -interaction=nonstopmode test.tex
+	-pdflatex -shell-escape -interaction=nonstopmode test.tex
+	-makeglossaries test
+	-pdflatex -shell-escape -interaction=nonstopmode test.tex
 
 clean:
-	rm *.aux *.log *.out *.pdf *.thm *.toc 
+	rm *.aux *.log *.out *.pdf *.thm *.toc *.glg *.glo *.gls *.glsdefs *.ist
 	rm -r _minted-test
