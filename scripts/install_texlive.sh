@@ -7,7 +7,7 @@ EXTRA_PACKAGES="adjustbox blindtext capt-of catoptions cm-super collectbox frame
 
 if [[ -f $HOME/.texlive/bin/x86_64-linux/tlmgr ]]; then
   echo "Using cached texlive install"
-  $HOME/.texlive/bin/x86_64-linux/tlmgr update --self
+  $HOME/.texlive/bin/x86_64-linux/tlmgr update --self --all
 else
   # force cache upload after successful build
   touch $HOME/.cache_updated
@@ -29,11 +29,12 @@ else
 
   ./install-tl*/install-tl -profile texlive.profile
 
+  # Install extra latex packages
+  $HOME/.texlive/bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
+
   echo "Installation complete !"
 fi
 
-# Install extra latex packages
-$HOME/.texlive/bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
 
 # Symlink the binaries to ~/bin
 for i in $HOME/.texlive/bin/x86_64-linux/*; do
