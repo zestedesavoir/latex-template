@@ -8,7 +8,7 @@ help:
 	@echo "  help       to get this help"
 
 test:
-	texliveonfly.py --engine=pdflatex -shell-escape -interaction=nonstopmode test.tex
+	texliveonfly.py --engine=pdflatex test.tex -shell-escape -interaction=nonstopmode
 	pdflatex -shell-escape -interaction=nonstopmode test.tex
 	makeglossaries test
 	pdflatex -shell-escape -interaction=nonstopmode test.tex
