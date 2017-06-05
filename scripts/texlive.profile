@@ -13,7 +13,6 @@ collection-basic 1
 collection-latex 1
 collection-latexrecommended 1
 collection-xetex 1
-in_place 0
 option_adjustrepo 1
 tlpdbopt_autobackup 1
 tlpdbopt_backupdir tlpkg/backups
