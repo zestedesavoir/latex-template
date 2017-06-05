@@ -33,9 +33,10 @@ fi
 
 
 # Install extra latex packages
-$HOME/.texlive/bin/x86_64-linux/tlmgr update --self --all
+$HOME/.texlive/bin/x86_64-linux/tlmgr update --self
 $HOME/.texlive/bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
-  
+$HOME/.texlive/bin/x86_64-linux/tlmgr update --self
+
 # Symlink the binaries to ~/bin
 for i in $HOME/.texlive/bin/x86_64-linux/*; do
   ln -sf $i $HOME/bin/
