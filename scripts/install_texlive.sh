@@ -32,7 +32,7 @@ else
 fi
 
 # Install extra latex packages
-./bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
+$HOME/.texlive/bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
 
 # Symlink the binaries to ~/bin
 for i in $HOME/.texlive/bin/x86_64-linux/*; do
