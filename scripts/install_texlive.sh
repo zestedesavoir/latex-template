@@ -31,7 +31,9 @@ else
   echo "Installation complete !"
 fi
 
+
 # Install extra latex packages
+$HOME/.texlive/bin/x86_64-linux/tlmgr update --self --all
 $HOME/.texlive/bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
   
 # Symlink the binaries to ~/bin
