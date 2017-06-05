@@ -9,7 +9,7 @@ if [[ -f $HOME/.texlive/bin/x86_64-linux/tlmgr ]]; then
   echo "Using cached texlive install"
   $HOME/.texlive/bin/x86_64-linux/tlmgr update --self --all
   DEPENDENCIES = 
-  $HOME/.texlive/bin/x86_64-linux/tlmgr install ()
+  $HOME/.texlive/bin/x86_64-linux/tlmgr install
 else
   # force cache upload after successful build
   touch $HOME/.cache_updated
