@@ -16,6 +16,7 @@
 \RequirePackage{ulem}
 
 \RequirePackage{etoolbox}
+\RequirePackage{xparse}
 
 %%% TABLE PACKAGES
 \RequirePackage{multirow}
@@ -207,7 +208,8 @@
    \setcounter{@spoilerCounter}{0}
 }
 
-\AtEndDocument{\displaySpoilers}
+\AtEndDocument{\displaySpoilers
+\printglossary[title=Liste des abbréviations]}
 
 %%%
 
@@ -263,5 +265,3 @@
   name=#1,
   description={#2}
 }}
-
-\AtEndDocument{\printglossary[title=Liste des abbréviations]}
