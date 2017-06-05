@@ -28,12 +28,12 @@ else
 
   ./install-tl*/install-tl -profile texlive.profile
 
-  # Install extra latex packages
-  ./bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
-
   echo "Installation complete !"
 fi
 
+# Install extra latex packages
+$HOME/.texlive/bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
+  
 # Symlink the binaries to ~/bin
 for i in $HOME/.texlive/bin/x86_64-linux/*; do
   ln -sf $i $HOME/bin/
