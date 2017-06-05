@@ -18,6 +18,8 @@
 \RequirePackage{etoolbox}
 \RequirePackage{xparse}
 
+\RequirePackage{pagecolor}
+
 %%% TABLE PACKAGES
 \RequirePackage{multirow}
 \RequirePackage{longtable}
@@ -52,6 +54,8 @@
 \definecolor{quotationcolor}{HTML}{555555}
 \definecolor{spoilercolor}{HTML}{555555}
 \definecolor{iframecolor}{HTML}{009700}
+\definecolor{zblue}{HTML}{094561}
+\definecolor{zorange}{HTML}{f8ad32}
 
 \hypersetup{linkcolor=internallinkcolor}
 
@@ -216,23 +220,38 @@
 \newcommand{\logo}[1]{\def\@logo{#1}}
 \newcommand{\website}[1]{\def\@website{#1}}
 \newcommand{\editor}[1]{\def\@editor{#1}}
+\newcommand{\editorlogo}[1]{\def\@editorlogo{#1}}
 \newcommand{\authorlink}[1]{\def\@authorlink{#1}}
 
 \renewcommand{\maketitle}{%
+    \clearpage
+    \thispagestyle{empty}
+    \pagecolor{zblue}
+    \color{white}
     \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/membres/voir}}
     \ifcsdef{@website}{}{\website{https://zestedesavoir.com}}
-    \ifcsdef{@editor}{}{\editor{Zeste de Savoir}}
+    \ifcsdef{@editor}{}{\editor{https://zestedesavoir.com}}
+    \ifcsdef{@editorlogo}{}{\editorlogo{zestedesavoir.png}}
     \ifcsdef{@logo}{}{\logo{default_logo.png}}
-    {\centering
-    \vspace*{0.5 cm}
-    \includegraphics[width=\linewidth]{\@logo}\\[1.0 cm]
-    \LARGE \renewcommand*{\do}[1]{\href{\@authorlink/##1/}{\bsc{##1}} \qquad}
-           \expandafter\docsvlist\expandafter{\@author}\\[2.0 cm]
-    \Large \href{\@website}{\@editor}\\[0.5 cm]
+    {
+    \raggedleft
+    \Large\bf \renewcommand*{\do}[1]{\href{\@authorlink/##1/}{\bsc{##1}}\\}
+           \expandafter\docsvlist\expandafter{\@author}\\[1.0 cm]
+    \centering
+    \vspace*{1.5 cm}
+    \includegraphics[height=4cm]{\@logo}\\
     \rule{\linewidth}{0.2 mm} \\[0.4 cm]
     \huge\textbf{\@title}\\
-    \rule{\linewidth}{0.2 mm} \\[1.5 cm]
-    \large\textbf{Ce tutoriel est sous licence \@licence}\\[2 cm]}
+    \rule{\linewidth}{0.2 mm} \\[1 cm]
+    \large\textbf{Ce tutoriel est sous licence \@licence}\\}
+    \vspace{\fill}
+    \centering
+    \includegraphics[height=2cm]{\@editorlogo}\\
+    \href{\@website}{\color{zorange}\@editor}
+    \newpage
+    \newpagecolor{white}
+    \color{black}
+    \setcounter{page}{1}
 }
 
 \hypersetup{pdftitle={\@title}}
