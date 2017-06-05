@@ -5,32 +5,42 @@
 + Italic: `\textit{text}`
 + Bold: `\textbf{text}`
 + Strikethrough: `\sout{text}`
-+ Superscript and subscripts: `\textsubscript{x}` and `\textsuperscript{x}`
++ Superscript and subscript: `\textsubscript{x}` and `\textsuperscript{x}`
 + Inline source code: "\verb\`text\`"
-+ Links: `\href{url}{text}`
 + Keys: `\keys{x}`
 + Footnotes: `\footnote{text}`
 + Maths (obviously)
 
-## Environements
+## environments
 
-+ Lists: `itemize` environement for bulleted, `enumerate` environement for numbered. Inside them, each item is defined with `\item`.
-+ Aligned text: text is justifed by default, `flushright` and `center` environements are available to change that.
-+ Code: the `minted` environement.
++ Lists: `itemize` environment for bulleted, `enumerate` environment for numbered. Inside them, each item is defined with `\item`.
++ Aligned text: text is justified by default, `flushright` and `center` environments are available to change that.
++ Code: the `minted` environment.
 
 # Class options
 
-+ `big`, `middle` or `small` give access to different level of sectioning (see section macros below).  
++ `big`, `middle` or `small` give access to different levels of sectioning (see section macros below).  
++ `print` permit to have a document to print. The link are not clickable, there are formatted as **\[text](link)**.
 
 # Class macros
 
+## Abbreviations
+
+To add an abbreviation, use `\abbr{word}{definition}`:. Abbreviations will be in a glossary at the end of the document.
+
+**Disclaimer**: word should not contain accented characters or other special characters because of the *glossaries* package.
+
 ## `\horizontalLine`
 
-Create an horizontal line.
+Create a horizontal line.
+
+## `\externalLink`
+
+Create a link with `\externalLink{text}{link}`.
 
 ## Section macros
 
-The differents title level are adapted depending on the class option.
+The different title levels are adapted depending on the class option.
 
 | | `small` | `middle` | `big` |
 |-|---------|----------------|-----|
@@ -46,9 +56,9 @@ For introduction and conclusion, `\Introduction` and `\Conclusion` are also defi
 
 ## Title page macros (`\website`, `\authorlink`, `\editor` and `\logo`)
 
-These macros shoud be used before `\maketitle` (ideally in the preamble). If they are not used, there are default values. Be careful that `\logo` take in parameter the path of an image (and not an image). The default logo is `default_logo.png`. 
+These macros should be used before `\maketitle` (ideally in the preamble). If they are not used, there are default values. Be careful that `\logo` take in parameter the path of an image (and not an image). The default logo is `default_logo.png`.
 
-If there is multiple authors, use `\author` with a comma-separated list of them: `\author{author1, author2}`. 
+If there is multiple authors, use `\author` with a comma-separated list of them: `\author{author1, author2}`.
 
 ## Images
 
@@ -66,15 +76,25 @@ Smilies need two commands to works (which should be defined in the preamble of t
 \smilies{blink,devil} % the different smilies (one smiley = one image)
 ```
 
-Then, the `\xxxSmiley` command is defined in the document, when `xxx` is one of the smiley in `\smilies`. 
+Then, the `\xxxSmiley` command is defined in the document, when `xxx` is one of the smiley in `\smilies`.
 In the above example, it defines `\blinkSmiley` and `\devilSmiley`.
 
-# Class environements
+## Spoilers
+
+To add a spoiler, use `\addSpoiler`: `\addSpoiler{Hide text}`. Spoilers will be in a "Spoiler" section (each chapter will have its "Spoiler" section).
+
+## Iframes
+
+To add an iframe block (for example Youtube videos), use `\iframe`: `\iframe{url}[iframe type][caption]`.
+
+Arguments in square brackets are optionnal (`\iframe{url}` is enough). The default value of `iframe type` is "Vidéo" and the default value for `caption` is blank.
+
+# Class environments
 
 ## `Information`, `Question`, `Warning` and `Error`
 
-Mimick the corresponding markdown blocks.
+Mimic the corresponding markdown blocks.
 
 ## Quotes
 
-The `Quotation` environement takes an extra parameter, being the source of the quote.
+The `Quotation` environment takes an extra parameter, being the source of the quote.

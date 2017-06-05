@@ -1,12 +1,18 @@
 # LaTeX stuffs:
 *.aux
-*.log 
+*.ist
+*.log
 *.out
 *.pdf
+*.glg
+*.glo
+*.gls
+*.glsdefs
 *.gz
 *.thm
 *.toc
-_minted_test
+*.xdy
+_minted*
 
 # Other craps:
 Thumbs.db

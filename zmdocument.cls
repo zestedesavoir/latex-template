@@ -14,7 +14,9 @@
 \RequirePackage[babel=true]{microtype}
 \RequirePackage{capt-of}
 \RequirePackage{ulem}
+
 \RequirePackage{etoolbox}
+\RequirePackage{xparse}
 
 %%% TABLE PACKAGES
 \RequirePackage{multirow}
@@ -29,8 +31,10 @@
 \RequirePackage[thmmarks,amsmath,hyperref]{ntheorem}
 \RequirePackage[hyperrefcolorlinks]{menukeys}
 
+%%% ABBREVIATIONS PACKAGES
+\RequirePackage{glossaries}
 
-%%% COLOR DEFINITION
+%%% COLORS DEFINITION
 
 \definecolor{internallinkcolor}{HTML}{FF9400}
 
@@ -46,16 +50,30 @@
 \definecolor{informationcolor}{HTML}{55E0E0}  %SkyBlue
 \definecolor{questioncolor}{HTML}{Ad5CFF}     %Orchid
 \definecolor{quotecolor}{HTML}{555555}
+\definecolor{spoilercolor}{HTML}{555555}
+\definecolor{iframecolor}{HTML}{009700}
 
 \hypersetup{linkcolor=internallinkcolor}
 
 
-%%% SECTIONNING 
+\newcommand{\externalLink}[2]{\href{#2}{#1}}
+
+
+%%% PRINTING OPTION
+
+\DeclareOption{print}{
+   \renewcommand{\externalLink}[2]{\textbf{[#1](#2)}}
+}
+
+%%%
+
+
+%%% SECTIONNING
 
 \lohead{\headmark}
 \chead{}
 \pagestyle{scrheadings}
-   
+
 \DeclareOption{small}{
    \let\LevelOneTitle\section
    \let\LevelTwoTitle\subsection
@@ -65,32 +83,32 @@
    \let\Introduction\addsec
    \let\Conclusion\addsec
    \def\thesection{\arabic{section}}
-   \def\thefigure{\arabic{section}} 
-   \def\thetable{\arabic{section}} 
+   \def\thefigure{\arabic{section}}
+   \def\thetable{\arabic{section}}
    \automark[subsection]{section}
 }
 
 \DeclareOption{middle}{
-   \let\LevelOneTitle\chapter
+   \newcommand{\LevelOneTitle}[1]{\displaySpoilers \chapter{#1}}
    \let\LevelTwoTitle\section
    \let\LevelThreeTitle\subsection
    \let\LevelFourTitle\subsubsection
    \let\LevelFiveTitle\paragraph
    \let\LevelSixTitle\subparagaph
    \let\Introduction\addchap
-   \let\Conclusion\addchap
+   \newcommand{\Conclusion}[1]{\displaySpoilers \addchap{#1}}
    \automark[section]{chapter}
 }
 \DeclareOption{big}{
-   \let\LevelOneTitle\part  
-   \let\LevelTwoTitle\chapter
+   \newcommand\LevelOneTitle[1]{\displaySpoilers \part{#1}}
+   \newcommand\LevelTwoTitle[1]{\displaySpoilers \chapter{#1}}
    \let\LevelThreeTitle\section
    \let\LevelFourTitle\subsection
    \let\LevelFiveTitle\subsubsection
    \let\LevelSixTitle\paragraph
    \let\LevelSevenTitle\subparagaph
    \let\Introduction\addpart
-   \let\Conclusion\addpart
+   \newcommand{\Conclusion}[1]{\displaySpoilers \addpart{#1}}
    \automark[chapter]{part}
 }
 \ProcessOptions
@@ -130,19 +148,68 @@
 \newZdSBox{ErrorBox}{Erreur}{errorcolor}
 \newZdSBox{WarningBox}{Attention}{warningcolor}
 \newZdSBox{QuotationBox}{Citation}{quotecolor}
+\newZdSBox{SpoilerBox}{Secret}{spoilercolor}
+\newZdSBox{IframeBox}{Élément externe}{iframecolor}
 
 \newZdSBoxEnvironement{Warning}{WarningBox}
 \newZdSBoxEnvironement{Question}{QuestionBox}
 \newZdSBoxEnvironement{Information}{InformationBox}
 \newZdSBoxEnvironement{Error}{ErrorBox}
+\newZdSBoxEnvironement{Spoiler}{SpoilerBox}
+
+%%% QUOTATION
 
 \newenvironment{Quotation}[1]{
-    \def\quoteAuthor{#1}~\\ 
+    \def\quoteAuthor{#1}~\\
     \begin{minipage}{\linewidth}\begin{QuotationBox}
 }{
     \hfill(\quoteAuthor)
     \end{QuotationBox}\end{minipage}
 }
+
+%%% IFRAMES
+
+\newenvironment{Iframe}[1]{~\\ \begin{minipage}{\linewidth}\begin{IframeBox}[#1]}{\end{IframeBox}\end{minipage}}
+
+\NewDocumentCommand\iframe{mO{vidéo}o}{%
+    \begin{Iframe}{#2}
+    Consultez cet élément à l'adresse \url{#1}.\IfNoValueTF{#3}{}{\\ #3}
+    \end{Iframe}
+}
+
+%%% SPOILER MANAGEMENT
+
+\let\levelSpoilerTitle\addsec
+\let\levelSpoiler\subsection
+
+\newcounter{@spoilerCounter}
+\def\@spoilerList{}
+
+\newcommand{\addSpoiler}[1]{%
+   \addtocounter{@spoilerCounter}{1}
+   \hypertarget{voir:\thepart\thechapter\the@spoilerCounter}{}
+   \begin{Spoiler}
+   \hyperlink{secret:\thepart\thechapter\the@spoilerCounter}{Voir le secret \the@spoilerCounter.}
+   \end{Spoiler}
+   \listadd{\@spoilerList}{\expandafter#1}
+}
+
+\newcommand{\displaySpoilers}{%
+   \setcounter{@spoilerCounter}{1}
+   \ifdefvoid{\@spoilerList}{}{\levelSpoilerTitle{Blocs secrets}}
+   \def\do{}
+   \renewcommand{\do}[1]{\hypertarget{secret:\thepart\thechapter\the@spoilerCounter}{}
+                         \levelSpoiler*{Secret \the@spoilerCounter}
+                         \expandafter{##1}\\ \hfill \hyperlink{voir:\thepart\thechapter\the@spoilerCounter}
+                                                              {Retourner au texte.}
+                         \addtocounter{@spoilerCounter}{1}}
+   \expandafter\dolistloop{\@spoilerList}
+   \def\@spoilerList{}
+   \setcounter{@spoilerCounter}{0}
+}
+
+\AtEndDocument{\displaySpoilers
+\printglossary[title=Liste des abbréviations]}
 
 %%%
 
@@ -196,7 +263,7 @@
 \newcommand{\createSmiley}[1]{\expandafter\def\csname#1Smiley\endcsname{\raisebox{-3pt}{\includegraphics[height=15pt]{\@smiliesPath/#1}} }}
 
 \AtBeginDocument{%
-\renewcommand*{\do}[1]{\createSmiley{#1}} 
+\renewcommand*{\do}[1]{\createSmiley{#1}}
 \expandafter\docsvlist\expandafter{\@smilies}
 }
 
@@ -206,3 +273,10 @@
 \renewcommand{\arraystretch}{1.5}
 
 \newcommand{\horizontalLine}{{\color{gray}\rule{\textwidth}{0.2pt}}}
+
+%%% Abbreviation
+
+\newcommand{\abbr}[2]{\dotuline{\gls{#1}}\newglossaryentry{#1}{
+  name=#1,
+  description={#2}
+}}
