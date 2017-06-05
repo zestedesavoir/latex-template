@@ -181,7 +181,7 @@
 \NewDocumentCommand{\image}{mo}{
    \begin{center}
       \includegraphics[max size={\textwidth}{0.9\textheight}, keepaspectratio]{#1}
-      \IfNoValueTF{#2}{}{\captionof{figure}{#2}}
+      \IfValueT{#2}{\captionof{figure}{#2}}
    \end{center}
 }
 
