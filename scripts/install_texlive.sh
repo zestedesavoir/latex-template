@@ -3,7 +3,7 @@
 # Forked from Zeste de Savoir:
 # https://github.com/zestedesavoir/zds-site/blob/dev/scripts/install_texlive.sh
 
-EXTRA_PACKAGES="adjustbox blindtext capt-of catoptions cm-super collectbox framed fvextra glossaries ifplatform menukeys minted multirow ntheorem relsize tabu varwidth xpatch xstring"
+EXTRA_PACKAGES="adjustbox blindtext capt-of catoptions cm-super collectbox framed fvextra glossaries mfirstuc ifplatform menukeys minted multirow ntheorem relsize tabu varwidth xpatch xstring"
 
 if [[ -f $HOME/.texlive/bin/x86_64-linux/tlmgr ]]; then
   echo "Using cached texlive install"
