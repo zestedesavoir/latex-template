@@ -276,7 +276,7 @@
 
 %%% Abbreviation
 
-\newcommand{\abbr}[2]{\dotuline{\gls{#1}}\newglossaryentry{#1}{
-  name=#1,
-  description={#2}
-}}
+\newcommand{\abbr}[2]{%
+   \newglossaryentry{#1}{name=#1, description={#2}}%
+   \dotuline{\gls{#1}}
+}
