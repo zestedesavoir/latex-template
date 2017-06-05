@@ -245,9 +245,10 @@
     \rule{\linewidth}{0.2 mm} \\[1 cm]
     \large\textbf{Ce tutoriel est sous licence \@licence}\\}
     \vspace{\fill}
-    \centering
+    \begin{center}
     \includegraphics[height=2cm]{\@editorlogo}\\
     \href{\@website}{\color{zorange}\@editor}
+    \end{center}
     \newpage
     \newpagecolor{white}
     \color{black}
