@@ -54,9 +54,9 @@ The different title levels are adapted depending on the class option.
 
 For introduction and conclusion, `\Introduction` and `\Conclusion` are also defined.
 
-## Title page macros (`\website`, `\authorlink`, `\editor` and `\logo`)
+## Title page macros (`\website`, `\authorlink`, `\editor`, `\editorlogo` and `\logo`)
 
-These macros should be used before `\maketitle` (ideally in the preamble). If they are not used, there are default values. Be careful that `\logo` take in parameter the path of an image (and not an image). The default logo is `default_logo.png`.
+These macros should be used before `\maketitle` (ideally in the preamble). If they are not used, there are default values. Be careful that `\logo` and `\editorlogo` take in parameter the path of an image (and not an image). The default logo is `default_logo.png` and the default editor logo is `zestedesavoir.png`.
 
 If there is multiple authors, use `\author` with a comma-separated list of them: `\author{author1, author2}`.
 

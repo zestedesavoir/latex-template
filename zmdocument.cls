@@ -238,7 +238,7 @@
     \Large\bf \renewcommand*{\do}[1]{\href{\@authorlink/##1/}{\bsc{##1}}\\}
            \expandafter\docsvlist\expandafter{\@author}\\[1.0 cm]
     \centering
-    \vspace*{1.5 cm}
+    \vspace*{2.5 cm}
     \includegraphics[height=4cm]{\@logo}\\
     \rule{\linewidth}{0.2 mm} \\[0.4 cm]
     \huge\textbf{\@title}\\
