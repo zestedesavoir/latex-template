@@ -11,7 +11,7 @@
 + Footnotes: `\footnote{text}`
 + Maths (obviously)
 
-## environments
+## Environments
 
 + Lists: `itemize` environment for bulleted, `enumerate` environment for numbered. Inside them, each item is defined with `\item`.
 + Aligned text: text is justified by default, `flushright` and `center` environments are available to change that.
@@ -62,15 +62,13 @@ If there is multiple authors, use `\author` with a comma-separated list of them:
 
 ## Smilies
 
-Smilies need two commands to works (which should be defined in the preamble of the document):
+Smilies need one commands to work (which should be defined in the preamble of the document):
 
 ```latex
 \smiliesPath{/path/to/smilies} % path to the directory containing the images of the smilies
-\smilies{blink,devil} % the different smilies (one smiley = one image)
 ```
 
-Then, the `\xxxSmiley` command is defined in the document, when `xxx` is one of the smiley in `\smilies`.
-In the above example, it defines `\blinkSmiley` and `\devilSmiley`.
+Then, use `\smiley`: `\smiley{xxx}` where `xxx` is an image in the directory containing smilies.
 
 ## Spoilers
 
