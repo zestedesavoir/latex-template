@@ -54,8 +54,14 @@
 \definecolor{quotationcolor}{HTML}{555555}
 \definecolor{spoilercolor}{HTML}{555555}
 \definecolor{iframecolor}{HTML}{009700}
-\definecolor{zblue}{HTML}{094561}
-\definecolor{zorange}{HTML}{f8ad32}
+\definecolor{bgtitle}{HTML}{094561}
+\definecolor{editortitle}{HTML}{F8AD32}
+\definecolor{texttitle}{HTML}{FFFFFF}
+\DeclareOption{nocolor}{
+  \definecolor{bgtitle}{HTML}{FFFFFF}
+  \definecolor{editortitle}{HTML}{000000}
+  \definecolor{texttitle}{HTML}{000000}
+}
 
 \hypersetup{linkcolor=internallinkcolor}
 
@@ -226,8 +232,8 @@
 \renewcommand{\maketitle}{%
     \clearpage
     \thispagestyle{empty}
-    \pagecolor{zblue}
-    \color{white}
+    \pagecolor{bgtitle}
+    \color{texttitle}
     \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/membres/voir}}
     \ifcsdef{@website}{}{\website{https://zestedesavoir.com}}
     \ifcsdef{@editor}{}{\editor{https://zestedesavoir.com}}
@@ -247,7 +253,7 @@
     \vspace{\fill}
     \begin{center}
     \includegraphics[height=2cm]{\@editorlogo}\\
-    \href{\@website}{\color{zorange}\@editor}
+    \href{\@website}{\color{editortitle}\@editor}
     \end{center}
     \newpage
     \newpagecolor{white}
