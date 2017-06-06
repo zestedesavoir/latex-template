@@ -242,17 +242,17 @@
     {
     \raggedleft
     \Large\bf \renewcommand*{\do}[1]{\href{\@authorlink/##1/}{\bsc{##1}}\\}
-           \expandafter\docsvlist\expandafter{\@author}\\[1.0 cm]
+         \expandafter\docsvlist\expandafter{\@author}\\[1.0 cm]
     \centering
-    \vspace*{2.5 cm}
-    \includegraphics[height=4cm]{\@logo}\\
+    \vspace*{\fill}
+    \includegraphics[max width=\textwidth, max height=4cm, keepaspectratio]{\@logo}\\
     \rule{\linewidth}{0.2 mm} \\[0.4 cm]
     \huge\textbf{\@title}\\
     \rule{\linewidth}{0.2 mm} \\[1 cm]
     \large\textbf{Ce tutoriel est sous licence \@licence}\\}
     \vspace{\fill}
     \begin{center}
-    \includegraphics[height=2cm]{\@editorlogo}\\
+    \includegraphics[max width=8cm, max height=2cm, keepaspectratio]{\@editorlogo}\\
     \href{\@website}{\color{editortitle}\@editor}
     \end{center}
     \newpage
