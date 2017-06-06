@@ -49,7 +49,7 @@
 \definecolor{errorcolor}{HTML}{FF3B21}        %RedOrange
 \definecolor{informationcolor}{HTML}{55E0E0}  %SkyBlue
 \definecolor{questioncolor}{HTML}{Ad5CFF}     %Orchid
-\definecolor{quotecolor}{HTML}{555555}
+\definecolor{quotationcolor}{HTML}{555555}
 \definecolor{spoilercolor}{HTML}{555555}
 \definecolor{iframecolor}{HTML}{009700}
 
@@ -147,7 +147,7 @@
 \newZdSBox{QuestionBox}{Question}{questioncolor}
 \newZdSBox{ErrorBox}{Erreur}{errorcolor}
 \newZdSBox{WarningBox}{Attention}{warningcolor}
-\newZdSBox{QuotationBox}{Citation}{quotecolor}
+\newZdSBox{QuotationBox}{Citation}{quotationcolor}
 \newZdSBox{SpoilerBox}{Secret}{spoilercolor}
 \newZdSBox{IframeBox}{Élément externe}{iframecolor}
 
@@ -159,13 +159,9 @@
 
 %%% QUOTATION
 
-\newenvironment{Quotation}[1]{
-    \def\quoteAuthor{#1}~\\
-    \begin{minipage}{\linewidth}\begin{QuotationBox}
-}{
-    \hfill(\quoteAuthor)
-    \end{QuotationBox}\end{minipage}
-}
+\NewDocumentEnvironment{Quotation}{o}{\begin{minipage}{\linewidth}\begin{QuotationBox}}
+                                     {\IfValueT{#1}{\hfill(#1)} \end{QuotationBox}\end{minipage}}
+
 
 %%% IFRAMES
 
@@ -173,7 +169,7 @@
 
 \NewDocumentCommand\iframe{mO{vidéo}o}{%
     \begin{Iframe}{#2}
-    Consultez cet élément à l'adresse \url{#1}.\IfNoValueTF{#3}{}{\\ #3}
+    Consultez cet élément à l'adresse \url{#1}.\IfValueT{#3}{\\ #3}
     \end{Iframe}
 }
 
