@@ -243,14 +243,8 @@
 \hypersetup{pdfauthor={\@author}}
 
 %% smilies
-\newcommand{\smilies}[1]{\def\@smilies{#1}}
 \newcommand{\smiliesPath}[1]{\def\@smiliesPath{#1}}
-\newcommand{\createSmiley}[1]{\expandafter\def\csname#1Smiley\endcsname{\raisebox{-3pt}{\includegraphics[height=15pt]{\@smiliesPath/#1}} }}
-
-\AtBeginDocument{%
-\renewcommand*{\do}[1]{\createSmiley{#1}}
-\expandafter\docsvlist\expandafter{\@smilies}
-}
+\newcommand{\smiley}[1]{\raisebox{-3pt}{\includegraphics[height=15pt]{\@smiliesPath/#1}} }
 
 %%%
 
