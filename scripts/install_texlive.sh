@@ -23,19 +23,17 @@ else
   sed -i 's@\$HOME@'"$HOME"'@' texlive.profile
 
   # Download and run installer
-  wget -O install-tl.tar.gz ftp://tug.org/historic/systems/texlive/2017/install-tl-unx.tar.gz
+  wget -O install-tl.tar.gz http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
   tar xzf install-tl.tar.gz
 
   ./install-tl*/install-tl -profile texlive.profile
+    
+  # Install extra latex packages
+  $HOME/.texlive/bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
+  $HOME/.texlive/bin/x86_64-linux/tlmgr update --self
 
   echo "Installation complete !"
 fi
-
-
-# Install extra latex packages
-$HOME/.texlive/bin/x86_64-linux/tlmgr update --self
-$HOME/.texlive/bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
-$HOME/.texlive/bin/x86_64-linux/tlmgr update --self
 
 # Symlink the binaries to ~/bin
 for i in $HOME/.texlive/bin/x86_64-linux/*; do
