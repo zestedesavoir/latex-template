@@ -3,6 +3,8 @@
 
 \LoadClass[fontsize=12pt,twoside=false,numbers=enddot,parskip=half]{scrbook}
 
+%%% PACKAGES -------------------------------------------------------------------
+
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{scrhack}
@@ -15,6 +17,7 @@
 \RequirePackage{capt-of}
 \RequirePackage{ulem}
 
+%% LATEX 3 PACKAGES
 \RequirePackage{etoolbox}
 \RequirePackage{xparse}
 
@@ -34,42 +37,35 @@
 %%% ABBREVIATIONS PACKAGES
 \RequirePackage{glossaries}
 
-%%% COLORS DEFINITION
+%%% COLORS ---------------------------------------------------------------------
 
-\definecolor{internallinkcolor}{HTML}{FF9400}
+\definecolor{internalLinkColor}{HTML}{FF9400}
 
-\definecolor{chaptercolor}{HTML}{EA9408}
-\definecolor{sectioncolor}{HTML}{EA9408}
-\definecolor{subsectioncolor}{HTML}{EA9408}
-\definecolor{subsubsectioncolor}{HTML}{EA9408}
-\definecolor{paragraphcolor}{HTML}{000000}
-\definecolor{subparagraphcolor}{HTML}{000000}
+\definecolor{chapterColor}{HTML}{EA9408}
+\definecolor{sectionColor}{HTML}{EA9408}
+\definecolor{subsectionColor}{HTML}{EA9408}
+\definecolor{subsubsectionColor}{HTML}{EA9408}
+\definecolor{paragraphColor}{HTML}{000000}
+\definecolor{subparagraphColor}{HTML}{000000}
 
-\definecolor{warningcolor}{HTML}{FFAD7A}      %Apricot
-\definecolor{errorcolor}{HTML}{FF3B21}        %RedOrange
-\definecolor{informationcolor}{HTML}{55E0E0}  %SkyBlue
-\definecolor{questioncolor}{HTML}{Ad5CFF}     %Orchid
-\definecolor{quotationcolor}{HTML}{555555}
-\definecolor{spoilercolor}{HTML}{555555}
-\definecolor{iframecolor}{HTML}{009700}
+\definecolor{warningColor}{HTML}{FFAD7A}      %Apricot
+\definecolor{errorColor}{HTML}{FF3B21}        %RedOrange
+\definecolor{informationColor}{HTML}{55E0E0}  %SkyBlue
+\definecolor{questionColor}{HTML}{Ad5CFF}     %Orchid
+\definecolor{quotationColor}{HTML}{555555}
+\definecolor{spoilerColor}{HTML}{555555}
+\definecolor{iframeColor}{HTML}{009700}
 
-\hypersetup{linkcolor=internallinkcolor}
+\hypersetup{linkcolor=internalLinkColor}
 
-
-\newcommand{\externalLink}[2]{\href{#2}{#1}}
-
+%%% CLASS OPTIONS --------------------------------------------------------------
 
 %%% PRINTING OPTION
-
 \DeclareOption{print}{
    \renewcommand{\externalLink}[2]{\textbf{[#1](#2)}}
 }
 
-%%%
-
-
-%%% SECTIONNING
-
+%%% SECTIONNING OPTIONS
 \lohead{\headmark}
 \chead{}
 \pagestyle{scrheadings}
@@ -111,25 +107,26 @@
    \newcommand{\Conclusion}[1]{\displaySpoilers \addpart{#1}}
    \automark[chapter]{part}
 }
+
+%%% PROCESSING
 \ProcessOptions
 
-\addtokomafont{chapter}{\color{chaptercolor}}
-\addtokomafont{section}{\color{sectioncolor}}
-\addtokomafont{subsection}{\color{subsectioncolor}}
-\addtokomafont{subsubsection}{\color{sectioncolor}}
-\addtokomafont{paragraph}{\color{paragraphcolor}}
-\addtokomafont{subparagraph}{\color{subparagraphcolor}}
-
-%\RedeclareSectionCommand[afterskip=.15\baselineskip]{paragraph}
-%\RedeclareSectionCommand[indent=0em, afterskip=.15\baselineskip]{subparagraph}
+%%% POST-PROCESSING
+\addtokomafont{chapter}{\color{chapterColor}}
+\addtokomafont{section}{\color{sectionColor}}
+\addtokomafont{subsection}{\color{subsectionColor}}
+\addtokomafont{subsubsection}{\color{sectionColor}}
+\addtokomafont{paragraph}{\color{paragraphColor}}
+\addtokomafont{subparagraph}{\color{subparagraphColor}}
 
 \setcounter{secnumdepth}{4}
 
-%%%
+%%% CUSTOMS ENVIRONEMENTS AND MACROS ------------------------------------------
 
+%%% LINKS
+\newcommand{\externalLink}[2]{\href{#2}{#1}}
 
 %%% ZDS BOX
-
 \newcommand{\newZdSBox}[3]{{
 \theoremprework{~\\ \textcolor{#3}{\rule{0.6\linewidth}{1pt}}}
 \theorempostwork{\hfill \textcolor{#3}{\rule{0.6\linewidth}{1pt}} \\}
@@ -143,13 +140,13 @@
 
 \newcommand{\newZdSBoxEnvironement}[2]{\newenvironment{#1}{~\\ \begin{minipage}{\linewidth}\begin{#2}}{\end{#2}\end{minipage}}}
 
-\newZdSBox{InformationBox}{Information}{informationcolor}
-\newZdSBox{QuestionBox}{Question}{questioncolor}
-\newZdSBox{ErrorBox}{Erreur}{errorcolor}
-\newZdSBox{WarningBox}{Attention}{warningcolor}
-\newZdSBox{QuotationBox}{Citation}{quotationcolor}
-\newZdSBox{SpoilerBox}{Secret}{spoilercolor}
-\newZdSBox{IframeBox}{Élément externe}{iframecolor}
+\newZdSBox{InformationBox}{Information}{informationColor}
+\newZdSBox{QuestionBox}{Question}{questionColor}
+\newZdSBox{ErrorBox}{Erreur}{errorColor}
+\newZdSBox{WarningBox}{Attention}{warningColor}
+\newZdSBox{QuotationBox}{Citation}{quotationColor}
+\newZdSBox{SpoilerBox}{Secret}{spoilerColor}
+\newZdSBox{IframeBox}{Élément externe}{iframeColor}
 
 \newZdSBoxEnvironement{Warning}{WarningBox}
 \newZdSBoxEnvironement{Question}{QuestionBox}
@@ -158,13 +155,10 @@
 \newZdSBoxEnvironement{Spoiler}{SpoilerBox}
 
 %%% QUOTATION
-
 \NewDocumentEnvironment{Quotation}{o}{\begin{minipage}{\linewidth}\begin{QuotationBox}}
                                      {\IfValueT{#1}{\hfill(#1)} \end{QuotationBox}\end{minipage}}
 
-
 %%% IFRAMES
-
 \newenvironment{Iframe}[1]{~\\ \begin{minipage}{\linewidth}\begin{IframeBox}[#1]}{\end{IframeBox}\end{minipage}}
 
 \NewDocumentCommand\iframe{mO{vidéo}o}{%
@@ -174,7 +168,6 @@
 }
 
 %%% SPOILER MANAGEMENT
-
 \let\levelSpoilerTitle\addsec
 \let\levelSpoiler\subsection
 
@@ -207,11 +200,7 @@
 \AtEndDocument{\displaySpoilers
 \printglossary[title=Liste des abbréviations]}
 
-%%%
-
-
 %%% TITLE PAGE
-
 \newcommand{\licence}[1]{\def\@licence{#1}}
 \newcommand{\logo}[1]{\def\@logo{#1}}
 \newcommand{\website}[1]{\def\@website{#1}}
@@ -238,10 +227,8 @@
 \hypersetup{pdftitle={\@title}}
 \hypersetup{pdfauthor={\@author}}
 
-
 %%% IMAGES
-
-\NewDocumentCommand{\image}{mo}{
+\NewDocumentCommand{\image}{mo}{%
    \begin{center}
       \includegraphics[max size={\textwidth}{0.9\textheight}, keepaspectratio]{#1}
       \IfValueT{#2}{\captionof{figure}{#2}}
@@ -250,21 +237,17 @@
 
 \newcommand{\inlineImage}[1]{\includegraphics[max size={\textwidth}{\textheight}, keepaspectratio]{#1}}
 
-%%%
-
-
-%% smilies
+%%% SMILIES
 \newcommand{\smiliesPath}[1]{\def\@smiliesPath{#1}}
 \newcommand{\smiley}[1]{\raisebox{-3pt}{\includegraphics[height=15pt]{\@smiliesPath/#1}} }
 
-%%%
-
+%%% HORIZONTAL LINE
 \setlength{\tabcolsep}{0.2cm}
 \renewcommand{\arraystretch}{1.5}
 
 \newcommand{\horizontalLine}{{\color{gray}\rule{\textwidth}{0.2pt}}}
 
-%%% Abbreviation
+%%% ABBREVIATIONS
 \newcommand{\abbr}[2]{%
    \newglossaryentry{#1}{name=#1, description={#2}}%
    \dotuline{\gls{#1}}
