@@ -21,6 +21,9 @@
 \RequirePackage{etoolbox}
 \RequirePackage{xparse}
 
+\RequirePackage{multicol}
+\RequirePackage{pagecolor}
+
 %%% TABLE PACKAGES
 \RequirePackage{multirow}
 \RequirePackage{longtable}
@@ -55,6 +58,10 @@
 \definecolor{quotationColor}{HTML}{555555}
 \definecolor{spoilerColor}{HTML}{555555}
 \definecolor{iframeColor}{HTML}{009700}
+
+\definecolor{titlePageBackgroundColor}{HTML}{094561}
+\definecolor{titlePageEditorColor}{HTML}{F8AD32}
+\definecolor{titlePageTextColor}{HTML}{FFFFFF}
 
 \hypersetup{linkcolor=internalLinkColor}
 
@@ -106,6 +113,13 @@
    \let\Introduction\addpart
    \newcommand{\Conclusion}[1]{\displaySpoilers \addpart{#1}}
    \automark[chapter]{part}
+}
+
+%%% NOCOLOR
+\DeclareOption{nocolor}{
+  \definecolor{titlePageBackgroundColor}{HTML}{FFFFFF}
+  \definecolor{titlePageEditorColor}{HTML}{000000}
+  \definecolor{titlePageTextColor}{HTML}{000000}
 }
 
 %%% PROCESSING
@@ -205,23 +219,63 @@
 \newcommand{\logo}[1]{\def\@logo{#1}}
 \newcommand{\website}[1]{\def\@website{#1}}
 \newcommand{\editor}[1]{\def\@editor{#1}}
+\newcommand{\editorlogo}[1]{\def\@editorlogo{#1}}
 \newcommand{\authorlink}[1]{\def\@authorlink{#1}}
 
-\renewcommand{\maketitle}{%
-    \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/membres/voir}}
-    \ifcsdef{@website}{}{\website{https://zestedesavoir.com}}
-    \ifcsdef{@editor}{}{\editor{Zeste de Savoir}}
-    \ifcsdef{@logo}{}{\logo{default_logo.png}}
-    {\centering
-    \vspace*{0.5 cm}
-    \includegraphics[width=\linewidth]{\@logo}\\[1.0 cm]
-    \LARGE \renewcommand*{\do}[1]{\href{\@authorlink/##1/}{\bsc{##1}} \qquad}
-           \expandafter\docsvlist\expandafter{\@author}\\[2.0 cm]
-    \Large \href{\@website}{\@editor}\\[0.5 cm]
-    \rule{\linewidth}{0.2 mm} \\[0.4 cm]
-    \huge\textbf{\@title}\\
-    \rule{\linewidth}{0.2 mm} \\[1.5 cm]
-    \large\textbf{Ce tutoriel est sous licence \@licence}\\[2 cm]}
+\newcounter{@listSize}
+\newcommand{\getListSize}[1]{
+   \setcounter{@listSize}{0}
+   \renewcommand*{\do}[1]{\addtocounter{@listSize}{1}}
+   \expandafter\docsvlist\expandafter{#1}
+}
+
+\newcommand{\formatAuthors}{
+   \setlength{\columnsep}{0pt}
+   \newcounter{@authorsNumber}
+   \newcounter{@authorsByColumn}
+   \newcounter{@columnNumber}
+   \setcounter{@authorsByColumn}{5}
+   \getListSize{\@author}
+   \setcounter{@authorsNumber}{\the@listSize}
+   \setcounter{@columnNumber}{\the\numexpr(1 + \the@authorsNumber / \the@authorsByColumn)\relax}
+   \thispagestyle{empty}
+   \pagecolor{titlePageBackgroundColor}
+   \color{titlePageTextColor}
+   \begin{flushright}
+      \Large \bfseries \renewcommand*{\do}[1]{\href{\@authorlink/##1/}{\bsc{##1}}\\}
+      \ifnum\the@authorsNumber < \the\numexpr(1+\the@authorsByColumn)
+         \expandafter\docsvlist\expandafter{\@author}
+      \else
+         \begin{multicols}{\the@columnNumber}
+            \expandafter\docsvlist\expandafter{\@author}
+         \end{multicols}
+      \fi
+   \end{flushright}
+}
+
+\renewcommand{\maketitle}{
+   \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/membres/voir}}
+   \ifcsdef{@website}{}{\website{https://zestedesavoir.com}}
+   \ifcsdef{@editor}{}{\editor{https://zestedesavoir.com}}
+   \ifcsdef{@editorlogo}{}{\editorlogo{zestedesavoir.png}}
+   \ifcsdef{@logo}{}{\logo{default_logo.png}}
+   \clearpage
+   \formatAuthors
+   \begin{center}
+      \vspace*{\fill}
+      \includegraphics[max width=\textwidth, max height=4cm, keepaspectratio]{\@logo}\\
+      \rule{\linewidth}{0.2 mm} \\[0.4 cm]
+      \huge\textbf{\@title}\\
+      \rule{\linewidth}{0.2 mm} \\[1 cm]
+      \large\textbf{Ce tutoriel est sous licence \@licence}\\
+      \vspace{\fill}
+      \includegraphics[max width=8cm, max height=2cm, keepaspectratio]{\@editorlogo}\\
+      \href{\@website}{\color{titlePageEditorColor}\@editor}
+   \end{center}
+   \newpage
+   \newpagecolor{white}
+   \color{black}
+   \setcounter{page}{1}
 }
 
 \hypersetup{pdftitle={\@title}}
