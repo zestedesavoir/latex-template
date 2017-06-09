@@ -62,6 +62,7 @@
 \definecolor{titlePageBackgroundColor}{HTML}{094561}
 \definecolor{titlePageEditorColor}{HTML}{F8AD32}
 \definecolor{titlePageTextColor}{HTML}{FFFFFF}
+\definecolor{titlePageAuthorColor}{HTML}{FF9400}
 
 \hypersetup{linkcolor=internalLinkColor}
 
@@ -253,7 +254,7 @@
    \setcounter{@columnNumber}{\the\numexpr(1 + \the@authorsNumber / \the@authorsByColumn)\relax}
    \thispagestyle{empty}
    \begin{flushright}
-      \Large \bfseries \renewcommand*{\do}[1]{\href{\@authorlink/##1/}{\color{internalLinkColor}\bsc{##1}}\\}
+      \Large \bfseries \renewcommand*{\do}[1]{\href{\@authorlink/##1/}{\color{titlePageAuthorColor}\bsc{##1}}\\}
       \ifnum\the@authorsNumber < \the\numexpr(1+\the@authorsByColumn)
          \expandafter\docsvlist\expandafter{\@author}
       \else
