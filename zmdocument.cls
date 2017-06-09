@@ -305,8 +305,9 @@
 
 
 %% smilies
-\newcommand{\smiliesPath}[1]{\def\@smiliesPath{#1}}
-\newcommand{\smiley}[1]{\raisebox{-3pt}{\includegraphics[height=15pt]{\@smiliesPath/#1}} }
+\def\@smileysPath{./smileys}
+\newcommand{\smileysPath}[1]{\def\@smileysPath{#1}}
+\newcommand{\smiley}[1]{\raisebox{-3pt}{\includegraphics[height=15pt]{\@smileysPath/#1}} }
 
 %%%
 
