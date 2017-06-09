@@ -65,6 +65,11 @@
 
 \hypersetup{linkcolor=internalLinkColor}
 
+%%% CONSTANTS ------------------------------------------------------------------
+
+\setlength{\tabcolsep}{0.2cm}
+\renewcommand{\arraystretch}{1.5}
+
 %%% CLASS OPTIONS --------------------------------------------------------------
 
 %%% PRINTING OPTION
@@ -102,6 +107,7 @@
    \newcommand{\Conclusion}[1]{\displaySpoilers \addchap{#1}}
    \automark[section]{chapter}
 }
+
 \DeclareOption{big}{
    \newcommand\LevelOneTitle[1]{\displaySpoilers \part{#1}}
    \newcommand\LevelTwoTitle[1]{\displaySpoilers \chapter{#1}}
@@ -117,9 +123,9 @@
 
 %%% NOCOLOR
 \DeclareOption{nocolor}{
-  \definecolor{titlePageBackgroundColor}{HTML}{FFFFFF}
-  \definecolor{titlePageEditorColor}{HTML}{000000}
-  \definecolor{titlePageTextColor}{HTML}{000000}
+   \definecolor{titlePageBackgroundColor}{HTML}{FFFFFF}
+   \definecolor{titlePageEditorColor}{HTML}{000000}
+   \definecolor{titlePageTextColor}{HTML}{000000}
 }
 
 %%% PROCESSING
@@ -141,18 +147,21 @@
 \newcommand{\externalLink}[2]{\href{#2}{#1}}
 
 %%% ZDS BOX
-\newcommand{\newZdSBox}[3]{{
-\theoremprework{~\\ \textcolor{#3}{\rule{0.6\linewidth}{1pt}}}
-\theorempostwork{\hfill \textcolor{#3}{\rule{0.6\linewidth}{1pt}} \\}
-\theoremindent=2em
-\theoremheaderfont{\scshape\hspace{-2em}}
-\theoremseparator{ ---}
-\theoremstyle{break}
-\theorembodyfont{\normalfont}
-\newtheorem*{#1}{\textcolor{#3}{#2}}
+\newcommand{\newZdSBox}[3]{{%
+   \theoremprework{~\\ \textcolor{#3}{\rule{0.6\linewidth}{1pt}}}
+   \theorempostwork{\hfill \textcolor{#3}{\rule{0.6\linewidth}{1pt}} \\}
+   \theoremindent=2em
+   \theoremheaderfont{\scshape\hspace{-2em}}
+   \theoremseparator{ ---}
+   \theoremstyle{break}
+   \theorembodyfont{\normalfont}
+   \newtheorem*{#1}{\textcolor{#3}{#2}}
 }}
 
-\newcommand{\newZdSBoxEnvironement}[2]{\newenvironment{#1}{~\\ \begin{minipage}{\linewidth}\begin{#2}}{\end{#2}\end{minipage}}}
+\newcommand{\newZdSBoxEnvironement}[2]{%
+    \newenvironment{#1}{~\\ \begin{minipage}{\linewidth}\begin{#2}}
+                       {\end{#2}\end{minipage}}
+}
 
 \newZdSBox{InformationBox}{Information}{informationColor}
 \newZdSBox{QuestionBox}{Question}{questionColor}
@@ -173,12 +182,13 @@
                                      {\IfValueT{#1}{\hfill(#1)} \end{QuotationBox}\end{minipage}}
 
 %%% IFRAMES
-\newenvironment{Iframe}[1]{~\\ \begin{minipage}{\linewidth}\begin{IframeBox}[#1]}{\end{IframeBox}\end{minipage}}
+\newenvironment{Iframe}[1]{~\\ \begin{minipage}{\linewidth}\begin{IframeBox}[#1]}
+                          {\end{IframeBox}\end{minipage}}
 
 \NewDocumentCommand\iframe{mO{vidéo}o}{%
-    \begin{Iframe}{#2}
-    Consultez cet élément à l'adresse \url{#1}.\IfValueT{#3}{\\ #3}
-    \end{Iframe}
+   \begin{Iframe}{#2}
+      Consultez cet élément à l'adresse \url{#1}.\IfValueT{#3}{\\ #3}
+   \end{Iframe}
 }
 
 %%% SPOILER MANAGEMENT
@@ -192,7 +202,7 @@
    \addtocounter{@spoilerCounter}{1}
    \hypertarget{voir:\thepart\thechapter\the@spoilerCounter}{}
    \begin{Spoiler}
-   \hyperlink{secret:\thepart\thechapter\the@spoilerCounter}{Voir le secret \the@spoilerCounter.}
+      \hyperlink{secret:\thepart\thechapter\the@spoilerCounter}{Voir le secret \the@spoilerCounter.}
    \end{Spoiler}
    \listadd{\@spoilerList}{\expandafter#1}
 }
@@ -201,11 +211,12 @@
    \setcounter{@spoilerCounter}{1}
    \ifdefvoid{\@spoilerList}{}{\levelSpoilerTitle{Blocs secrets}}
    \def\do{}
-   \renewcommand{\do}[1]{\hypertarget{secret:\thepart\thechapter\the@spoilerCounter}{}
-                         \levelSpoiler*{Secret \the@spoilerCounter}
-                         \expandafter{##1}\\ \hfill \hyperlink{voir:\thepart\thechapter\the@spoilerCounter}
-                                                              {Retourner au texte.}
-                         \addtocounter{@spoilerCounter}{1}}
+   \renewcommand{\do}[1]{%
+      \hypertarget{secret:\thepart\thechapter\the@spoilerCounter}{}
+      \levelSpoiler*{Secret \the@spoilerCounter}
+      \expandafter{##1}\\ \hfill \hyperlink{voir:\thepart\thechapter\the@spoilerCounter}{Retourner au texte.}
+      \addtocounter{@spoilerCounter}{1}
+   }
    \expandafter\dolistloop{\@spoilerList}
    \def\@spoilerList{}
    \setcounter{@spoilerCounter}{0}
@@ -225,13 +236,13 @@
 \newcommand{\authorlink}[1]{\def\@authorlink{#1}}
 
 \newcounter{@listSize}
-\newcommand{\getListSize}[1]{
+\newcommand{\getListSize}[1]{%
    \setcounter{@listSize}{0}
    \renewcommand*{\do}[1]{\addtocounter{@listSize}{1}}
    \expandafter\docsvlist\expandafter{#1}
 }
 
-\newcommand{\formatAuthors}{
+\newcommand{\formatAuthors}{%
    \setlength{\columnsep}{0pt}
    \newcounter{@authorsNumber}
    \newcounter{@authorsByColumn}
@@ -253,7 +264,7 @@
    \end{flushright}
 }
 
-\renewcommand{\maketitle}{
+\renewcommand{\maketitle}{%
    \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/membres/voir}}
    \ifcsdef{@website}{}{\website{https://zestedesavoir.com}}
    \ifcsdef{@editor}{}{\editor{https://zestedesavoir.com}}
@@ -299,9 +310,6 @@
 \newcommand{\smiley}[1]{\raisebox{-3pt}{\includegraphics[height=15pt]{\@smileysPath/#1}} }
 
 %%% HORIZONTAL LINE
-\setlength{\tabcolsep}{0.2cm}
-\renewcommand{\arraystretch}{1.5}
-
 \newcommand{\horizontalLine}{{\color{gray}\rule{\textwidth}{0.2pt}}}
 
 %%% ABBREVIATIONS

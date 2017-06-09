@@ -22,3 +22,7 @@ make test # compile test.tex into a pdf using zmdocument.cls
 + Custom environement names should be in PascalCase and custom macros, colors, lenghts and counters in camelCase.
 + Add your work in the good part of the class.
 + Prefix, if possible, your work by `%%% XXXX`, describing what the macros and/or environement makes.
++ Use **3** spaces for indentation.
++ If multilines code:
+    + Environement: `\begin{xxx}` and `\end{xxx}` should be at the same level of indentation. The level of indentation should increase in environement.
+    + Terminating braces (`}`) (for example in  `\newcommand') should be at the same level of indentation as the opening one (`\xxx{`). The level of indentation should increase between the braces.
