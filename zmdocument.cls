@@ -179,12 +179,18 @@
 \newZdSBoxEnvironement{Spoiler}{SpoilerBox}
 
 %%% QUOTATION
-\NewDocumentEnvironment{Quotation}{o}{\begin{minipage}{\linewidth}\begin{QuotationBox}}
-                                     {\IfValueT{#1}{\hfill(#1)} \end{QuotationBox}\end{minipage}}
+\NewDocumentEnvironment{Quotation}{o}{%
+   \begin{minipage}{\linewidth}\begin{QuotationBox}
+}{%
+   \IfValueT{#1}{\hfill(#1)} \end{QuotationBox}\end{minipage}
+}
 
 %%% IFRAMES
-\newenvironment{Iframe}[1]{~\\ \begin{minipage}{\linewidth}\begin{IframeBox}[#1]}
-                          {\end{IframeBox}\end{minipage}}
+\newenvironment{Iframe}[1]{%
+   ~\\ \begin{minipage}{\linewidth}\begin{IframeBox}[#1]
+}{%
+   \end{IframeBox}\end{minipage}
+}
 
 \NewDocumentCommand\iframe{mO{vidéo}o}{%
    \begin{Iframe}{#2}

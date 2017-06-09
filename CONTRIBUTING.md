@@ -25,4 +25,20 @@ make test # compile test.tex into a pdf using zmdocument.cls
 + Use **3** spaces for indentation.
 + If multilines code:
     + Environement: `\begin{xxx}` and `\end{xxx}` should be at the same level of indentation. The level of indentation should increase in environement.
-    + Terminating braces (`}`) (for example in  `\newcommand') should be at the same level of indentation as the opening one (`\xxx{`). The level of indentation should increase between the braces.
+    + Terminating braces (`}`) should be at the same level of indentation as the opening one (`\xxx{`). The level of indentation should increase between the braces.
+
+For example,
+
+```latex
+\newenvironement{NewSuperEnvironement}{\begin{center}}{\end{center}} % PascalCase
+
+\newcommand{\newSuperMacro}[2]{% camelCase
+    This is #1 ! % Increase level of indentation in braces
+    \begin{NewSuperEnvironement}
+        And this is #2 ! % Increase level of indentation in environement
+    \end{NewSuperEnvironement} % same level of indentation as \begin
+} % same level of indentation as \newcommand
+
+%% In the text
+\newSuperMacro{Great}{Awesome}
+```
