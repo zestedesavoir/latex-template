@@ -211,8 +211,10 @@
    \setcounter{@spoilerCounter}{0}
 }
 
-\AtEndDocument{\displaySpoilers
-\printglossary[title=Liste des abbréviations]}
+\AtEndDocument{%
+    \displaySpoilers
+    \printglossary[title=Liste des abbréviations]
+}
 
 %%% TITLE PAGE
 \newcommand{\licence}[1]{\def\@licence{#1}}
@@ -239,10 +241,8 @@
    \setcounter{@authorsNumber}{\the@listSize}
    \setcounter{@columnNumber}{\the\numexpr(1 + \the@authorsNumber / \the@authorsByColumn)\relax}
    \thispagestyle{empty}
-   \pagecolor{titlePageBackgroundColor}
-   \color{titlePageTextColor}
    \begin{flushright}
-      \Large \bfseries \renewcommand*{\do}[1]{\href{\@authorlink/##1/}{\bsc{##1}}\\}
+      \Large \bfseries \renewcommand*{\do}[1]{\href{\@authorlink/##1/}{\color{internalLinkColor}\bsc{##1}}\\}
       \ifnum\the@authorsNumber < \the\numexpr(1+\the@authorsByColumn)
          \expandafter\docsvlist\expandafter{\@author}
       \else
@@ -259,6 +259,8 @@
    \ifcsdef{@editor}{}{\editor{https://zestedesavoir.com}}
    \ifcsdef{@editorlogo}{}{\editorlogo{zestedesavoir.png}}
    \ifcsdef{@logo}{}{\logo{default_logo.png}}
+   \pagecolor{titlePageBackgroundColor}
+   \color{titlePageTextColor}
    \clearpage
    \formatAuthors
    \begin{center}
