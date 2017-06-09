@@ -6,7 +6,7 @@
 + Bold: `\textbf{text}`
 + Strikethrough: `\sout{text}`
 + Superscript and subscript: `\textsubscript{x}` and `\textsuperscript{x}`
-+ Inline source code: "\verb\`text\`"
++ Inline source code: please use `\texttt{xxx}` rather than `\verb` if possible (see [this post on Stack Exchange](https://tex.stackexchange.com/a/10375)). Special characters (`\ $ & % # ^_ { } ~`) should therefore be escaped.
 + Keys: `\keys{x}`
 + Footnotes: `\footnote{text}`
 + Maths (obviously)
