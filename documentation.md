@@ -67,15 +67,13 @@ There is two way to include image.
 + With `\image{path}[caption]`, the image is centered and can have a caption.
 + With `\inlineImage{path}`, the image is in the text, not centered.
 
-## Smilies
+## Smileys
 
-Smilies need one commands to work (which should be defined in the preamble of the document):
+To obtain a smileys, use `\smiley{xxx}` where `xxx` is an in the directory containing smilies. By default, this directory is `./smileys`. It could be changed using `\smileysPath` macros in the preamble of the document.
 
 ```latex
-\smiliesPath{/path/to/smilies} % path to the directory containing the images of the smilies
+\smileysPath{/path/to/smileys} % path to the directory containing the images of the smilies
 ```
-
-Then, use `\smiley`: `\smiley{xxx}` where `xxx` is an image in the directory containing smilies.
 
 ## Spoilers
 
