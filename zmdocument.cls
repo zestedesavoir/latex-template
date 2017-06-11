@@ -12,7 +12,7 @@
 \RequirePackage{amsmath,amssymb}
 \RequirePackage[francais]{babel}
 \RequirePackage[babel=true]{microtype}
-\RequirePackage{capt-of}
+\RequirePackage{caption}
 \RequirePackage{ulem}
 
 \RequirePackage{etoolbox}
@@ -63,6 +63,8 @@
   \definecolor{editortitle}{HTML}{000000}
   \definecolor{texttitle}{HTML}{000000}
 }
+
+\definecolor{highlightCodeColor}{HTML}{E0FFFF}
 
 \hypersetup{linkcolor=internallinkcolor}
 
@@ -167,6 +169,22 @@
 \newZdSBoxEnvironement{Information}{InformationBox}
 \newZdSBoxEnvironement{Error}{ErrorBox}
 \newZdSBoxEnvironement{Spoiler}{SpoilerBox}
+
+%%% CODE MANAGEMENT
+\setminted{breaklines, breaksymbolleft=\hspace{2em}, highlightcolor=highlightCodeColor} 
+
+\NewDocumentEnvironment{codeBlock}{O{}O{}m}{%
+   \def\@codeCaption{#1}
+   \VerbatimEnvironment
+   \FrameSep0.5em
+   \begin{framed}\vspace{-1em}
+   \begin{minted}[highlightlines={#2}]{#3}%
+}{
+   \end{minted}\vspace{-0.5em}
+   \end{framed}
+   \ifdefvoid{\@codeCaption}{}{\captionof{listing}{\@codeCaption}}
+}
+
 
 %%% QUOTATION
 
