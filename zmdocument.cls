@@ -14,7 +14,7 @@
 \RequirePackage{amsmath,amssymb}
 \RequirePackage[francais]{babel}
 \RequirePackage[babel=true]{microtype}
-\RequirePackage{capt-of}
+\RequirePackage{caption}
 \RequirePackage{ulem}
 
 %% LATEX 3 PACKAGES
@@ -63,6 +63,8 @@
 \definecolor{titlePageEditorColor}{HTML}{F8AD32}
 \definecolor{titlePageTextColor}{HTML}{FFFFFF}
 \definecolor{titlePageAuthorColor}{HTML}{FF9400}
+
+\definecolor{highlightCodeColor}{HTML}{E0FFFF}
 
 \hypersetup{linkcolor=internalLinkColor}
 
@@ -177,6 +179,22 @@
 \newZdSBoxEnvironement{Information}{InformationBox}
 \newZdSBoxEnvironement{Error}{ErrorBox}
 \newZdSBoxEnvironement{Spoiler}{SpoilerBox}
+
+%%% CODE MANAGEMENT
+\setminted{breaklines, breaksymbolleft=\hspace{2em}, highlightcolor=highlightCodeColor} 
+
+\NewDocumentEnvironment{codeBlock}{O{}O{}m}{%
+   \def\@codeCaption{#1}
+   \VerbatimEnvironment
+   \FrameSep0.5em
+   \begin{framed}\vspace{-1em}
+   \begin{minted}[highlightlines={#2}]{#3}%
+}{
+   \end{minted}\vspace{-0.5em}
+   \end{framed}
+   \ifdefvoid{\@codeCaption}{}{\captionof{listing}{\@codeCaption}}
+}
+
 
 %%% QUOTATION
 \NewDocumentEnvironment{Quotation}{o}{%

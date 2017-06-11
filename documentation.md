@@ -15,7 +15,6 @@
 
 + Lists: `itemize` environment for bulleted, `enumerate` environment for numbered. Inside them, each item is defined with `\item`.
 + Aligned text: text is justified by default, `flushright` and `center` environments are available to change that.
-+ Code: the `minted` environment.
 
 # Class options
 
@@ -94,3 +93,13 @@ Mimic the corresponding markdown blocks.
 ## Quotes
 
 The `Quotation` environment takes an extra parameter, being the source of the quote.
+
+## Code environment
+
+To add a block of code, use the `codeBlock` environment. It takes in parameter the language which should be used (`text` for no language) and two extra parameter (the caption and numbers of lines which should be colored).
+
+```latex
+\begin{codeBlock}[eventual caption][1, 3, 4-7]{latex}
+A \LaTeX command.   
+\end{codeBlock}
+```
