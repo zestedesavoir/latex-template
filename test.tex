@@ -75,14 +75,38 @@ La suite, avec des touches \keys{CTRL} + \keys{A}. Et on peut avoir une ligne av
 
 \horizontalLine
 
-Voici un peu de code inline: \verb`make test`. Et voici un code python:
+Voici un peu de code inline: \verb`make test`. Et voici quelques exemples de code python :
 
-\begin{minted}{python}
+\begin{codeBlock}{python}
 def foo(bar):
-return 42
-\end{minted}
+    if True:
+        return 42
+    return 0
+\end{codeBlock}
 
-Une image hors-texte:
+\begin{codeBlock}[Code légendé]{python}
+def foo(bar):
+    if True:
+        return 42
+    return 0
+\end{codeBlock}
+
+\begin{codeBlock}[Code légendé avec lignes colorés][1-2]{python}
+def foo(bar):
+    if True:
+        return 42
+    return 0
+\end{codeBlock}
+
+\begin{codeBlock}[][1, 3-4]{python}
+def foo(bar):
+    if True:
+        return 42
+    return 0
+\end{codeBlock}
+
+
+Une image hors-texte :
 
 \image{logo.png}[Légende de l’image]
 
