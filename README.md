@@ -53,13 +53,4 @@ See [`test.tex`](./test.tex) for an example on how to use the document class.
 
 # Contributing
 
-There is a Makefile to ease the tests:
-
-```bash
-make clean # clean all the LaTeX auxiliary files
-make test # compile test.tex into a pdf using zmdocument.cls
-```
-
-+ Contribution via Issues and/or Pull Requests (PR) on the `master` branch.
-+ If a new macro/environment is defined, it should be used in `test.tex`, and documented in [`documentation.md`](./documentation.md).
-+ The travis build should succeed. If you add new packages, please update `EXTRA_PACKAGES` in [`scripts/install_texlive.sh`](scripts/install_texlive.sh).
+See [the `CONTRIBUTING.md`](./CONTRIBUTING.md).
