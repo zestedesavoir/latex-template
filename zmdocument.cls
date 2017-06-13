@@ -86,13 +86,13 @@
 \pagestyle{scrheadings}
 
 \DeclareOption{small}{
-   \let\LevelOneTitle\section
-   \let\LevelTwoTitle\subsection
-   \let\LevelThreeTitle\subsubsection
-   \let\LevelFourTitle\paragraph
-   \let\LevelFiveTitle\subparagraph
-   \let\Introduction\addsec
-   \let\Conclusion\addsec
+   \let\levelOneTitle\section
+   \let\levelTwoTitle\subsection
+   \let\levelThreeTitle\subsubsection
+   \let\levelFourTitle\paragraph
+   \let\levelFiveTitle\subparagraph
+   \newcommand{\levelOneIntroduction}{\addsec{Introduction}}
+   \newcommand{\levelOneConclusion}{\addsec{Conclusion}}
    \def\thesection{\arabic{section}}
    \def\thefigure{\arabic{section}}
    \def\thetable{\arabic{section}}
@@ -100,27 +100,33 @@
 }
 
 \DeclareOption{middle}{
-   \newcommand{\LevelOneTitle}[1]{\displaySpoilers \chapter{#1}}
-   \let\LevelTwoTitle\section
-   \let\LevelThreeTitle\subsection
-   \let\LevelFourTitle\subsubsection
-   \let\LevelFiveTitle\paragraph
-   \let\LevelSixTitle\subparagaph
-   \let\Introduction\addchap
-   \newcommand{\Conclusion}[1]{\displaySpoilers \addchap{#1}}
+   \newcommand{\levelOneTitle}[1]{\displaySpoilers \chapter{#1}}
+   \let\levelTwoTitle\section
+   \let\levelThreeTitle\subsection
+   \let\levelFourTitle\subsubsection
+   \let\levelFiveTitle\paragraph
+   \let\levelSixTitle\subparagaph
+   \newcommand{\levelOneIntroduction}{\addchap{Introduction}}
+   \newcommand{\levelOneConclusion}{\displaySpoilers \addchap{Conclusion}}
+   \newcommand{\levelTwoIntroduction}{\addsec{Introduction}}
+   \newcommand{\levelTwoConclusion}{\addsec{Conclusion}}
    \automark[section]{chapter}
 }
 
 \DeclareOption{big}{
-   \newcommand\LevelOneTitle[1]{\displaySpoilers \part{#1}}
-   \newcommand\LevelTwoTitle[1]{\displaySpoilers \chapter{#1}}
-   \let\LevelThreeTitle\section
-   \let\LevelFourTitle\subsection
-   \let\LevelFiveTitle\subsubsection
-   \let\LevelSixTitle\paragraph
-   \let\LevelSevenTitle\subparagaph
-   \let\Introduction\addpart
-   \newcommand{\Conclusion}[1]{\displaySpoilers \addpart{#1}}
+   \newcommand\levelOneTitle[1]{\displaySpoilers \part{#1}}
+   \newcommand\levelTwoTitle[1]{\displaySpoilers \chapter{#1}}
+   \let\levelThreeTitle\section
+   \let\levelFourTitle\subsection
+   \let\levelFiveTitle\subsubsection
+   \let\levelSixTitle\paragraph
+   \let\levelSevenTitle\subparagaph
+   \newcommand{\levelOneIntroduction}{\addpart{Introduction}}
+   \newcommand{\levelOneConclusion}{\displaySpoilers \addpart{Conclusion}}
+   \newcommand{\levelTwoIntroduction}{\addchap{Introduction}}
+   \newcommand{\levelTwoConclusion}{\displaySpoilers \addchap{Conclusion}}
+   \newcommand{\levelThreeIntroduction}{\addsec{Introduction}}
+   \newcommand{\levelThreeConclusion}{\addsec{Conclusion}}
    \automark[chapter]{part}
 }
 
