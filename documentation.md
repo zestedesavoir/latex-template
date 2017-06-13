@@ -44,15 +44,21 @@ The different title levels are adapted depending on the class option.
 
 | | `small` | `middle` | `big` |
 |-|---------|----------------|-----|
-|`\LevelOneTitle` | `\section` | `\chapter` | `\part`|
-|`\LevelTwoTitle` | `\subsection` | `\section` | `\chapter`|
-|`\LevelThreeTitle` | `\subsubsection` | `\subsection` | `\section`|
-|`\LevelFourTitle`| `\paragraph` | `\subsubsection` | `\subsection` |
-|`\LevelFiveTitle` |  `\subparagraph` | `\paragraph` | `\subsubsection`|
-|`\LevelSixTitle` | *n.a.* |  `\subparagraph` | `\paragraph` |
-|`\LevelSevenTitle` | *n.a.* | *n.a.* |  `\subparagraph`|
+|`\levelOneTitle` | `\section` | `\chapter` | `\part`|
+|`\levelTwoTitle` | `\subsection` | `\section` | `\chapter`|
+|`\levelThreeTitle` | `\subsubsection` | `\subsection` | `\section`|
+|`\levelFourTitle`| `\paragraph` | `\subsubsection` | `\subsection` |
+|`\levelFiveTitle` |  `\subparagraph` | `\paragraph` | `\subsubsection`|
+|`\levelSixTitle` | *n.a.* |  `\subparagraph` | `\paragraph` |
+|`\levelSevenTitle` | *n.a.* | *n.a.* |  `\subparagraph`|
 
-For introduction and conclusion, `\Introduction` and `\Conclusion` are also defined.
+For introduction and conclusion, macross are also defined. They don’t take parameters and they print "Introduction" or "Conclusion".
+
+| | `small` | `middle` | `big` |
+|-|---------|----------------|-----|
+|`\levelOneIntroduction` and `\levelOneConclusion` | Document introduction/conclusion | Document introduction/conclusion | Document introduction/conclusion|
+|`\levelTwoIntroduction` and `\levelOneConclusion` | *n.a.* | Chapter introduction/conclusion | Part introduction/conclusion|
+|`\levelThreeIntroduction` and `\levelThreeConclusion` | *n.a.* | *n.a.* | Chapter introduction/conclusion |
 
 ## Title page macros (`\website`, `\authorlink`, `\editor`, `\editorlogo` and `\logo`)
 
