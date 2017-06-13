@@ -52,7 +52,7 @@ The different title levels are adapted depending on the class option.
 |`\levelSixTitle` | *n.a.* |  `\subparagraph` | `\paragraph` |
 |`\levelSevenTitle` | *n.a.* | *n.a.* |  `\subparagraph`|
 
-For introduction and conclusion, macross are also defined. They don’t take parameters and they print "Introduction" or "Conclusion".
+For introduction and conclusion, macros are also defined. They don’t take parameters and they print "Introduction" or "Conclusion".
 
 | | `small` | `middle` | `big` |
 |-|---------|----------------|-----|
