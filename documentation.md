@@ -102,10 +102,10 @@ The `Quotation` environment takes an extra parameter, being the source of the qu
 
 ## Code environment
 
-To add a block of code, use the `codeBlock` environment. It takes in parameter the language which should be used (`text` for no language) and two extra parameter (the caption and numbers of lines which should be colored).
+To add a block of code, use the `codeBlock` environment. It takes in parameter the language which should be used (`text` for no language) and three extra parameter (the caption, the numbers of lines which should be colored, and the number of the first line).
 
 ```latex
-\begin{codeBlock}[eventual caption][1, 3, 4-7]{latex}
+\begin{codeBlock}[eventual caption][5, 8, 9-12][5]{latex}
 A \LaTeX command.   
 \end{codeBlock}
 ```
