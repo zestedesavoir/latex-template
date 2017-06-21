@@ -187,14 +187,14 @@
 \newZdSBoxEnvironement{Spoiler}{SpoilerBox}
 
 %%% CODE MANAGEMENT
-\setminted{breaklines, breaksymbolleft=\hspace{2em}, highlightcolor=highlightCodeColor} 
+\setminted{breaklines, breaksymbolleft=\hspace{2em}, highlightcolor=highlightCodeColor, linenos} 
 
-\NewDocumentEnvironment{codeBlock}{O{}O{}m}{%
+\NewDocumentEnvironment{codeBlock}{O{}O{}O{1}m}{%
    \def\@codeCaption{#1}
    \VerbatimEnvironment
    \FrameSep0.5em
    \begin{framed}\vspace{-1em}
-   \begin{minted}[highlightlines={#2}]{#3}%
+   \begin{minted}[highlightlines={#2}, firstnumber=#3]{#4}%
 }{
    \end{minted}\vspace{-0.5em}
    \end{framed}
