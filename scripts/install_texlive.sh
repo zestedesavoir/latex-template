@@ -1,25 +1,25 @@
 #!/bin/bash
 
 # Forked from Zeste de Savoir:
-# https://github.com/zestedesavoir/zds-site/blob/dev/scripts/install_texlive.sh
+# https://github.com/zestedesavoir/zds-site/blob/a16c5fc932b361cbee5c6e61b24167605e24cd8b/scripts/install_texlive.sh
 
 EXTRA_PACKAGES="adjustbox blindtext capt-of catoptions cm-super collectbox framed fvextra glossaries ifplatform menukeys minted multirow multicol ntheorem pagecolor relsize tabu varwidth xpatch xstring mfirstuc xfor datatool substr tracklang"
 
 if [[ -f $HOME/.texlive/bin/x86_64-linux/tlmgr ]]; then
   echo "Using cached texlive install"
 else
-  # force cache upload after successful build
+  # Force cache upload after successful build
   touch $HOME/.cache_updated
   echo "Installing texlive to \$HOME/.texlive"
   rm -rf $HOME/.texlive
   TEXLIVE_PROFILE=${BASH_SOURCE[0]/%install_texlive.sh/texlive.profile}
 
-  # Creating install dir
+  # Create install dir
   mkdir -p $HOME/.texlive/
   cp $TEXLIVE_PROFILE $HOME/.texlive/
   cd $HOME/.texlive/
 
-  # Replace correct paths in profile (needs absolute paths)
+  # Fix paths in profile (needs absolute paths)
   sed -i 's@\$HOME@'"$HOME"'@' texlive.profile
 
   # Download and run installer
@@ -27,7 +27,7 @@ else
   tar xzf install-tl.tar.gz
 
   ./install-tl*/install-tl -profile texlive.profile
-    
+
   # Install extra latex packages
   $HOME/.texlive/bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
   $HOME/.texlive/bin/x86_64-linux/tlmgr update --self

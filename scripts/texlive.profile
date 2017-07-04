@@ -1,5 +1,5 @@
 # Forked from Zeste de Savoir:
-# https://github.com/zestedesavoir/zds-site/blob/dev/scripts/texlive.profile
+# https://github.com/zestedesavoir/zds-site/blob/a16c5fc932b361cbee5c6e61b24167605e24cd8b/scripts/texlive.profile
 selected_scheme scheme-small
 TEXMFCONFIG $TEXMFSYSCONFIG
 TEXDIR $HOME/.texlive
