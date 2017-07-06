@@ -150,7 +150,7 @@
 
 \setcounter{secnumdepth}{4}
 
-%%% CUSTOMS ENVIRONEMENTS AND MACROS ------------------------------------------
+%%% CUSTOMS ENVIRONMENTS AND MACROS ------------------------------------------
 
 %%% LINKS
 \newcommand{\externalLink}[2]{\href{#2}{#1}}
@@ -167,9 +167,9 @@
    \newtheorem*{#1}{\textcolor{#3}{#2}}
 }}
 
-\newcommand{\newZdSBoxEnvironement}[2]{%
-    \newenvironment{#1}{~\\ \begin{minipage}{\linewidth}\begin{#2}}
-                       {\end{#2}\end{minipage}}
+\newcommand{\newZdSBoxEnvironment}[2]{%
+   \newenvironment{#1}{~\\ \begin{minipage}{\linewidth}\begin{#2}}
+                      {\end{#2}\end{minipage}}
 }
 
 \newZdSBox{InformationBox}{Information}{informationColor}
@@ -180,14 +180,14 @@
 \newZdSBox{SpoilerBox}{Secret}{spoilerColor}
 \newZdSBox{IframeBox}{Élément externe}{iframeColor}
 
-\newZdSBoxEnvironement{Warning}{WarningBox}
-\newZdSBoxEnvironement{Question}{QuestionBox}
-\newZdSBoxEnvironement{Information}{InformationBox}
-\newZdSBoxEnvironement{Error}{ErrorBox}
-\newZdSBoxEnvironement{Spoiler}{SpoilerBox}
+\newZdSBoxEnvironment{Warning}{WarningBox}
+\newZdSBoxEnvironment{Question}{QuestionBox}
+\newZdSBoxEnvironment{Information}{InformationBox}
+\newZdSBoxEnvironment{Error}{ErrorBox}
+\newZdSBoxEnvironment{Spoiler}{SpoilerBox}
 
 %%% CODE MANAGEMENT
-\setminted{breaklines, breaksymbolleft=\hspace{2em}, highlightcolor=highlightCodeColor, linenos} 
+\setminted{breaklines, breaksymbolleft=\hspace{2em}, highlightcolor=highlightCodeColor, linenos}
 
 \NewDocumentEnvironment{codeBlock}{O{}O{}O{1}m}{%
    \def\@codeCaption{#1}
@@ -335,7 +335,7 @@
 
 \newcommand{\inlineImage}[1]{\includegraphics[max size={\textwidth}{\textheight}, keepaspectratio]{#1}}
 
-%%% SMILIES
+%%% SMILEYS
 \def\@smileysPath{./smileys}
 \newcommand{\smileysPath}[1]{\def\@smileysPath{#1}}
 \newcommand{\smiley}[1]{\raisebox{-3pt}{\includegraphics[height=15pt]{\@smileysPath/#1}} }
