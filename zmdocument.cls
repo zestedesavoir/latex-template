@@ -255,7 +255,7 @@
 
 \AtEndDocument{%
     \displaySpoilers
-    \printglossary[title=Liste des abbréviations]
+    \printglossary[title=Liste des abréviations]
 }
 
 %%% TITLE PAGE
