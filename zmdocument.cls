@@ -16,6 +16,7 @@
 \RequirePackage[babel=true]{microtype}
 \RequirePackage{caption}
 \RequirePackage{ulem}
+\RequirePackage{newfloat}
 
 %% LATEX 3 PACKAGES
 \RequirePackage{etoolbox}
@@ -73,6 +74,10 @@
 \setlength{\tabcolsep}{0.2cm}
 \renewcommand{\arraystretch}{1.5}
 
+%%% FLOATS ---------------------------------------------------------------------
+
+\DeclareFloatingEnvironment[name={Équation}]{equationFloat}
+
 %%% CLASS OPTIONS --------------------------------------------------------------
 
 %%% PRINTING OPTION
@@ -96,6 +101,7 @@
    \def\thesection{\arabic{section}}
    \def\thefigure{\arabic{section}}
    \def\thetable{\arabic{section}}
+   \def\theequationFloat{\arabic{section}}
    \automark[subsection]{section}
 }
 
