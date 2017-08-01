@@ -25,6 +25,13 @@ pip install Pygments
 
 Note that this package requires latex to be called with the `-shell-escape` option.
 
+## Other images formats
+
+To be abble to use GIF and SVG images in your documents, two extra programs are needed:
+
++ [librsvg](https://github.com/GNOME/librsvg), which uses cairo to convert svg to pdf, and is available under the name `librsvg2-bin` in many package managers ; 
++ The `convert` program, part of the [imagemagick](http://www.imagemagick.org/) tools suite, to convert GIF to PNG. It is probably also available in your package manager.
+
 # Testing and using
 
 The different macros and environment are defined in [`zmdocument.cls`](./zmdocument.cls) and documented in [`documentation.md`](./documentation.md).

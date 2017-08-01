@@ -7,6 +7,9 @@ There is a Makefile to ease testing:
 ```bash
 make clean # clean all the LaTeX auxiliary files
 make test # compile test.tex into a pdf using zmdocument.cls
+
+# If you have installed extra tools for image conversion
+make test-images
 ```
 
 ## Contribution rules

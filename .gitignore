@@ -13,6 +13,7 @@
 *.toc
 *.xdy
 _minted*
+*converted-to*
 
 # Other craps:
 Thumbs.db

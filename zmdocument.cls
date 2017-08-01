@@ -32,6 +32,13 @@
 %%% GRAPHIC PACKAGES
 \RequirePackage{graphicx}
 \RequirePackage[export]{adjustbox}
+\RequirePackage{epstopdf}
+
+\epstopdfDeclareGraphicsRule{.gif}{png}{.png}{convert gif:#1 png:\OutputFile}
+\AppendGraphicsExtensions{.gif}
+
+\epstopdfDeclareGraphicsRule{.svg}{pdf}{.pdf}{rsvg-convert -f pdf #1 -o \OutputFile}
+\AppendGraphicsExtensions{.svg}
 
 \RequirePackage[bookmarks=true,hyperindex=true,bookmarksopen=true,bookmarksnumbered=true]{hyperref}
 \RequirePackage[thmmarks,amsmath,hyperref]{ntheorem}
