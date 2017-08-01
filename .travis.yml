@@ -17,6 +17,12 @@ cache:
     - $HOME/.texlive
     - $HOME/bin
 
+addons:
+  apt:
+    packages:
+    - imagemagick
+    - librsvg2-bin
+
 install:
   - mkdir -p $HOME/bin
   - ./scripts/install_texlive.sh
@@ -25,3 +31,4 @@ install:
 
 script:
     - make test
+    - make test-images

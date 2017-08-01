@@ -1,3 +1,5 @@
+.PHONY: test-images
+
 all: help
 
 help:
@@ -13,6 +15,13 @@ test:
 	makeglossaries test
 	pdflatex -shell-escape -interaction=nonstopmode test.tex
 
+test-images:
+	pdflatex -draftmode -shell-escape -interaction=nonstopmode test-with-images.tex
+	pdflatex -draftmode -shell-escape -interaction=nonstopmode test-with-images.tex
+	makeglossaries test-with-images
+	pdflatex -shell-escape -interaction=nonstopmode test-with-images.tex
+
 clean:
-	rm *.aux *.log *.out *.pdf *.thm *.toc *.glg *.glo *.gls *.glsdefs *.ist
-	rm -r _minted-test
+	rm -f *.aux *.log *.out *.pdf *.thm *.toc *.glg *.glo *.gls *.glsdefs *.ist
+	rm -rf _minted-test
+	rm -f test-images/*converted-to*
