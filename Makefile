@@ -22,6 +22,6 @@ test-images:
 	pdflatex -shell-escape -interaction=nonstopmode test-with-images.tex
 
 clean:
-	rm -f *.aux *.log *.out *.pdf *.thm *.toc *.glg *.glo *.gls *.glsdefs *.ist
-	rm -rf _minted-test
+	rm -f *.aux *.log *.out *.pdf *.thm *.toc *.glg *.glo *.gls *.glsdefs *.ist *.gz
+	rm -rf _minted-*
 	rm -f test-images/*converted-to*

@@ -20,6 +20,7 @@
 %% LATEX 3 PACKAGES
 \RequirePackage{etoolbox}
 \RequirePackage{xparse}
+\RequirePackage{xsavebox}
 
 \RequirePackage{multicol}
 \RequirePackage{pagecolor}
@@ -191,12 +192,12 @@
 \newZdSBoxEnvironment{Question}{QuestionBox}
 \newZdSBoxEnvironment{Information}{InformationBox}
 \newZdSBoxEnvironment{Error}{ErrorBox}
-\newZdSBoxEnvironment{Spoiler}{SpoilerBox}
+\newZdSBoxEnvironment{SpoilerEnv}{SpoilerBox}
 
 %%% CODE MANAGEMENT
-\setminted{breaklines, breaksymbolleft=\hspace{2em}, highlightcolor=highlightCodeColor, linenos}
+\setminted{breaklines, breaksymbolleft=\hspace{2em}, highlightcolor=highlightCodeColor, linenos, fontsize=\small,baselinestretch=1}
 
-\NewDocumentEnvironment{codeBlock}{O{}O{}O{1}m}{%
+\NewDocumentEnvironment{CodeBlock}{O{}O{}O{1}m}{%
    \def\@codeCaption{#1}
    \VerbatimEnvironment
    \FrameSep0.5em
@@ -236,13 +237,16 @@
 \newcounter{@spoilerCounter}
 \def\@spoilerList{}
 
-\newcommand{\addSpoiler}[1]{%
-   \addtocounter{@spoilerCounter}{1}
+\newenvironment{Spoiler}{%
+   \addtocounter{@spoilerCounter}{1}%
+   \begin{xlrbox}{spoilerSavebox\the@spoilerCounter}\begin{minipage}{\linewidth}%
+}{
+   \vspace*{1em}\end{minipage}\end{xlrbox}%
    \hypertarget{voir:\thepart\thechapter\the@spoilerCounter}{}
-   \begin{Spoiler}
+   \begin{SpoilerEnv}
       \hyperlink{secret:\thepart\thechapter\the@spoilerCounter}{Voir le secret \the@spoilerCounter.}
-   \end{Spoiler}
-   \listadd{\@spoilerList}{\expandafter#1}
+   \end{SpoilerEnv}
+   \listgadd{\@spoilerList}{\xusebox{spoilerSavebox\the@spoilerCounter}}
 }
 
 \newcommand{\displaySpoilers}{%

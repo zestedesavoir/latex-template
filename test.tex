@@ -17,15 +17,21 @@
 
 Ce message s’adresse principalement aux bon connaisseurs de LaTeX : l’équipe de développement a besoin de vous ! \smiley{clin}
 
-\addSpoiler{Voici un secret.}
+\begin{Spoiler}
+Voici un secret
+\end{Spoiler}
 
 \levelOneTitle{Contexte}
 
-Nous travaillons actuellement sur la refonte de l’outils qui gère la partie \abbr{MD}{Markdown} -> autres formats et nous souhaitons refaire le template actuel LaTeX. Nous utilisons celui de base de Pandoc or cet outil sera remplacé dans le futur. Nous cherchons donc quelques personnes pour nous aider dans la réalisation de macros pour chaque élément spécifique à ZdS.
+Nous travaillons actuellement sur la refonte de l’outils qui gère la partie \abbr{MD}{Markdown} -> autres formats et nous souhaitons refaire le template actuel LaTeX\textsuperscript{\ref{pandoc}}. Nous utilisons celui de base de Pandoc\textsuperscript{\ref{pandoc}} or cet outil sera remplacé dans le futur. Nous cherchons donc quelques personnes pour nous aider dans la réalisation de macros pour chaque élément spécifique à ZdS.
+
+\footnotetext[1]{\label{pandoc} Parce que Pandoc, c'est un peu l'horreur}
 
 Si vous avez des questions et/ou si vous êtes intéressés, n’hésitez pas à passer sur IRC ou à laisser un message par ici \smiley{diable}
 
-\addSpoiler{Voici un autre secret.}
+\begin{Spoiler}
+Voici un autre secret.
+\end{Spoiler}
 
 \levelTwoTitle{Les éléments à faire}
 \levelThreeTitle{Ensemble des éléments classiques}
@@ -39,7 +45,9 @@ Si vous avez des questions et/ou si vous êtes intéressés, n’hésitez pas à
 \item \externalLink{liens}{zestedesavoir.com}
 \end{itemize}
 
-\addSpoiler{Un dernier petit secret.}
+\begin{Spoiler}
+Voici un dernier secret.
+\end{Spoiler}
 
 \begin{flushleft}
 Texte aligné à gauche
@@ -77,40 +85,40 @@ La suite, avec des touches \keys{CTRL} + \keys{A}. Et on peut avoir une ligne av
 
 Voici un peu de code inline: \verb`make test`. Et voici quelques exemples de code python :
 
-\begin{codeBlock}{python}
+\begin{CodeBlock}{python}
 def foo(bar):
     if True:
         return 42
     return 0
-\end{codeBlock}
+\end{CodeBlock}
 
-\begin{codeBlock}[Code légendé]{python}
+\begin{CodeBlock}[Code légendé]{python}
 def foo(bar):
     if True:
         return 42
     return 0
-\end{codeBlock}
+\end{CodeBlock}
 
-\begin{codeBlock}[Code légendé avec lignes colorés][1-2]{python}
+\begin{CodeBlock}[Code légendé avec lignes colorés][1-2]{python}
 def foo(bar):
     if True:
         return 42
     return 0
-\end{codeBlock}
+\end{CodeBlock}
 
-\begin{codeBlock}[][1, 3-4]{python}
+\begin{CodeBlock}[][1, 3-4]{python}
 def foo(bar):
     if True:
         return 42
     return 0
-\end{codeBlock}
+\end{CodeBlock}
 
-\begin{codeBlock}[][12][10]{python}
+\begin{CodeBlock}[][12][10]{python}
 def foo(bar):
     if True:
         return 42 # This line is emphasized and is numbered 12.
     return 0
-\end{codeBlock}
+\end{CodeBlock}
 
 Une image hors-texte :
 
@@ -179,7 +187,15 @@ element & element & element\\ \hline
 
 \levelOneConclusion
 
-\addSpoiler{On va quand même mettre un secret pour finir.}
+\begin{Spoiler}
+Et un secret ici pour finir en beauté, avec du code dans le dedans !
+
+\begin{CodeBlock}[][1]{python}
+def test(a):
+    print(a)
+\end{CodeBlock}
+\end{Spoiler}
 
 Conclusion
+
 \end{document}

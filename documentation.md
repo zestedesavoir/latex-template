@@ -8,7 +8,7 @@
 + Superscript and subscript: `\textsubscript{x}` and `\textsuperscript{x}`
 + Inline source code: please use `\texttt{xxx}` rather than `\verb` if possible (see [this post on Stack Exchange](https://tex.stackexchange.com/a/10375)). Special characters (`\ $ & % # ^_ { } ~`) should therefore be escaped.
 + Keys: `\keys{x}`
-+ Footnotes: `\footnote{text}`
++ Footnotes: when defining a footnote, `\footnotetext[num]{\label{x} text}` (where `num` is the number of the footnote), when using the footnote, `\textsuperscript{\ref{x}}`.
 + Maths (obviously)
 
 ## Environments
@@ -80,10 +80,6 @@ To obtain a smiley, use `\smiley{xxx}` where `xxx` is a file from the smileys di
 \smileysPath{/path/to/smileys} % path to the directory containing the images of the smileys
 ```
 
-## Spoilers
-
-To add a spoiler, use `\addSpoiler`: `\addSpoiler{Hide text}`. Spoilers will be grouped in order of apparition in a "Spoiler" section at the end of each chapter.
-
 ## Iframes
 
 To add an iframe block (for example Youtube videos), use `\iframe`: `\iframe{url}[iframe type][caption]`.
@@ -100,16 +96,20 @@ Mimic the corresponding markdown blocks.
 
 The `Quotation` environment takes the the source of a quote as extra parameter.
 
+## Spoilers
+
+To add a spoiler, use the `Spoiler` environement. Spoilers will be grouped in order of apparition in a "Spoiler" section at the end of each chapter.
+
 ## Code environment
 
-To add a block of code, use the `codeBlock` environment. Its parameter is the language which should be used for syntax highlighting (`text` by default), it also accepts three extra parameter:
+To add a block of code, use the `CodeBlock` environment. Its parameter is the language which should be used for syntax highlighting (`text` by default), it also accepts three extra parameter:
 
 1. a legend/caption,
 2. the line numbers/range to be highlighted,
 3. the starting line number.
 
 ```latex
-\begin{codeBlock}[optional caption][5, 8, 9-12][5]{latex}
+\begin{CodeBlock}[optional caption][5, 8, 9-12][5]{latex}
 A \LaTeX command.
-\end{codeBlock}
+\end{CodeBlock}
 ```
