@@ -8,38 +8,38 @@
 + Superscript and subscript: `\textsubscript{x}` and `\textsuperscript{x}`
 + Inline source code: please use `\texttt{xxx}` rather than `\verb` if possible (see [this post on Stack Exchange](https://tex.stackexchange.com/a/10375)). Special characters (`\ $ & % # ^_ { } ~`) should therefore be escaped.
 + Keys: `\keys{x}`
-+ Footnotes: `\footnote{text}`
++ Footnotes: when defining a footnote, `\footnotetext[num]{\label{x} text}` (where `num` is the number of the footnote), when using the footnote, `\textsuperscript{\ref{x}}`.
 + Maths (obviously)
 
 ## Environments
 
-+ Lists: `itemize` environment for bulleted, `enumerate` environment for numbered. Inside them, each item is defined with `\item`.
-+ Aligned text: text is justified by default, `flushright` and `center` environments are available to change that.
++ Lists: `itemize` environment for unordered lists, `enumerate` environment for numbered lists. Inside them, each item is defined with `\item`.
++ Text alignment: text is flush left aligned by default, `flushright` and `center` environments are available as alternatives.
 
 # Class options
 
-+ `big`, `middle` or `small` give access to different levels of sectioning (see section macros below).  
-+ `print` permit to have a document to print. The link are not clickable, there are formatted as **\[text](link)**.
+1. `big`, `middle` or `small` provide different levels of document sectioning (see section macros below).
+1. `print` adapts the style for printing. The link are not clickable: they are formatted as **\[text](link)**.
 
 # Class macros
 
 ## Abbreviations
 
-To add an abbreviation, use `\abbr{word}{definition}`:. Abbreviations will be in a glossary at the end of the document.
+To add an abbreviation, use `\abbr{word}{definition}`. Abbreviations will be listed in a glossary at the end of the document.
 
-**Disclaimer**: word should not contain accented characters or other special characters because of the *glossaries* package.
+**Warning**: `word` should not contain accented characters or other special characters because of the *glossaries* package.
 
-## `\horizontalLine`
+## Thematic break
 
-Create a horizontal line.
+Use `\horizontalLine`.
 
-## `\externalLink`
+## External link
 
-Create a link with `\externalLink{text}{link}`.
+Create a link with `\externalLink{text}{URL}`.
 
 ## Section macros
 
-The different title levels are adapted depending on the class option.
+The different title levels get adapted depending on the class option used.
 
 | | `small` | `middle` | `big` |
 |-|---------|----------------|-----|
@@ -51,7 +51,7 @@ The different title levels are adapted depending on the class option.
 |`\levelSixTitle` | *n.a.* |  `\subparagraph` | `\paragraph` |
 |`\levelSevenTitle` | *n.a.* | *n.a.* |  `\subparagraph`|
 
-For introduction and conclusion, macros are also defined. They don’t take parameters and they print "Introduction" or "Conclusion".
+For introduction and conclusion, macros are also defined. They don’t take parameters and they are titled "Introduction" / "Conclusion".
 
 | | `small` | `middle` | `big` |
 |-|---------|----------------|-----|
@@ -61,34 +61,30 @@ For introduction and conclusion, macros are also defined. They don’t take para
 
 ## Title page macros (`\website`, `\authorlink`, `\editor`, `\editorlogo` and `\logo`)
 
-These macros should be used before `\maketitle` (ideally in the preamble). If they are not used, there are default values. Be careful that `\logo` and `\editorlogo` take in parameter the path of an image (and not an image). The default logo is `default_logo.png` and the default editor logo is `zestedesavoir.png`.
+These macros should be used before `\maketitle` (ideally in the preamble). If they are not used, there are default values. Be aware that `\logo` and `\editorlogo` take the path to an image (and not an image) as parameter. The default logo is `default_logo.png` and the default editor logo is `zestedesavoir.png`.
 
-If there is multiple authors, use `\author` with a comma-separated list of them: `\author{author1, author2}`.
+If there are multiple authors, use `\author` with a comma-separated list of authors: `\author{author1, author2}`.
 
 ## Images
 
-There is two way to include image.
+There is two ways of including an image.
 
-+ With `\image{path}[caption]`, the image is centered and can have a caption.
-+ With `\inlineImage{path}`, the image is in the text, not centered.
++ Use `\image{path}[caption]` to have it centered with an optional caption.
++ Use `\inlineImage{path}` to inline an image in your text.
 
 ## Smileys
 
-To obtain a smileys, use `\smiley{xxx}` where `xxx` is an in the directory containing smilies. By default, this directory is `./smileys`. It could be changed using `\smileysPath` macros in the preamble of the document.
+To obtain a smiley, use `\smiley{xxx}` where `xxx` is a file from the smileys directory. By default this directory is `./smileys`. It can be modified by using `\smileysPath{path}` in the preamble of the document.
 
 ```latex
-\smileysPath{/path/to/smileys} % path to the directory containing the images of the smilies
+\smileysPath{/path/to/smileys} % path to the directory containing the images of the smileys
 ```
-
-## Spoilers
-
-To add a spoiler, use `\addSpoiler`: `\addSpoiler{Hide text}`. Spoilers will be in a "Spoiler" section (each chapter will have its "Spoiler" section).
 
 ## Iframes
 
 To add an iframe block (for example Youtube videos), use `\iframe`: `\iframe{url}[iframe type][caption]`.
 
-Arguments in square brackets are optionnal (`\iframe{url}` is enough). The default value of `iframe type` is "Vidéo" and the default value for `caption` is blank.
+Arguments in square brackets are optional (`\iframe{url}` is enough). The default `iframe type` parameter is "vidéo" and the default `caption` value is blank.
 
 # Class environments
 
@@ -98,16 +94,24 @@ Mimic the corresponding markdown blocks.
 
 ## Quotes
 
-The `Quotation` environment takes an extra parameter, being the source of the quote.
+The `Quotation` environment takes the the source of a quote as extra parameter.
+
+## Spoilers
+
+To add a spoiler, use the `Spoiler` environement. Spoilers will be grouped in order of apparition in a "Spoiler" section at the end of each chapter.
 
 ## Code environment
 
-To add a block of code, use the `codeBlock` environment. It takes in parameter the language which should be used (`text` for no language) and two extra parameter (the caption and numbers of lines which should be colored).
+To add a block of code, use the `CodeBlock` environment. Its parameter is the language which should be used for syntax highlighting (`text` by default), it also accepts three extra parameter:
+
+1. a legend/caption,
+2. the line numbers/range to be highlighted,
+3. the starting line number.
 
 ```latex
-\begin{codeBlock}[eventual caption][1, 3, 4-7]{latex}
-A \LaTeX command.   
-\end{codeBlock}
+\begin{CodeBlock}[optional caption][5, 8, 9-12][5]{latex}
+A \LaTeX command.
+\end{CodeBlock}
 ```
 
 ## Float environments

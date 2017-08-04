@@ -21,6 +21,7 @@
 %% LATEX 3 PACKAGES
 \RequirePackage{etoolbox}
 \RequirePackage{xparse}
+\RequirePackage{xsavebox}
 
 \RequirePackage{multicol}
 \RequirePackage{pagecolor}
@@ -33,6 +34,13 @@
 %%% GRAPHIC PACKAGES
 \RequirePackage{graphicx}
 \RequirePackage[export]{adjustbox}
+\RequirePackage{epstopdf}
+
+\epstopdfDeclareGraphicsRule{.gif}{png}{.png}{convert gif:#1 png:\OutputFile}
+\AppendGraphicsExtensions{.gif}
+
+\epstopdfDeclareGraphicsRule{.svg}{pdf}{.pdf}{rsvg-convert -f pdf #1 -o \OutputFile}
+\AppendGraphicsExtensions{.svg}
 
 \RequirePackage[bookmarks=true,hyperindex=true,bookmarksopen=true,bookmarksnumbered=true]{hyperref}
 \RequirePackage[thmmarks,amsmath,hyperref]{ntheorem}
@@ -156,7 +164,7 @@
 
 \setcounter{secnumdepth}{4}
 
-%%% CUSTOMS ENVIRONEMENTS AND MACROS ------------------------------------------
+%%% CUSTOMS ENVIRONMENTS AND MACROS ------------------------------------------
 
 %%% LINKS
 \newcommand{\externalLink}[2]{\href{#2}{#1}}
@@ -173,9 +181,9 @@
    \newtheorem*{#1}{\textcolor{#3}{#2}}
 }}
 
-\newcommand{\newZdSBoxEnvironement}[2]{%
-    \newenvironment{#1}{~\\ \begin{minipage}{\linewidth}\begin{#2}}
-                       {\end{#2}\end{minipage}}
+\newcommand{\newZdSBoxEnvironment}[2]{%
+   \newenvironment{#1}{~\\ \begin{minipage}{\linewidth}\begin{#2}}
+                      {\end{#2}\end{minipage}}
 }
 
 \newZdSBox{InformationBox}{Information}{informationColor}
@@ -186,21 +194,21 @@
 \newZdSBox{SpoilerBox}{Secret}{spoilerColor}
 \newZdSBox{IframeBox}{Élément externe}{iframeColor}
 
-\newZdSBoxEnvironement{Warning}{WarningBox}
-\newZdSBoxEnvironement{Question}{QuestionBox}
-\newZdSBoxEnvironement{Information}{InformationBox}
-\newZdSBoxEnvironement{Error}{ErrorBox}
-\newZdSBoxEnvironement{Spoiler}{SpoilerBox}
+\newZdSBoxEnvironment{Warning}{WarningBox}
+\newZdSBoxEnvironment{Question}{QuestionBox}
+\newZdSBoxEnvironment{Information}{InformationBox}
+\newZdSBoxEnvironment{Error}{ErrorBox}
+\newZdSBoxEnvironment{SpoilerEnv}{SpoilerBox}
 
 %%% CODE MANAGEMENT
-\setminted{breaklines, breaksymbolleft=\hspace{2em}, highlightcolor=highlightCodeColor} 
+\setminted{breaklines, breaksymbolleft=\hspace{2em}, highlightcolor=highlightCodeColor, linenos, fontsize=\small,baselinestretch=1}
 
-\NewDocumentEnvironment{codeBlock}{O{}O{}m}{%
+\NewDocumentEnvironment{CodeBlock}{O{}O{}O{1}m}{%
    \def\@codeCaption{#1}
    \VerbatimEnvironment
    \FrameSep0.5em
    \begin{framed}\vspace{-1em}
-   \begin{minted}[highlightlines={#2}]{#3}%
+   \begin{minted}[highlightlines={#2}, firstnumber=#3]{#4}%
 }{
    \end{minted}\vspace{-0.5em}
    \end{framed}
@@ -235,13 +243,16 @@
 \newcounter{@spoilerCounter}
 \def\@spoilerList{}
 
-\newcommand{\addSpoiler}[1]{%
-   \addtocounter{@spoilerCounter}{1}
+\newenvironment{Spoiler}{%
+   \addtocounter{@spoilerCounter}{1}%
+   \begin{xlrbox}{spoilerSavebox\the@spoilerCounter}\begin{minipage}{\linewidth}\begin{NoHyper}%
+}{
+   \vspace*{1em}\end{NoHyper}\end{minipage}\end{xlrbox}%
    \hypertarget{voir:\thepart\thechapter\the@spoilerCounter}{}
-   \begin{Spoiler}
+   \begin{SpoilerEnv}
       \hyperlink{secret:\thepart\thechapter\the@spoilerCounter}{Voir le secret \the@spoilerCounter.}
-   \end{Spoiler}
-   \listadd{\@spoilerList}{\expandafter#1}
+   \end{SpoilerEnv}
+   \listgadd{\@spoilerList}{\xusebox{spoilerSavebox\the@spoilerCounter}}
 }
 
 \newcommand{\displaySpoilers}{%
@@ -249,8 +260,8 @@
    \ifdefvoid{\@spoilerList}{}{\levelSpoilerTitle{Blocs secrets}}
    \def\do{}
    \renewcommand{\do}[1]{%
+      \levelSpoiler*{Secret \the@spoilerCounter}%
       \hypertarget{secret:\thepart\thechapter\the@spoilerCounter}{}
-      \levelSpoiler*{Secret \the@spoilerCounter}
       \expandafter{##1}\\ \hfill \hyperlink{voir:\thepart\thechapter\the@spoilerCounter}{Retourner au texte.}
       \addtocounter{@spoilerCounter}{1}
    }
@@ -261,7 +272,7 @@
 
 \AtEndDocument{%
     \displaySpoilers
-    \printglossary[title=Liste des abbréviations]
+    \printglossary[title=Liste des abréviations]
 }
 
 %%% TITLE PAGE
@@ -341,7 +352,7 @@
 
 \newcommand{\inlineImage}[1]{\includegraphics[max size={\textwidth}{\textheight}, keepaspectratio]{#1}}
 
-%%% SMILIES
+%%% SMILEYS
 \def\@smileysPath{./smileys}
 \newcommand{\smileysPath}[1]{\def\@smileysPath{#1}}
 \newcommand{\smiley}[1]{\raisebox{-3pt}{\includegraphics[height=15pt]{\@smileysPath/#1}} }

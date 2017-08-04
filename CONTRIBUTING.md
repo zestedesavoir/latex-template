@@ -2,41 +2,44 @@
 
 ## Testing
 
-There is a Makefile to ease the tests:
+There is a Makefile to ease testing:
 
 ```bash
 make clean # clean all the LaTeX auxiliary files
 make test # compile test.tex into a pdf using zmdocument.cls
+
+# If you have installed extra tools for image conversion
+make test-images
 ```
 
 ## Contribution rules
 
-+ Contribution via Issues and/or Pull Requests (PR) on the `master` branch.
++ Contributions are done via Issues and/or Pull Requests (PR) on the `master` branch.
 + If a new macro/environment is defined, it should be used in `test.tex`, and documented in [`documentation.md`](./documentation.md).
-+ The travis build should succeed. If you add new packages, please update `EXTRA_PACKAGES` in [`scripts/install_texlive.sh`](scripts/install_texlive.sh) until it build correctly.
++ The travis build should succeed. If you add new packages, please update `EXTRA_PACKAGES` in [`scripts/install_texlive.sh`](scripts/install_texlive.sh) in order for tests to pass.
 + Please respect the coding style (see below).
 
 ## Coding style
 
 + Names and comments must be in English.
-+ Custom environement names should be in PascalCase and custom macros, colors, lenghts and counters in camelCase.
-+ Add your work in the good part of the class.
-+ Prefix, if possible, your work by `%%% XXXX`, describing what the macros and/or environement makes.
++ Custom environment names should be in PascalCase and custom macros, colors, lengths and counters in camelCase.
++ Add your work in the right part of the class.
++ If possible, prefix your work with `%%% XXXX`, describing what the macros and/or environment does.
 + Use **3** spaces for indentation.
-+ If multilines code:
-    + Environement: `\begin{xxx}` and `\end{xxx}` should be at the same level of indentation. The level of indentation should increase in environement.
-    + Terminating braces (`}`) should be at the same level of indentation as the opening one (`\xxx{`). The level of indentation should increase between the braces.
++ For multilines code:
+    + Environment: `\begin{xxx}` and `\end{xxx}` should be at the same level of indentation. The level of indentation should increase inside the environment.
+    + Terminating brace (`}`) should be at the same level of indentation as the opening one (`\xxx{`). The level of indentation should increase inside the braces.
 
 For example,
 
 ```latex
-\newenvironement{NewSuperEnvironement}{\begin{center}}{\end{center}} % PascalCase
+\newenvironment{NewSuperEnvironment}{\begin{center}}{\end{center}} % PascalCase
 
 \newcommand{\newSuperMacro}[2]{% camelCase
-    This is #1 ! % Increase level of indentation in braces
-    \begin{NewSuperEnvironement}
-        And this is #2 ! % Increase level of indentation in environement
-    \end{NewSuperEnvironement} % same level of indentation as \begin
+   This is #1 ! % Increase level of indentation in braces
+   \begin{NewSuperEnvironment}
+      And this is #2 ! % Increase level of indentation in environment
+   \end{NewSuperEnvironment} % same level of indentation as \begin
 } % same level of indentation as \newcommand
 
 %% In the text

@@ -1,8 +1,7 @@
 # Copied from Zeste de Savoir,
-# https://github.com/zestedesavoir/zds-site/blob/dev/.travis.yml
+# https://github.com/zestedesavoir/zds-site/blob/a16c5fc932b361cbee5c6e61b24167605e24cd8b/.travis.yml
 
 dist: trusty
-sudo: required
 
 language: python
 
@@ -18,6 +17,12 @@ cache:
     - $HOME/.texlive
     - $HOME/bin
 
+addons:
+  apt:
+    packages:
+    - imagemagick
+    - librsvg2-bin
+
 install:
   - mkdir -p $HOME/bin
   - ./scripts/install_texlive.sh
@@ -26,3 +31,4 @@ install:
 
 script:
     - make test
+    - make test-images
