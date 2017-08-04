@@ -239,9 +239,9 @@
 
 \newenvironment{Spoiler}{%
    \addtocounter{@spoilerCounter}{1}%
-   \begin{xlrbox}{spoilerSavebox\the@spoilerCounter}\begin{minipage}{\linewidth}%
+   \begin{xlrbox}{spoilerSavebox\the@spoilerCounter}\begin{minipage}{\linewidth}\begin{NoHyper}%
 }{
-   \vspace*{1em}\end{minipage}\end{xlrbox}%
+   \vspace*{1em}\end{NoHyper}\end{minipage}\end{xlrbox}%
    \hypertarget{voir:\thepart\thechapter\the@spoilerCounter}{}
    \begin{SpoilerEnv}
       \hyperlink{secret:\thepart\thechapter\the@spoilerCounter}{Voir le secret \the@spoilerCounter.}
@@ -254,8 +254,8 @@
    \ifdefvoid{\@spoilerList}{}{\levelSpoilerTitle{Blocs secrets}}
    \def\do{}
    \renewcommand{\do}[1]{%
+      \levelSpoiler*{Secret \the@spoilerCounter}%
       \hypertarget{secret:\thepart\thechapter\the@spoilerCounter}{}
-      \levelSpoiler*{Secret \the@spoilerCounter}
       \expandafter{##1}\\ \hfill \hyperlink{voir:\thepart\thechapter\the@spoilerCounter}{Retourner au texte.}
       \addtocounter{@spoilerCounter}{1}
    }
