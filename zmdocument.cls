@@ -246,7 +246,7 @@
 %%% CUSTOMS ENVIRONMENTS AND MACROS ------------------------------------------
 
 %%% LINKS
-\newcommand{\externalLink}[2]{\href{#2}{\color{externalLinkColor}{#1 \linkIcon}}}
+\newcommand{\externalLink}[2]{\href{#2}{\color{externalLinkColor}{#1~\linkIcon}}}
 
 %%% ZDS BOX
 \newcommand{\newZdSBox}[3]{{%
