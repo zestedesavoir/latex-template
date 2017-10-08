@@ -286,51 +286,20 @@
    arc=0.0pt
 }
 
-%%% SUCCESS
-\newtcolorbox{Success}{
-   enlarge top initially by=5mm,
-   boxrule=0.5pt,
-   breakable,
-   colback=ZdSBoxBackgroundSuccess,
-   coltext=ZdSBoxForegroundSuccess,
-   colframe=ZdSBoxBorderSuccess,
-   arc=0.0pt,
-   enhanced,
-   attach boxed title to top center={yshift=-2mm},
-   overlay={\node at (frame.north west) {\createBoxIcon{ZdSBoxLogoBackgroundSuccess}{\checkmark}};}
+\newcommand{\newBox}[6]{%
+\newtcolorbox{#1}{
+colback=#2,
+coltext=#3,
+colframe=#4,
+overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
+}%
 }
 
-%%% INFORMATION
-\newtcolorbox{Information}{
-   colback=ZdSBoxBackgroundInformation,
-   coltext=ZdSBoxForegroundInformation,
-   colframe=ZdSBoxBorderInformation,
-   overlay={\node at (frame.north west) {\createBoxIcon{ZdSBoxLogoBackgroundInformation}{i}};}
-}
-
-%%% QUESTION
-\newtcolorbox{Question}{
-   colback=ZdSBoxBackgroundQuestion,
-   coltext=ZdSBoxForegroundQuestion,
-   colframe=ZdSBoxBorderQuestion,
-   overlay={\node at (frame.north west) {\createBoxIcon{ZdSBoxLogoBackgroundQuestion}{?}};}
-}
-
-%%% WARNING
-\newtcolorbox{Warning}{
-   colback=ZdSBoxBackgroundWarning,
-   coltext=ZdSBoxForegroundWarning,
-   colframe=ZdSBoxBorderWarning,
-   overlay={\node at (frame.north west) {\createBoxIcon{ZdSBoxLogoBackgroundWarning}{!}};}
-}
-
-%%% ERROR
-\newtcolorbox{Error}{
-   colback=ZdSBoxBackgroundError,
-   coltext=ZdSBoxForegroundError,
-   colframe=ZdSBoxBorderError,
-   overlay={\node at (frame.north west) {\createBoxIcon{ZdSBoxLogoBackgroundError}{\times}};}
-}
+\newBox{Success}{ZdSBoxBackgroundSuccess}{ZdSBoxForegroundSuccess}{ZdSBoxBorderSuccess}{ZdSBoxLogoBackgroundSuccess}{\checkmark}
+\newBox{Information}{ZdSBoxBackgroundInformation}{ZdSBoxForegroundInformation}{ZdSBoxBorderInformation}{ZdSBoxLogoBackgroundInformation}{i}
+\newBox{Question}{ZdSBoxBackgroundQuestion}{ZdSBoxForegroundQuestion}{ZdSBoxBorderQuestion}{ZdSBoxLogoBackgroundQuestion}{?}
+\newBox{Warning}{ZdSBoxBackgroundWarning}{ZdSBoxForegroundWarning}{ZdSBoxBorderWarning}{ZdSBoxLogoBackgroundWarning}{!}
+\newBox{Error}{ZdSBoxBackgroundError}{ZdSBoxForegroundError}{ZdSBoxBorderError}{ZdSBoxLogoBackgroundError}{\times}
 
 %%% QUOTATION
 \DeclareTColorBox{Quotation}{ o }{%
