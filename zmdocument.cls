@@ -348,6 +348,16 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
    coltitle=defaultColor
 }
 
+\DeclareTotalTCBox{\CodeInline}{ O{text} v }{%
+   verbatim,
+   colback=codeBackgroundColor,
+   coltext=defaultColor,
+   colframe=ZdSBoxBorderSpoiler,
+   boxrule=0.5pt,
+   arc=0.0pt
+}
+{\mintinline{#1}{#2}}
+
 %%% IFRAMES
 \newenvironment{Iframe}[1]{%
    ~\\ \begin{minipage}{\linewidth}\begin{IframeBox}[#1]
