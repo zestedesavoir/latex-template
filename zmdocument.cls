@@ -47,7 +47,7 @@
 \RequirePackage[hyperrefcolorlinks]{menukeys}
 
 %%% BOX
-\usepackage[skins, breakable, minted, xparse]{tcolorbox}
+\RequirePackage[skins, breakable, minted, xparse]{tcolorbox}
 
 %%% ABBREVIATIONS PACKAGES
 \RequirePackage{glossaries}
