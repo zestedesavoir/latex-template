@@ -66,12 +66,6 @@
 \definecolor{paragraphColor}{HTML}{000000}
 \definecolor{subparagraphColor}{HTML}{000000}
 
-\definecolor{warningColor}{HTML}{FFAD7A}      %Apricot
-\definecolor{errorColor}{HTML}{FF3B21}        %RedOrange
-\definecolor{informationColor}{HTML}{55E0E0}  %SkyBlue
-\definecolor{questionColor}{HTML}{Ad5CFF}     %Orchid
-\definecolor{quotationColor}{HTML}{555555}
-\definecolor{spoilerColor}{HTML}{555555}
 \definecolor{iframeColor}{HTML}{009700}
 
 \definecolor{titlePageBackgroundColor}{HTML}{094561}
@@ -237,7 +231,7 @@
 \addtokomafont{chapter}{\color{chapterColor}}
 \addtokomafont{section}{\color{sectionColor}}
 \addtokomafont{subsection}{\color{subsectionColor}}
-\addtokomafont{subsubsection}{\color{sectionColor}}
+\addtokomafont{subsubsection}{\color{subsubsectionColor}}
 \addtokomafont{paragraph}{\color{paragraphColor}}
 \addtokomafont{subparagraph}{\color{subparagraphColor}}
 
