@@ -42,7 +42,7 @@ Voici un autre secret.
 \item \sout{Barré}
 \item Indice\textsubscript{X}
 \item Exposant\textsuperscript{2}
-\item \externalLink{liens}{zestedesavoir.com}
+\item \externalLink{liens}{https://zestedesavoir.com}
 \end{itemize}
 
 \begin{Spoiler}
@@ -79,11 +79,11 @@ Et maintenant, une citation:
 Zeste de Savoir, la connaissance pour tous et sans pépins
 \end{Quotation}
 
-La suite, avec des touches \keys{CTRL} + \keys{A}. Et on peut avoir une ligne avec
+La suite, avec des touches \keys{CTRL + A}. Et on peut avoir une ligne avec
 
 \horizontalLine
 
-Voici un peu de code inline: \verb`make test`. Et voici quelques exemples de code python :
+Voici un peu de code inline: \CodeInline[bash]{make test}. Et voici quelques exemples de code python :
 
 \begin{CodeBlock}{python}
 def foo(bar):
@@ -149,6 +149,13 @@ Et maintenant, différents blocs:
 \end{Information}
 
 \begin{Question}
+\blindtext
+\begin{CodeBlock}[][12][10]{python}
+def foo(bar):
+    if True:
+        return 42 # This line is emphasized and is numbered 12.
+    return 0
+\end{CodeBlock}
 \blindtext
 \end{Question}
 
