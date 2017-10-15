@@ -17,6 +17,8 @@
 \RequirePackage{caption}
 \RequirePackage{ulem}
 \RequirePackage{newfloat}
+\RequirePackage{ifthen}
+\RequirePackage{xifthen}
 
 %% LATEX 3 PACKAGES
 \RequirePackage{etoolbox}
@@ -35,6 +37,7 @@
 \RequirePackage{graphicx}
 \RequirePackage[export]{adjustbox}
 \RequirePackage{epstopdf}
+\RequirePackage{geometry}
 
 \epstopdfDeclareGraphicsRule{.gif}{png}{.png}{convert gif:#1 png:\OutputFile}
 \AppendGraphicsExtensions{.gif}
@@ -55,6 +58,8 @@
 %%% COLORS ---------------------------------------------------------------------
 
 \definecolor{defaultColor}{HTML}{424242}
+
+\definecolor{coverDateColor}{HTML}{F8AD32}
 
 \definecolor{internalLinkColor}{HTML}{FF9400}
 \definecolor{externalLinkColor}{HTML}{1088BF}
@@ -241,6 +246,7 @@
 
 %%% LINKS
 \newcommand{\externalLink}[2]{\href{#2}{\color{externalLinkColor}{#1~\linkIcon}}}
+\newcommand{\externalCleanLink}[2]{\href{#2}{\color{white}{#1}}}
 
 %%% ZDS BOX
 \newcommand{\newZdSBox}[3]{{%
@@ -406,7 +412,18 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
 }
 
 %%% TITLE PAGE
-\newcommand{\licence}[1]{\def\@licence{#1}}
+
+\def\@imagesPath{./img}
+\newcommand{\imagesPath}[1]{\def\@imagesPath{#1}}
+\def\@logoPath{\@imagesPath/logo}
+\newcommand{\tutoLink}[1]{\def\@tutoLink{#1}}
+
+\newcommand{\licence}[3][]{%
+   \ifthenelse{\isempty{#1}}%
+   {\def\@licence{\color{white}Licence~:~\externalCleanLink{#2}{#3}}}
+   {\def\@licence{\externalCleanLink{\includegraphics[width=0.5\textwidth]{#1}}{#3}}}
+}
+
 \newcommand{\logo}[1]{\def\@logo{#1}}
 \newcommand{\website}[1]{\def\@website{#1}}
 \newcommand{\editor}[1]{\def\@editor{#1}}
@@ -430,39 +447,68 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
    \setcounter{@authorsNumber}{\the@listSize}
    \setcounter{@columnNumber}{\the\numexpr(1 + \the@authorsNumber / \the@authorsByColumn)\relax}
    \thispagestyle{empty}
-   \begin{flushright}
-      \Large \bfseries \renewcommand*{\do}[1]{\href{\@authorlink/##1/}{\color{titlePageAuthorColor}\bsc{##1}}\\}
-      \ifnum\the@authorsNumber < \the\numexpr(1+\the@authorsByColumn)
+   \Large \bfseries \renewcommand*{\do}[1]{\href{\@authorlink/##1/}{\color{titlePageAuthorColor}\bsc{##1}}\\}
+   \ifnum\the@authorsNumber < \the\numexpr(1+\the@authorsByColumn)
+      \expandafter\docsvlist\expandafter{\@author}
+   \else
+      \begin{multicols}{\the@columnNumber}
          \expandafter\docsvlist\expandafter{\@author}
-      \else
-         \begin{multicols}{\the@columnNumber}
-            \expandafter\docsvlist\expandafter{\@author}
-         \end{multicols}
-      \fi
-   \end{flushright}
+      \end{multicols}
+   \fi
 }
 
 \renewcommand{\maketitle}{%
    \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/membres/voir}}
    \ifcsdef{@website}{}{\website{https://zestedesavoir.com}}
    \ifcsdef{@editor}{}{\editor{https://zestedesavoir.com}}
-   \ifcsdef{@editorlogo}{}{\editorlogo{zestedesavoir.png}}
+   \ifcsdef{@editorlogo}{}{\editorlogo{\@logoPath/full.svg}}
    \ifcsdef{@logo}{}{\logo{default_logo.png}}
+   \ifcsdef{@tutoLink}{}{\tutoLink{\@website}}
    \pagecolor{titlePageBackgroundColor}
    \color{titlePageTextColor}
    \clearpage
-   \formatAuthors
+   \newgeometry{top=1cm, bottom=1cm, right=1.5cm,left=1.5cm}
+
+   \begin{table}[h!]
    \begin{center}
-      \vspace*{\fill}
-      \includegraphics[max width=\textwidth, max height=4cm, keepaspectratio]{\@logo}\\
-      \rule{\linewidth}{0.2 mm} \\[0.4 cm]
+      \begin{tabular}{ p{0.7\textwidth} p{0.3\textwidth}  }
+         \vspace{0pt}
+         \begin{minipage}{0.7\textwidth}
+         \formatAuthors
+         \end{minipage}
+            &
+         \vspace{0pt}
+         \begin{minipage}[t]{0.3\textwidth}
+            \hspace{\fill}\@licence
+         \end{minipage}
+      \end{tabular}
+      \end{center}
+   \end{table}
+
+   \begin{center}
+      \vspace{4cm}
+      \externalCleanLink{\includegraphics[max width=\textwidth, max height=4cm, keepaspectratio]{\@logo}}{\@tutoLink}\\
       \huge\textbf{\@title}\\
-      \rule{\linewidth}{0.2 mm} \\[1 cm]
-      \large\textbf{Ce tutoriel est sous licence \@licence}\\
-      \vspace{\fill}
-      \includegraphics[max width=8cm, max height=2cm, keepaspectratio]{\@editorlogo}\\
-      \href{\@website}{\color{titlePageEditorColor}\@editor}
+      \color{chapterColor}\rule{\textwidth}{1 mm} \\
+      \ifthenelse{\isempty{\@date}}
+      {}
+      {\LARGE {\color{coverDateColor} \textbf{\@date}}}
+      \normalcolor
+      \vspace*{\fill}
    \end{center}
+   \vspace*{2.1cm}
+   \begin{center}
+      \externalCleanLink{%
+\begin{minipage}{0.5\textwidth}
+\begin{center}
+\includegraphics[max width=8cm, max height=2cm, keepaspectratio]{\@editorlogo} \\
+\color{white}La connaissance pour tous et sans pépins
+\end{center}
+\normalcolor
+\end{minipage}
+}{https://zestedesavoir.com} \\
+   \end{center}
+   \restoregeometry
    \newpage
    \newpagecolor{white}
    \color{black}
