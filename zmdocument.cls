@@ -246,7 +246,7 @@
 
 %%% LINKS
 \newcommand{\externalLink}[2]{\href{#2}{\color{externalLinkColor}{#1~\linkIcon}}}
-\newcommand{\externalCleanLink}[2]{\href{#2}{\color{white}{#1}}}
+\newcommand{\@titlePageLink}[2]{\href{#2}{\color{white}{#1}}}
 
 %%% ZDS BOX
 \newcommand{\newZdSBox}[3]{{%
@@ -420,8 +420,8 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
 
 \newcommand{\licence}[3][]{%
    \ifthenelse{\isempty{#1}}%
-   {\def\@licence{\color{white}Licence~:~\externalCleanLink{#2}{#3}}}
-   {\def\@licence{\externalCleanLink{\includegraphics[width=0.5\textwidth]{#1}}{#3}}}
+   {\def\@licence{\color{white}Licence~:~\@titlePageLink{#2}{#3}}}
+   {\def\@licence{\@titlePageLink{\includegraphics[width=0.5\textwidth]{#1}}{#3}}}
 }
 
 \newcommand{\logo}[1]{\def\@logo{#1}}
@@ -487,7 +487,7 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
 
    \begin{center}
       \vspace{4cm}
-      \externalCleanLink{\includegraphics[max width=\textwidth, max height=4cm, keepaspectratio]{\@logo}}{\@tutoLink}\\
+      \@titlePageLink{\includegraphics[max width=\textwidth, max height=4cm, keepaspectratio]{\@logo}}{\@tutoLink}\\
       \huge\textbf{\@title}\\
       \color{chapterColor}\rule{\textwidth}{1 mm} \\
       \ifthenelse{\isempty{\@date}}
@@ -498,7 +498,7 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
    \end{center}
    \vspace*{2.1cm}
    \begin{center}
-      \externalCleanLink{%
+      \@titlePageLink{%
 \begin{minipage}{0.5\textwidth}
 \begin{center}
 \includegraphics[max width=8cm, max height=2cm, keepaspectratio]{\@editorlogo} \\
