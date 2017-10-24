@@ -482,9 +482,11 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
          \end{minipage}
             &
          \vspace{0pt}
-         \begin{minipage}[t]{0.3\textwidth}
-            \hspace{\fill}\@licence
-         \end{minipage}
+         \ifcsdef{@licence}{
+            \begin{minipage}[t]{0.3\textwidth}
+               \hspace{\fill}\@licence
+            \end{minipage}
+         }{}
       \end{tabular}
       \end{center}
    \end{table}
