@@ -68,7 +68,9 @@ For introduction and conclusion, macros are also defined. They don’t take para
 
 ## Title page macros (`\website`, `\authorlink`, `\editor`, `\editorlogo` and `\logo`)
 
-These macros should be used before `\maketitle` (ideally in the preamble). If they are not used, there are default values. Be aware that `\logo` and `\editorlogo` take the path to an image (and not an image) as parameter. The default logo is `default_logo.png` and the default editor logo is `zestedesavoir.png`.
+These macros should be used before `\maketitle` (ideally in the preamble). If they are not used, there are default values. Be aware that `\logo` and `\editorlogo` take the path to an image (and not an image) as parameter. The default logo is `default_logo.png`.
+
+Editor logo take an optional parameter which is a sentence/slogan. Exemple: `\editorlogo[slogan]{path/to/image}`
 
 If there are multiple authors, use `\author` with a comma-separated list of authors: `\author{author1, author2}`.
 

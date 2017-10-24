@@ -427,7 +427,12 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
 \newcommand{\logo}[1]{\def\@logo{#1}}
 \newcommand{\website}[1]{\def\@website{#1}}
 \newcommand{\editor}[1]{\def\@editor{#1}}
-\newcommand{\editorlogo}[1]{\def\@editorlogo{#1}}
+\newcommand{\editorlogo}[2][]{
+\def\@editorLogo{#2}
+\ifthenelse{\isempty{#1}}
+{}
+{\def\@editorLogoSentence{#1}}
+}
 \newcommand{\authorlink}[1]{\def\@authorlink{#1}}
 
 \newcounter{@listSize}
@@ -461,7 +466,6 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
    \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/membres/voir}}
    \ifcsdef{@website}{}{\website{https://zestedesavoir.com}}
    \ifcsdef{@editor}{}{\editor{https://zestedesavoir.com}}
-   \ifcsdef{@editorlogo}{}{\editorlogo{\@logoPath/zestedesavoir.svg}}
    \ifcsdef{@logo}{}{\logo{default_logo.png}}
    \ifcsdef{@tutoLink}{}{\tutoLink{\@website}}
    \pagecolor{titlePageBackgroundColor}
@@ -500,10 +504,12 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
    \begin{center}
       \@titlePageLink{%
 \begin{minipage}{0.5\textwidth}
+\ifcsdef{@editorLogo}{%
 \begin{center}
-\includegraphics[max width=8cm, max height=2cm, keepaspectratio]{\@editorlogo} \\
-\color{white}La connaissance pour tous et sans pépins
+   \includegraphics[max width=8cm, max height=2cm, keepaspectratio]{\@editorLogo} \\
+   \ifcsdef{@editorLogoSentence}{\color{white} \@editorLogoSentence}{}
 \end{center}
+}{}
 \normalcolor
 \end{minipage}
 }{https://zestedesavoir.com} \\
