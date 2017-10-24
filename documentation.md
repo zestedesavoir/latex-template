@@ -38,11 +38,13 @@ Create a link with `\externalLink{text}{URL}`.
 
 ## Licence
 
-Add licence with `\licence[path/to/image]{Licence name}{URL}` 
+Add licence with `\licence[path/to/image]{Licence name}{URL}`.
 
 ## Inline source code 
 
-Create a inline source code with `\CodeInline[bash]{make test}`
+Create a inline source code with `\CodeInline[bash]{make test}`.
+
+*Note: special chars doesn't need to be escaped.*
 
 ## Section macros
 
@@ -66,11 +68,11 @@ For introduction and conclusion, macros are also defined. They don’t take para
 |`\levelTwoIntroduction` and `\levelOneConclusion` | *n.a.* | Chapter introduction/conclusion | Part introduction/conclusion|
 |`\levelThreeIntroduction` and `\levelThreeConclusion` | *n.a.* | *n.a.* | Chapter introduction/conclusion |
 
-## Title page macros (`\website`, `\authorlink`, `\editor`, `\editorlogo` and `\logo`)
+## Title page macros (`\website`, `\authorlink`, `\editor`, `\editorLogo` and `\logo`)
 
 These macros should be used before `\maketitle` (ideally in the preamble). If they are not used, there are default values. Be aware that `\logo` and `\editorlogo` take the path to an image (and not an image) as parameter. The default logo is `default_logo.png`.
 
-Editor logo take an optional parameter which is a sentence/slogan. Exemple: `\editorlogo[slogan]{path/to/image}`
+Editor logo take an optional parameter which is a sentence/slogan. Exemple: `\editorLogo[slogan]{path/to/image}`
 
 If there are multiple authors, use `\author` with a comma-separated list of authors: `\author{author1, author2}`.
 

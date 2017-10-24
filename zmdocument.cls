@@ -427,7 +427,7 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
 \newcommand{\logo}[1]{\def\@logo{#1}}
 \newcommand{\website}[1]{\def\@website{#1}}
 \newcommand{\editor}[1]{\def\@editor{#1}}
-\newcommand{\editorlogo}[2][]{
+\newcommand{\editorLogo}[2][]{
 \def\@editorLogo{#2}
 \ifthenelse{\isempty{#1}}
 {}
