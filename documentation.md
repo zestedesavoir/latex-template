@@ -46,6 +46,8 @@ Create a inline source code with `\CodeInline[bash]{make test}`.
 
 *Note: special chars doesn't need to be escaped.*
 
+So this code is valid: `\CodeInline[bash]{cd ${TMP%xy}z && make test_inline}` 
+
 ## Section macros
 
 The different title levels get adapted depending on the class option used.
