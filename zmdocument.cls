@@ -461,7 +461,7 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
    \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/membres/voir}}
    \ifcsdef{@website}{}{\website{https://zestedesavoir.com}}
    \ifcsdef{@editor}{}{\editor{https://zestedesavoir.com}}
-   \ifcsdef{@editorlogo}{}{\editorlogo{\@logoPath/full.svg}}
+   \ifcsdef{@editorlogo}{}{\editorlogo{\@logoPath/zestedesavoir.svg}}
    \ifcsdef{@logo}{}{\logo{default_logo.png}}
    \ifcsdef{@tutoLink}{}{\tutoLink{\@website}}
    \pagecolor{titlePageBackgroundColor}
