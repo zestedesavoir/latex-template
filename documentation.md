@@ -6,8 +6,7 @@
 + Bold: `\textbf{text}`
 + Strikethrough: `\sout{text}`
 + Superscript and subscript: `\textsubscript{x}` and `\textsuperscript{x}`
-+ Inline source code: please use `\texttt{xxx}` rather than `\verb` if possible (see [this post on Stack Exchange](https://tex.stackexchange.com/a/10375)). Special characters (`\ $ & % # ^_ { } ~`) should therefore be escaped.
-+ Keys: `\keys{x}`
++ Keys: `\keys{CTRL + A}`
 + Footnotes: when defining a footnote, `\footnotetext[num]{\label{x} text}` (where `num` is the number of the footnote), when using the footnote, `\textsuperscript{\ref{x}}`.
 + Maths (obviously)
 
@@ -36,6 +35,14 @@ Use `\horizontalLine`.
 ## External link
 
 Create a link with `\externalLink{text}{URL}`.
+
+## Licence
+
+Add licence with `\licence[path/to/image]{Licence name}{URL}` 
+
+## Inline source code 
+
+Create a inline source code with `\CodeInline[bash]{make test}`
 
 ## Section macros
 
