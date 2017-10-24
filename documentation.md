@@ -6,8 +6,7 @@
 + Bold: `\textbf{text}`
 + Strikethrough: `\sout{text}`
 + Superscript and subscript: `\textsubscript{x}` and `\textsuperscript{x}`
-+ Inline source code: please use `\texttt{xxx}` rather than `\verb` if possible (see [this post on Stack Exchange](https://tex.stackexchange.com/a/10375)). Special characters (`\ $ & % # ^_ { } ~`) should therefore be escaped.
-+ Keys: `\keys{x}`
++ Keys: `\keys{CTRL + A}`
 + Footnotes: when defining a footnote, `\footnotetext[num]{\label{x} text}` (where `num` is the number of the footnote), when using the footnote, `\textsuperscript{\ref{x}}`.
 + Maths (obviously)
 
@@ -37,6 +36,18 @@ Use `\horizontalLine`.
 
 Create a link with `\externalLink{text}{URL}`.
 
+## Licence
+
+Add licence with `\licence[path/to/image]{Licence name}{URL}`.
+
+## Inline source code 
+
+Create a inline source code with `\CodeInline[bash]{make test}`.
+
+*Note: special chars doesn't need to be escaped.*
+
+So this code is valid: `\CodeInline[bash]{cd ${TMP%xy}z && make test_inline}` 
+
 ## Section macros
 
 The different title levels get adapted depending on the class option used.
@@ -59,9 +70,11 @@ For introduction and conclusion, macros are also defined. They don’t take para
 |`\levelTwoIntroduction` and `\levelOneConclusion` | *n.a.* | Chapter introduction/conclusion | Part introduction/conclusion|
 |`\levelThreeIntroduction` and `\levelThreeConclusion` | *n.a.* | *n.a.* | Chapter introduction/conclusion |
 
-## Title page macros (`\website`, `\authorlink`, `\editor`, `\editorlogo` and `\logo`)
+## Title page macros (`\website`, `\authorlink`, `\editor`, `\editorLogo` and `\logo`)
 
-These macros should be used before `\maketitle` (ideally in the preamble). If they are not used, there are default values. Be aware that `\logo` and `\editorlogo` take the path to an image (and not an image) as parameter. The default logo is `default_logo.png` and the default editor logo is `zestedesavoir.png`.
+These macros should be used before `\maketitle` (ideally in the preamble). If they are not used, there are default values. Be aware that `\logo` and `\editorlogo` take the path to an image (and not an image) as parameter. The default logo is `default_logo.png`.
+
+Editor logo take an optional parameter which is a sentence/slogan. Exemple: `\editorLogo[slogan]{path/to/image}`
 
 If there are multiple authors, use `\author` with a comma-separated list of authors: `\author{author1, author2}`.
 
