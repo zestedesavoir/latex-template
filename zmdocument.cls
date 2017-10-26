@@ -19,6 +19,7 @@
 \RequirePackage{newfloat}
 \RequirePackage{ifthen}
 \RequirePackage{xifthen}
+\RequirePackage{luacode}
 
 %% LATEX 3 PACKAGES
 \RequirePackage{etoolbox}
@@ -172,16 +173,18 @@
 }
 
 %%% SECTIONNING OPTIONS
+\newcounter{@tocCounter}
+\setcounter{@tocCounter}{0}
 \lohead{\headmark}
 \chead{}
 \pagestyle{scrheadings}
 
 \DeclareOption{small}{
-   \let\levelOneTitle\section
-   \let\levelTwoTitle\subsection
-   \let\levelThreeTitle\subsubsection
-   \let\levelFourTitle\paragraph
-   \let\levelFiveTitle\subparagraph
+   \newcommand{\levelOneTitle}[1]{\stepcounter{@tocCounter}\section{#1}}
+   \newcommand{\levelTwoTitle}[1]{\stepcounter{@tocCounter}\subsection{#1}}
+   \newcommand{\levelThreeTitle}[1]{\stepcounter{@tocCounter}\subsubsection{#1}}
+   \newcommand{\levelFourTitle}[1]{\stepcounter{@tocCounter}\paragraph{#1}}
+   \newcommand{\levelFiveTitle}[1]{\stepcounter{@tocCounter}\subparagraph{#1}}
    \newcommand{\levelOneIntroduction}{\addsec{Introduction}}
    \newcommand{\levelOneConclusion}{\addsec{Conclusion}}
    \def\thesection{\arabic{section}}
@@ -192,12 +195,12 @@
 }
 
 \DeclareOption{middle}{
-   \newcommand{\levelOneTitle}[1]{\displaySpoilers \chapter{#1}}
-   \let\levelTwoTitle\section
-   \let\levelThreeTitle\subsection
-   \let\levelFourTitle\subsubsection
-   \let\levelFiveTitle\paragraph
-   \let\levelSixTitle\subparagaph
+   \newcommand{\levelOneTitle}[1]{\stepcounter{@tocCounter}\displaySpoilers \chapter{#1}}
+   \newcommand{\levelTwoTitle}[1]{\stepcounter{@tocCounter}\section{#1}}
+   \newcommand{\levelThreeTitle}[1]{\stepcounter{@tocCounter}\subsection{#1}}
+   \newcommand{\levelFourTitle}[1]{\stepcounter{@tocCounter}\subsubsection{#1}}
+   \newcommand{\levelFiveTitle}[1]{\stepcounter{@tocCounter}\paragraph{#1}}
+   \newcommand{\levelSixTitle}[1]{\stepcounter{@tocCounter}\subparagaph{#1}}
    \newcommand{\levelOneIntroduction}{\addchap{Introduction}}
    \newcommand{\levelOneConclusion}{\displaySpoilers \addchap{Conclusion}}
    \newcommand{\levelTwoIntroduction}{\addsec{Introduction}}
@@ -206,13 +209,13 @@
 }
 
 \DeclareOption{big}{
-   \newcommand\levelOneTitle[1]{\displaySpoilers \part{#1}}
-   \newcommand\levelTwoTitle[1]{\displaySpoilers \chapter{#1}}
-   \let\levelThreeTitle\section
-   \let\levelFourTitle\subsection
-   \let\levelFiveTitle\subsubsection
-   \let\levelSixTitle\paragraph
-   \let\levelSevenTitle\subparagaph
+   \newcommand{\levelOneTitle}[1]{\stepcounter{@tocCounter}\displaySpoilers \part{#1}}
+   \newcommand{\levelTwoTitle}[1]{\stepcounter{@tocCounter}\displaySpoilers \chapter{#1}}
+   \newcommand{\levelThreeTitle}[1]{\stepcounter{@tocCounter}\section{#1}}
+   \newcommand{\levelFourTitle}[1]{\stepcounter{@tocCounter}\subsection{#1}}
+   \newcommand{\levelFiveTitle}[1]{\stepcounter{@tocCounter}\subsubsection{#1}}
+   \newcommand{\levelSixTitle}[1]{\stepcounter{@tocCounter}\paragraph{#1}}
+   \newcommand{\levelSevenTitle}[1]{\stepcounter{@tocCounter}\subparagaph{#1}}
    \newcommand{\levelOneIntroduction}{\addpart{Introduction}}
    \newcommand{\levelOneConclusion}{\displaySpoilers \addpart{Conclusion}}
    \newcommand{\levelTwoIntroduction}{\addchap{Introduction}}
@@ -525,6 +528,37 @@
 
 \hypersetup{pdftitle={\@title}}
 \hypersetup{pdfauthor={\@author}}
+
+%%% TABLE OF CONTENTS
+
+\begin{luacode*}
+function setFileCompileName (jobname)
+   filename=jobname .. "-compile-toc.data"
+end
+
+function printToc ()
+   local f = io.open(filename,"r")
+   if f ~= nil then
+      local value=f:read "*n"
+      if value ~= 0 then
+         tex.print("\\tableofcontents\\newpage")
+      end
+      io.close(f)
+   end
+end
+\end{luacode*}
+
+\directlua{setFileCompileName("\jobname")}
+
+\newcommand{\toc}{\directlua{printToc()}}
+
+\AtEndDocument{
+   \directlua{
+      f=io.open(filename,"w")
+      f:write("\the@tocCounter")
+      f:close()
+   }
+}
 
 %%% IMAGES
 \NewDocumentCommand{\image}{mo}{%

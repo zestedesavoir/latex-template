@@ -22,6 +22,8 @@
 
 # Class macros
 
+*__NOTE: Use `\toc` command for generating table of contents intsead of `\tableofcontents`__*
+
 ## Abbreviations
 
 To add an abbreviation, use `\abbr{word}{definition}`. Abbreviations will be listed in a glossary at the end of the document.
@@ -112,6 +114,10 @@ The `Quotation` environment takes the the source of a quote as extra parameter.
 ## Spoilers
 
 To add a spoiler, use the `Spoiler` environement. Spoilers will be grouped in order of apparition in a "Spoiler" section at the end of each chapter.
+
+## Table of contents
+
+For creation of table of contents, use `\toc`. This command doesn't generate table of contents if it is empty.
 
 ## Code environment
 

@@ -21,7 +21,14 @@ test-images:
 	makeglossaries test-with-images
 	lualatex -shell-escape -interaction=nonstopmode test-with-images.tex
 
+test-without-toc:
+	lualatex -draftmode -shell-escape -interaction=nonstopmode test-without-toc.tex
+	lualatex -draftmode -shell-escape -interaction=nonstopmode test-without-toc.tex
+	makeglossaries test-without-toc
+	lualatex -shell-escape -interaction=nonstopmode test-without-toc.tex
+
 clean:
 	rm -f *.aux *.log *.out *.pdf *.thm *.toc *.glg *.glo *.gls *.glsdefs *.ist *.gz
 	rm -rf _minted-*
 	rm -f test-images/*converted-to*
+	rm -f *.data
