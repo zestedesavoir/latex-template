@@ -159,9 +159,9 @@
 
 \def\spoilerIcon{%
 \begin{tikzpicture}[scale=0.05]
-  \draw[semithick](-3,0) .. controls (-2,2.5) and (2,2.5) .. (3,0) .. controls (2,-2.5) and (-2,-2.5) .. (-3,0)--cycle;
-  \draw[thin](0,0.6) arc (90:180:0.6cm);
-  \draw (0,0) circle [radius=1.2];
+   \draw[semithick](-3,0) .. controls (-2,2.5) and (2,2.5) .. (3,0) .. controls (2,-2.5) and (-2,-2.5) .. (-3,0)--cycle;
+   \draw[thin](0,0.6) arc (90:180:0.6cm);
+   \draw (0,0) circle [radius=1.2];
 \end{tikzpicture}}
 
 %%% CLASS OPTIONS --------------------------------------------------------------
@@ -287,12 +287,12 @@
 }
 
 \newcommand{\newBox}[6]{%
-\newtcolorbox{#1}{
-colback=#2,
-coltext=#3,
-colframe=#4,
-overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
-}%
+   \newtcolorbox{#1}{
+      colback=#2,
+      coltext=#3,
+      colframe=#4,
+      overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
+   }%
 }
 
 \newBox{Success}{ZdSBoxBackgroundSuccess}{ZdSBoxForegroundSuccess}{ZdSBoxBorderSuccess}{ZdSBoxLogoBackgroundSuccess}{\checkmark}
@@ -386,7 +386,7 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
    \hypertarget{voir:\thepart\thechapter\the@spoilerCounter}{}
    \begin{SpoilerBox}
       \hyperlink{secret:\thepart\thechapter\the@spoilerCounter}{%
-\color{ZdSBoxForegroundSpoiler}\spoilerIcon~Afficher le contenu masqué\color{defaultColor}}
+      \color{ZdSBoxForegroundSpoiler}\spoilerIcon~Afficher le contenu masqué\color{defaultColor}}
    \end{SpoilerBox}
    \listgadd{\@spoilerList}{\xusebox{spoilerSavebox\the@spoilerCounter}}
 }
@@ -407,8 +407,8 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
 }
 
 \AtEndDocument{%
-    \displaySpoilers
-    \printglossary[title=Liste des abréviations]
+   \displaySpoilers
+   \printglossary[title=Liste des abréviations]
 }
 
 %%% TITLE PAGE
@@ -474,20 +474,20 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
    \newgeometry{top=1cm, bottom=1cm, right=1.5cm,left=1.5cm}
 
    \begin{table}[h!]
-   \begin{center}
-      \begin{tabular}{ p{0.7\textwidth} p{0.3\textwidth}  }
-         \vspace{0pt}
-         \begin{minipage}{0.7\textwidth}
-         \formatAuthors
-         \end{minipage}
-            &
-         \vspace{0pt}
-         \ifcsdef{@licence}{
-            \begin{minipage}[t]{0.3\textwidth}
-               \hspace{\fill}\@licence
+      \begin{center}
+         \begin{tabular}{ p{0.7\textwidth} p{0.3\textwidth}  }
+            \vspace{0pt}
+            \begin{minipage}{0.7\textwidth}
+               \formatAuthors
             \end{minipage}
-         }{}
-      \end{tabular}
+               &
+            \vspace{0pt}
+            \ifcsdef{@licence}{
+               \begin{minipage}[t]{0.3\textwidth}
+                  \hspace{\fill}\@licence
+               \end{minipage}
+            }{}
+         \end{tabular}
       \end{center}
    \end{table}
 
@@ -505,16 +505,16 @@ overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
    \vspace*{2.1cm}
    \begin{center}
       \@titlePageLink{%
-\begin{minipage}{0.5\textwidth}
-\ifcsdef{@editorLogo}{%
-\begin{center}
-   \includegraphics[max width=8cm, max height=2cm, keepaspectratio]{\@editorLogo} \\
-   \ifcsdef{@editorLogoSentence}{\color{white} \@editorLogoSentence}{}
-\end{center}
-}{}
-\normalcolor
-\end{minipage}
-}{https://zestedesavoir.com} \\
+         \begin{minipage}{0.5\textwidth}
+            \ifcsdef{@editorLogo}{%
+            \begin{center}
+               \includegraphics[max width=8cm, max height=2cm, keepaspectratio]{\@editorLogo} \\
+               \ifcsdef{@editorLogoSentence}{\color{white} \@editorLogoSentence}{}
+            \end{center}
+            }{}
+            \normalcolor
+         \end{minipage}
+      }{https://zestedesavoir.com} \\
    \end{center}
    \restoregeometry
    \newpage
