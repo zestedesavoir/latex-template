@@ -469,6 +469,7 @@
 }
 
 \renewcommand{\maketitle}{%
+   \setcounter{page}{0}
    \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/membres/voir}}
    \ifcsdef{@website}{}{\website{https://zestedesavoir.com}}
    \ifcsdef{@editor}{}{\editor{https://zestedesavoir.com}}
