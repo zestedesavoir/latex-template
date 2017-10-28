@@ -25,6 +25,12 @@ pip install Pygments
 
 Note that this package requires latex to be called with the `-shell-escape` option.
 
+You also need these fonts:
+
+- [Source Code Pro](https://www.fontsquirrel.com/fonts/source-code-pro)
+- [Source Sans Pro](https://www.fontsquirrel.com/fonts/source-sans-pro)
+- [Merriweather](https://www.fontsquirrel.com/fonts/merriweather)
+
 ## Other images formats
 
 To be abble to use GIF and SVG images in your documents, two extra programs are needed:

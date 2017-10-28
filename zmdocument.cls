@@ -7,6 +7,7 @@
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
+\RequirePackage{fontspec}
 \RequirePackage{scrhack}
 \RequirePackage[dvipsnames,table]{xcolor}
 \RequirePackage{scrlayer-scrpage}
@@ -54,6 +55,11 @@
 
 %%% ABBREVIATIONS PACKAGES
 \RequirePackage{glossaries}
+
+%%% FONTS
+\setmainfont{Merriweather}
+\setsansfont{Source Sans Pro}
+\setmonofont{Source Code Pro}
 
 %%% COLORS ---------------------------------------------------------------------
 
