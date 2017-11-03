@@ -56,7 +56,6 @@
 \RequirePackage{glossaries}
 
 %%% FONTS
-\setmainfont{Merriweather}
 \setsansfont{Source Sans Pro}
 \setmonofont{Source Code Pro}
 
