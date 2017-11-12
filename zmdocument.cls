@@ -5,14 +5,13 @@
 
 %%% PACKAGES -------------------------------------------------------------------
 
-\RequirePackage[utf8]{inputenc}
 \RequirePackage{fontspec}
 \RequirePackage{scrhack}
 \RequirePackage[dvipsnames,table]{xcolor}
 \RequirePackage{scrlayer-scrpage}
 \RequirePackage{minted}
 \RequirePackage{amsmath,amssymb}
-\RequirePackage[francais]{babel}
+\RequirePackage[french]{babel}
 \RequirePackage[babel=true]{microtype}
 \RequirePackage{caption}
 \RequirePackage{ulem}
