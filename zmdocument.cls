@@ -44,7 +44,7 @@
 \epstopdfDeclareGraphicsRule{.svg}{pdf}{.pdf}{rsvg-convert -f pdf #1 -o \OutputFile}
 \AppendGraphicsExtensions{.svg}
 
-\RequirePackage[bookmarks=true,hyperindex=true,bookmarksopen=true,bookmarksnumbered=true]{hyperref}
+\RequirePackage[luatex,unicode,bookmarks=true,hyperindex=true,bookmarksopen=true,bookmarksnumbered=true]{hyperref}
 \RequirePackage[thmmarks,amsmath,hyperref]{ntheorem}
 \RequirePackage[hyperrefcolorlinks]{menukeys}
 
