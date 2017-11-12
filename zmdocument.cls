@@ -353,6 +353,8 @@
 
 \DeclareTotalTCBox{\CodeInline}{ O{text} v }{%
    verbatim,
+   enlarge top initially by=0mm,
+   enlarge bottom finally by=0mm,
    colback=codeBackgroundColor,
    coltext=defaultColor,
    colframe=ZdSBoxBorderSpoiler,
