@@ -49,7 +49,7 @@ Here is a skeleton on what your LaTeX document should contain:
 
 \title{Title}
 \author{Author}
-\licence{CC-BY-NC-ND}
+\licence[path/to/image]{Licence name}{URL} % optional
 \logo{logo.png}  % if ./logo.png is available
 
 \begin{document}
