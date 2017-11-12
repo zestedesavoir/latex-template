@@ -29,7 +29,6 @@ You also need these fonts:
 
 - [Source Code Pro](https://www.fontsquirrel.com/fonts/source-code-pro)
 - [Source Sans Pro](https://www.fontsquirrel.com/fonts/source-sans-pro)
-- [Merriweather](https://www.fontsquirrel.com/fonts/merriweather)
 
 ## Other images formats
 
