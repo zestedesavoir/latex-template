@@ -28,6 +28,6 @@ test-images:
 	lualatex -shell-escape -interaction=nonstopmode test-with-images.tex
 
 clean:
-	rm -f *.aux *.log *.out *.pdf *.thm *.toc *.glg *.glo *.gls *.glsdefs *.ist *.gz
+	rm -f *.aux *.log *.out *.pdf *.thm *.toc *.glg *.glo *.gls *.glsdefs *.ist *.gz *.listing
 	rm -rf _minted-*
 	rm -f test-images/*converted-to*
