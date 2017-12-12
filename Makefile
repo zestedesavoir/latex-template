@@ -15,6 +15,12 @@ test:
 	makeglossaries test
 	lualatex -shell-escape -interaction=nonstopmode test.tex
 
+test-author:
+	lualatex -draftmode -shell-escape -interaction=nonstopmode test-author.tex
+	lualatex -draftmode -shell-escape -interaction=nonstopmode test-author.tex
+	makeglossaries test-author
+	lualatex -shell-escape -interaction=nonstopmode test-author.tex
+
 test-images:
 	lualatex -draftmode -shell-escape -interaction=nonstopmode test-with-images.tex
 	lualatex -draftmode -shell-escape -interaction=nonstopmode test-with-images.tex
