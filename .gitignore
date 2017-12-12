@@ -12,6 +12,7 @@
 *.thm
 *.toc
 *.xdy
+*.listing
 _minted*
 *converted-to*
 
