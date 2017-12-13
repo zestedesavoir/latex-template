@@ -1,4 +1,4 @@
-utf8 = require "utf8-lua/utf8.lua"
+utf8 = require "./utf8.lua/utf8.lua"
 
 AUTHOR_MAX_SIZE = 15
 AUTHOR_MAX_DISPLAY = 11
