@@ -516,7 +516,7 @@
    \newpage
    \setcounter{page}{1}
    % Author page (if necessary)
-   \directlua{makeAuthorsPage(\luastringO{\@authorlink})}
+   \directlua{makeAuthorsPage()}
    \newpage
 }
 
