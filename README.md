@@ -19,6 +19,8 @@ You need a standard (full) LaTeX distribution:
 
 Since this template uses the [minted](https://github.com/gpoore/minted/) package you also need [Pygments](http://pygments.org/), probably available in your package manager on Linux or via `pip`:
 
+This repo uses submodules. After clone this repo, in root folder of the project, execute this command to download submodule: `git submodule update --init --recursive`
+
 ```bash
 pip install Pygments
 ```
