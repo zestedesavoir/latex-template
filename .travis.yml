@@ -33,3 +33,4 @@ install:
 script:
     - make test
     - make test-images
+    - make test-author

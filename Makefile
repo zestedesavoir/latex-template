@@ -15,6 +15,12 @@ test:
 	makeglossaries test
 	lualatex -shell-escape -interaction=nonstopmode test.tex
 
+test-author:
+	lualatex -draftmode -shell-escape -interaction=nonstopmode test-author.tex
+	lualatex -draftmode -shell-escape -interaction=nonstopmode test-author.tex
+	makeglossaries test-author
+	lualatex -shell-escape -interaction=nonstopmode test-author.tex
+
 test-images:
 	lualatex -draftmode -shell-escape -interaction=nonstopmode test-with-images.tex
 	lualatex -draftmode -shell-escape -interaction=nonstopmode test-with-images.tex
@@ -22,6 +28,6 @@ test-images:
 	lualatex -shell-escape -interaction=nonstopmode test-with-images.tex
 
 clean:
-	rm -f *.aux *.log *.out *.pdf *.thm *.toc *.glg *.glo *.gls *.glsdefs *.ist *.gz
+	rm -f *.aux *.log *.out *.pdf *.thm *.toc *.glg *.glo *.gls *.glsdefs *.ist *.gz *.listing
 	rm -rf _minted-*
 	rm -f test-images/*converted-to*

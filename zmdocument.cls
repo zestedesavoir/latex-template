@@ -18,6 +18,7 @@
 \RequirePackage{newfloat}
 \RequirePackage{ifthen}
 \RequirePackage{xifthen}
+\usepackage{luacode}
 
 %% LATEX 3 PACKAGES
 \RequirePackage{etoolbox}
@@ -57,6 +58,9 @@
 %%% FONTS
 \setsansfont{Source Sans Pro}
 \setmonofont{Source Code Pro}
+
+%%% Lua scripts
+\directlua{dofile("zmdocument.lua")}
 
 %%% COLORS ---------------------------------------------------------------------
 
@@ -447,26 +451,6 @@
    \expandafter\docsvlist\expandafter{#1}
 }
 
-\newcommand{\formatAuthors}{%
-   \setlength{\columnsep}{0pt}
-   \newcounter{@authorsNumber}
-   \newcounter{@authorsByColumn}
-   \newcounter{@columnNumber}
-   \setcounter{@authorsByColumn}{5}
-   \getListSize{\@author}
-   \setcounter{@authorsNumber}{\the@listSize}
-   \setcounter{@columnNumber}{\the\numexpr(1 + \the@authorsNumber / \the@authorsByColumn)\relax}
-   \thispagestyle{empty}
-   \Large \bfseries \renewcommand*{\do}[1]{\href{\@authorlink/##1/}{\color{titlePageAuthorColor}\bsc{##1}}\\}
-   \ifnum\the@authorsNumber < \the\numexpr(1+\the@authorsByColumn)
-      \expandafter\docsvlist\expandafter{\@author}
-   \else
-      \begin{multicols}{\the@columnNumber}
-         \expandafter\docsvlist\expandafter{\@author}
-      \end{multicols}
-   \fi
-}
-
 \renewcommand{\maketitle}{%
    \setcounter{page}{0}
    \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/membres/voir}}
@@ -484,7 +468,7 @@
          \begin{tabular}{ p{0.7\textwidth} p{0.3\textwidth}  }
             \vspace{0pt}
             \begin{minipage}{0.7\textwidth}
-               \formatAuthors
+               \directlua{formatAuthors(\luastringO{\@author}, \luastringO{\@authorlink})}
             \end{minipage}
                &
             \vspace{0pt}
@@ -526,7 +510,14 @@
    \newpage
    \newpagecolor{white}
    \color{black}
+   % flyleaf
+   \strut
+   \thispagestyle{empty}
+   \newpage
    \setcounter{page}{1}
+   % Author page (if necessary)
+   \directlua{makeAuthorsPage()}
+   \newpage
 }
 
 \hypersetup{pdftitle={\@title}}

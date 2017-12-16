@@ -12,6 +12,8 @@
 *.thm
 *.toc
 *.xdy
+*.listing
+.idea
 _minted*
 *converted-to*
 
