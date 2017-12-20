@@ -62,75 +62,158 @@
 %%% Lua scripts
 \directlua{dofile("zmdocument.lua")}
 
+%%% Define if it's in nocolor mode
+\newtoggle{nocolor}
+\togglefalse{nocolor}
+\DeclareOption{nocolor}{\toggletrue{nocolor}}
+\ProcessOptions\relax
+
 %%% COLORS ---------------------------------------------------------------------
 
-\definecolor{defaultColor}{HTML}{424242}
+\iftoggle{nocolor}{%
+   %%% Define color for "nocolor" mode
 
-\definecolor{coverDateColor}{HTML}{F8AD32}
+   \definecolor{defaultColor}{HTML}{424242}
+   \definecolor{alternativeTextColor}{HTML}{000000}
 
-\definecolor{internalLinkColor}{HTML}{FF9400}
-\definecolor{externalLinkColor}{HTML}{1088BF}
+   \definecolor{coverDateColor}{HTML}{808080}
 
-\definecolor{chapterColor}{HTML}{EA9408}
-\definecolor{sectionColor}{HTML}{EA9408}
-\definecolor{subsectionColor}{HTML}{EA9408}
-\definecolor{subsubsectionColor}{HTML}{EA9408}
-\definecolor{paragraphColor}{HTML}{000000}
-\definecolor{subparagraphColor}{HTML}{000000}
+   \definecolor{internalLinkColor}{HTML}{4D4D4D}
+   \definecolor{externalLinkColor}{HTML}{4D4D4D}
 
-\definecolor{iframeColor}{HTML}{009700}
+   \definecolor{chapterColor}{HTML}{000000}
+   \definecolor{sectionColor}{HTML}{000000}
+   \definecolor{subsectionColor}{HTML}{000000}
+   \definecolor{subsubsectionColor}{HTML}{000000}
+   \definecolor{paragraphColor}{HTML}{000000}
+   \definecolor{subparagraphColor}{HTML}{000000}
 
-\definecolor{titlePageBackgroundColor}{HTML}{094561}
-\definecolor{titlePageEditorColor}{HTML}{F8AD32}
-\definecolor{titlePageTextColor}{HTML}{FFFFFF}
-\definecolor{titlePageAuthorColor}{HTML}{FF9400}
+   \definecolor{iframeColor}{HTML}{009700}
 
-\definecolor{codeBackgroundColor}{HTML}{F7F7F7}
-\definecolor{highlightCodeColor}{HTML}{E3E3E3}
-\definecolor{lineNumberSeparatorCodeColor}{HTML}{BEBEC5}
+   \definecolor{titlePageBackgroundColor}{HTML}{FFFFFF}
+   \definecolor{titlePageEditorColor}{HTML}{000000}
+   \definecolor{titlePageTextColor}{HTML}{000000}
+   \definecolor{titlePageAuthorColor}{HTML}{4D4D4D}
 
-\definecolor{horizontalLineColor}{HTML}{CCCCCC}
+   \definecolor{codeBackgroundColor}{HTML}{F7F7F7}
+   \definecolor{highlightCodeColor}{HTML}{E3E3E3}
+   \definecolor{lineNumberSeparatorCodeColor}{HTML}{BEBEC5}
 
-%%%  BOX
+   \definecolor{horizontalLineColor}{HTML}{CCCCCC}
 
-% SUCCESS
-\definecolor{ZdSBoxForegroundSuccess}{HTML}{3C763D}
-\definecolor{ZdSBoxBackgroundSuccess}{HTML}{DFF0D8}
-\definecolor{ZdSBoxBorderSuccess}{HTML}{C6D7BF}
-\definecolor{ZdSBoxLogoBackgroundSuccess}{HTML}{16C13B}
+   %%%  BOX
 
-% INFORMATION
-\definecolor{ZdSBoxForegroundInformation}{HTML}{31708F}
-\definecolor{ZdSBoxBackgroundInformation}{HTML}{D9EDF7}
-\definecolor{ZdSBoxBorderInformation}{HTML}{C0D4DE}
-\definecolor{ZdSBoxLogoBackgroundInformation}{HTML}{59ABE3}
+   % SUCCESS
+   \definecolor{ZdSBoxForegroundSuccess}{HTML}{424242}
+   \definecolor{ZdSBoxBackgroundSuccess}{HTML}{FFFFFF}
+   \definecolor{ZdSBoxBorderSuccess}{HTML}{4D4D4D}
+   \definecolor{ZdSBoxLogoBackgroundSuccess}{HTML}{808080}
 
-% QUESTION
-\definecolor{ZdSBoxForegroundQuestion}{HTML}{8D61CD}
-\definecolor{ZdSBoxBackgroundQuestion}{HTML}{F0E9FC}
-\definecolor{ZdSBoxBorderQuestion}{HTML}{D3BDF5}
-\definecolor{ZdSBoxLogoBackgroundQuestion}{HTML}{8C4FE8}
+   % INFORMATION
+   \definecolor{ZdSBoxForegroundInformation}{HTML}{424242}
+   \definecolor{ZdSBoxBackgroundInformation}{HTML}{FFFFFF}
+   \definecolor{ZdSBoxBorderInformation}{HTML}{4D4D4D}
+   \definecolor{ZdSBoxLogoBackgroundInformation}{HTML}{808080}
 
-% WARNING
-\definecolor{ZdSBoxForegroundWarning}{HTML}{8A6D3B}
-\definecolor{ZdSBoxBackgroundWarning}{HTML}{FCF4E5}
-\definecolor{ZdSBoxBorderWarning}{HTML}{E3DBCC}
-\definecolor{ZdSBoxLogoBackgroundWarning}{HTML}{F39539}
+   % QUESTION
+   \definecolor{ZdSBoxForegroundQuestion}{HTML}{424242}
+   \definecolor{ZdSBoxBackgroundQuestion}{HTML}{FFFFFF}
+   \definecolor{ZdSBoxBorderQuestion}{HTML}{4D4D4D}
+   \definecolor{ZdSBoxLogoBackgroundQuestion}{HTML}{808080}
 
-% ERROR
-\definecolor{ZdSBoxForegroundError}{HTML}{A94442}
-\definecolor{ZdSBoxBackgroundError}{HTML}{F2DEDE}
-\definecolor{ZdSBoxBorderError}{HTML}{D9C5C5}
-\definecolor{ZdSBoxLogoBackgroundError}{HTML}{C21936}
+   % WARNING
+   \definecolor{ZdSBoxForegroundWarning}{HTML}{424242}
+   \definecolor{ZdSBoxBackgroundWarning}{HTML}{FFFFFF}
+   \definecolor{ZdSBoxBorderWarning}{HTML}{4D4D4D}
+   \definecolor{ZdSBoxLogoBackgroundWarning}{HTML}{808080}
 
-% SPOILER
-\definecolor{ZdSBoxForegroundSpoiler}{HTML}{555555}
-\definecolor{ZdSBoxBackgroundSpoiler}{HTML}{EEEEEE}
-\definecolor{ZdSBoxBorderSpoiler}{HTML}{DDDDDD}
+   % ERROR
+   \definecolor{ZdSBoxForegroundError}{HTML}{424242}
+   \definecolor{ZdSBoxBackgroundError}{HTML}{FFFFFF}
+   \definecolor{ZdSBoxBorderError}{HTML}{4D4D4D}
+   \definecolor{ZdSBoxLogoBackgroundError}{HTML}{808080}
 
-% QUOTATION
-\definecolor{ZdSBoxBorderLeftQuotation}{HTML}{CCCCCC}
-\definecolor{ZdSBoxForegroundQuotation}{HTML}{555555}
+   % SPOILER
+   \definecolor{ZdSBoxForegroundSpoiler}{HTML}{555555}
+   \definecolor{ZdSBoxBackgroundSpoiler}{HTML}{EEEEEE}
+   \definecolor{ZdSBoxBorderSpoiler}{HTML}{DDDDDD}
+
+   % QUOTATION
+   \definecolor{ZdSBoxBorderLeftQuotation}{HTML}{CCCCCC}
+   \definecolor{ZdSBoxForegroundQuotation}{HTML}{555555}
+}{%
+
+   %%% Global color
+
+   \definecolor{defaultColor}{HTML}{424242}
+   \definecolor{alternativeTextColor}{HTML}{FFFFFF}
+
+   \definecolor{coverDateColor}{HTML}{F8AD32}
+
+   \definecolor{internalLinkColor}{HTML}{FF9400}
+   \definecolor{externalLinkColor}{HTML}{1088BF}
+
+   \definecolor{chapterColor}{HTML}{EA9408}
+   \definecolor{sectionColor}{HTML}{EA9408}
+   \definecolor{subsectionColor}{HTML}{EA9408}
+   \definecolor{subsubsectionColor}{HTML}{EA9408}
+   \definecolor{paragraphColor}{HTML}{000000}
+   \definecolor{subparagraphColor}{HTML}{000000}
+
+   \definecolor{iframeColor}{HTML}{009700}
+
+   \definecolor{titlePageBackgroundColor}{HTML}{094561}
+   \definecolor{titlePageEditorColor}{HTML}{F8AD32}
+   \definecolor{titlePageTextColor}{HTML}{FFFFFF}
+   \definecolor{titlePageAuthorColor}{HTML}{FF9400}
+
+   \definecolor{codeBackgroundColor}{HTML}{F7F7F7}
+   \definecolor{highlightCodeColor}{HTML}{E3E3E3}
+   \definecolor{lineNumberSeparatorCodeColor}{HTML}{BEBEC5}
+
+   \definecolor{horizontalLineColor}{HTML}{CCCCCC}
+
+   %%%  BOX
+
+   % SUCCESS
+   \definecolor{ZdSBoxForegroundSuccess}{HTML}{3C763D}
+   \definecolor{ZdSBoxBackgroundSuccess}{HTML}{DFF0D8}
+   \definecolor{ZdSBoxBorderSuccess}{HTML}{C6D7BF}
+   \definecolor{ZdSBoxLogoBackgroundSuccess}{HTML}{16C13B}
+
+   % INFORMATION
+   \definecolor{ZdSBoxForegroundInformation}{HTML}{31708F}
+   \definecolor{ZdSBoxBackgroundInformation}{HTML}{D9EDF7}
+   \definecolor{ZdSBoxBorderInformation}{HTML}{C0D4DE}
+   \definecolor{ZdSBoxLogoBackgroundInformation}{HTML}{59ABE3}
+
+   % QUESTION
+   \definecolor{ZdSBoxForegroundQuestion}{HTML}{8D61CD}
+   \definecolor{ZdSBoxBackgroundQuestion}{HTML}{F0E9FC}
+   \definecolor{ZdSBoxBorderQuestion}{HTML}{D3BDF5}
+   \definecolor{ZdSBoxLogoBackgroundQuestion}{HTML}{8C4FE8}
+
+   % WARNING
+   \definecolor{ZdSBoxForegroundWarning}{HTML}{8A6D3B}
+   \definecolor{ZdSBoxBackgroundWarning}{HTML}{FCF4E5}
+   \definecolor{ZdSBoxBorderWarning}{HTML}{E3DBCC}
+   \definecolor{ZdSBoxLogoBackgroundWarning}{HTML}{F39539}
+
+   % ERROR
+   \definecolor{ZdSBoxForegroundError}{HTML}{A94442}
+   \definecolor{ZdSBoxBackgroundError}{HTML}{F2DEDE}
+   \definecolor{ZdSBoxBorderError}{HTML}{D9C5C5}
+   \definecolor{ZdSBoxLogoBackgroundError}{HTML}{C21936}
+
+   % SPOILER
+   \definecolor{ZdSBoxForegroundSpoiler}{HTML}{555555}
+   \definecolor{ZdSBoxBackgroundSpoiler}{HTML}{EEEEEE}
+   \definecolor{ZdSBoxBorderSpoiler}{HTML}{DDDDDD}
+
+   % QUOTATION
+   \definecolor{ZdSBoxBorderLeftQuotation}{HTML}{CCCCCC}
+   \definecolor{ZdSBoxForegroundQuotation}{HTML}{555555}
+}
 
 \hypersetup{linkcolor=internalLinkColor}
 
@@ -229,13 +312,6 @@
    \automark[chapter]{part}
 }
 
-%%% NOCOLOR
-\DeclareOption{nocolor}{
-   \definecolor{titlePageBackgroundColor}{HTML}{FFFFFF}
-   \definecolor{titlePageEditorColor}{HTML}{000000}
-   \definecolor{titlePageTextColor}{HTML}{000000}
-}
-
 %%% PROCESSING
 \ProcessOptions
 
@@ -253,7 +329,7 @@
 
 %%% LINKS
 \newcommand{\externalLink}[2]{\href{#2}{\color{externalLinkColor}{#1~\linkIcon}}}
-\newcommand{\@titlePageLink}[2]{\href{#2}{\color{white}{#1}}}
+\newcommand{\@titlePageLink}[2]{\href{#2}{\color{alternativeTextColor}{#1}}}
 
 %%% ZDS BOX
 \newcommand{\newZdSBox}[3]{{%
@@ -429,7 +505,7 @@
 
 \newcommand{\licence}[3][]{%
    \ifthenelse{\isempty{#1}}%
-   {\def\@licence{\color{white}Licence~:~\@titlePageLink{#2}{#3}}}
+   {\def\@licence{\color{alternativeTextColor}Licence~:~\@titlePageLink{#2}{#3}}}
    {\def\@licence{\@titlePageLink{\includegraphics[width=0.5\textwidth]{#1}}{#3}}}
 }
 
@@ -499,7 +575,7 @@
             \ifcsdef{@editorLogo}{%
             \begin{center}
                \includegraphics[max width=8cm, max height=2cm, keepaspectratio]{\@editorLogo} \\
-               \ifcsdef{@editorLogoSentence}{\color{white} \@editorLogoSentence}{}
+               \ifcsdef{@editorLogoSentence}{\color{alternativeTextColor} \@editorLogoSentence}{}
             \end{center}
             }{}
             \normalcolor

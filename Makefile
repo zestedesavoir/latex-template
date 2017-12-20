@@ -27,6 +27,12 @@ test-images:
 	makeglossaries test-with-images
 	lualatex -shell-escape -interaction=nonstopmode test-with-images.tex
 
+test-nocolor:
+	lualatex -draftmode -shell-escape -interaction=nonstopmode test-nocolor.tex
+	lualatex -draftmode -shell-escape -interaction=nonstopmode test-nocolor.tex
+	makeglossaries test-nocolor
+	lualatex -shell-escape -interaction=nonstopmode test-nocolor.tex
+
 clean:
 	rm -f *.aux *.log *.out *.pdf *.thm *.toc *.glg *.glo *.gls *.glsdefs *.ist *.gz *.listing
 	rm -rf _minted-*
