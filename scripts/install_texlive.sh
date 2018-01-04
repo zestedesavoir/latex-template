@@ -3,7 +3,7 @@
 # Forked from Zeste de Savoir:
 # https://github.com/zestedesavoir/zds-site/blob/a16c5fc932b361cbee5c6e61b24167605e24cd8b/scripts/install_texlive.sh
 
-EXTRA_PACKAGES="adjustbox blindtext capt-of catoptions cm-super collectbox framed fvextra glossaries ifplatform menukeys minted multirow ntheorem pagecolor relsize tabu varwidth xpatch xstring mfirstuc xfor datatool substr tracklang xsavebox media9 tcolorbox environ etoolbox trimspaces ifthen geometry xifthen ifmtarg fontspec luacode ctablestack"
+EXTRA_PACKAGES="adjustbox blindtext capt-of catoptions cm-super collectbox framed fvextra glossaries ifplatform menukeys minted multirow ntheorem pagecolor relsize tabu varwidth xpatch xstring mfirstuc xfor datatool substr tracklang xsavebox media9 tcolorbox environ etoolbox trimspaces ifthen geometry xifthen ifmtarg fontspec luacode ctablestack "
 EXTRA_PACKAGES_CACHE="$HOME/.texlive/extra_packages_cache.txt"
 
 function install_texlive() {
@@ -40,14 +40,17 @@ function install_texlive() {
 if [[ -f $HOME/.texlive/bin/x86_64-linux/tlmgr ]]; then
   if [[ -f $EXTRA_PACKAGES_CACHE ]]; then
       if [[ $(cat $EXTRA_PACKAGES_CACHE) != $EXTRA_PACKAGES ]]; then
+        echo "! found change in extra packages"
         install_texlive
       else
-        echo "using cached texlive"
+        echo "! no change detected: using cached texlive"
       fi
   else
+    echo "! extra packages cache not found"
     install_texlive
   fi
 else
+  echo "! previous installation not found"
   install_texlive
 fi
 
