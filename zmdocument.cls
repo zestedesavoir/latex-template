@@ -62,28 +62,43 @@
 %%% Lua scripts
 \directlua{dofile("zmdocument.lua")}
 
+%%%  NOCOLOR OPTION
+%%% Define if it's in nocolor mode
+\newtoggle{nocolor}
+\togglefalse{nocolor}
+\DeclareOption{nocolor}{\toggletrue{nocolor}}
+
+%%% PRINTING OPTION
+\newtoggle{print}
+\togglefalse{print}
+\DeclareOption{print}{\toggletrue{print}}
+\ProcessOptions\relax
+
 %%% COLORS ---------------------------------------------------------------------
 
+%%% Global color
+
 \definecolor{defaultColor}{HTML}{424242}
+\definecolor{alternativeTextColor}{HTML}{\iftoggle{nocolor}{000000}{FFFFFF}}
 
-\definecolor{coverDateColor}{HTML}{F8AD32}
+\definecolor{coverDateColor}{HTML}{\iftoggle{nocolor}{808080}{F8AD32}}
 
-\definecolor{internalLinkColor}{HTML}{FF9400}
-\definecolor{externalLinkColor}{HTML}{1088BF}
+\definecolor{internalLinkColor}{HTML}{\iftoggle{nocolor}{4D4D4D}{FF9400}}
+\definecolor{externalLinkColor}{HTML}{\iftoggle{nocolor}{4D4D4D}{1088BF}}
 
-\definecolor{chapterColor}{HTML}{EA9408}
-\definecolor{sectionColor}{HTML}{EA9408}
-\definecolor{subsectionColor}{HTML}{EA9408}
-\definecolor{subsubsectionColor}{HTML}{EA9408}
+\definecolor{chapterColor}{HTML}{\iftoggle{nocolor}{000000}{EA9408}}
+\definecolor{sectionColor}{HTML}{\iftoggle{nocolor}{000000}{EA9408}}
+\definecolor{subsectionColor}{HTML}{\iftoggle{nocolor}{000000}{EA9408}}
+\definecolor{subsubsectionColor}{HTML}{\iftoggle{nocolor}{000000}{EA9408}}
 \definecolor{paragraphColor}{HTML}{000000}
 \definecolor{subparagraphColor}{HTML}{000000}
 
 \definecolor{iframeColor}{HTML}{009700}
 
-\definecolor{titlePageBackgroundColor}{HTML}{094561}
-\definecolor{titlePageEditorColor}{HTML}{F8AD32}
-\definecolor{titlePageTextColor}{HTML}{FFFFFF}
-\definecolor{titlePageAuthorColor}{HTML}{FF9400}
+\definecolor{titlePageBackgroundColor}{HTML}{\iftoggle{nocolor}{FFFFFF}{094561}}
+\definecolor{titlePageEditorColor}{HTML}{\iftoggle{nocolor}{000000}{F8AD32}}
+\definecolor{titlePageTextColor}{HTML}{\iftoggle{nocolor}{000000}{FFFFFF}}
+\definecolor{titlePageAuthorColor}{HTML}{\iftoggle{nocolor}{4D4D4D}{FF9400}}
 
 \definecolor{codeBackgroundColor}{HTML}{F7F7F7}
 \definecolor{highlightCodeColor}{HTML}{E3E3E3}
@@ -94,34 +109,34 @@
 %%%  BOX
 
 % SUCCESS
-\definecolor{ZdSBoxForegroundSuccess}{HTML}{3C763D}
-\definecolor{ZdSBoxBackgroundSuccess}{HTML}{DFF0D8}
-\definecolor{ZdSBoxBorderSuccess}{HTML}{C6D7BF}
-\definecolor{ZdSBoxLogoBackgroundSuccess}{HTML}{16C13B}
+\definecolor{ZdSBoxForegroundSuccess}{HTML}{\iftoggle{nocolor}{424242}{3C763D}}
+\definecolor{ZdSBoxBackgroundSuccess}{HTML}{\iftoggle{nocolor}{FFFFFF}{DFF0D8}}
+\definecolor{ZdSBoxBorderSuccess}{HTML}{\iftoggle{nocolor}{4D4D4D}{C6D7BF}}
+\definecolor{ZdSBoxLogoBackgroundSuccess}{HTML}{\iftoggle{nocolor}{808080}{16C13B}}
 
 % INFORMATION
-\definecolor{ZdSBoxForegroundInformation}{HTML}{31708F}
-\definecolor{ZdSBoxBackgroundInformation}{HTML}{D9EDF7}
-\definecolor{ZdSBoxBorderInformation}{HTML}{C0D4DE}
-\definecolor{ZdSBoxLogoBackgroundInformation}{HTML}{59ABE3}
+\definecolor{ZdSBoxForegroundInformation}{HTML}{\iftoggle{nocolor}{424242}{31708F}}
+\definecolor{ZdSBoxBackgroundInformation}{HTML}{\iftoggle{nocolor}{FFFFFF}{D9EDF7}}
+\definecolor{ZdSBoxBorderInformation}{HTML}{\iftoggle{nocolor}{4D4D4D}{C0D4DE}}
+\definecolor{ZdSBoxLogoBackgroundInformation}{HTML}{\iftoggle{nocolor}{808080}{59ABE3}}
 
 % QUESTION
-\definecolor{ZdSBoxForegroundQuestion}{HTML}{8D61CD}
-\definecolor{ZdSBoxBackgroundQuestion}{HTML}{F0E9FC}
-\definecolor{ZdSBoxBorderQuestion}{HTML}{D3BDF5}
-\definecolor{ZdSBoxLogoBackgroundQuestion}{HTML}{8C4FE8}
+\definecolor{ZdSBoxForegroundQuestion}{HTML}{\iftoggle{nocolor}{424242}{8D61CD}}
+\definecolor{ZdSBoxBackgroundQuestion}{HTML}{\iftoggle{nocolor}{FFFFFF}{F0E9FC}}
+\definecolor{ZdSBoxBorderQuestion}{HTML}{\iftoggle{nocolor}{4D4D4D}{D3BDF5}}
+\definecolor{ZdSBoxLogoBackgroundQuestion}{HTML}{\iftoggle{nocolor}{808080}{8C4FE8}}
 
 % WARNING
-\definecolor{ZdSBoxForegroundWarning}{HTML}{8A6D3B}
-\definecolor{ZdSBoxBackgroundWarning}{HTML}{FCF4E5}
-\definecolor{ZdSBoxBorderWarning}{HTML}{E3DBCC}
-\definecolor{ZdSBoxLogoBackgroundWarning}{HTML}{F39539}
+\definecolor{ZdSBoxForegroundWarning}{HTML}{\iftoggle{nocolor}{424242}{8A6D3B}}
+\definecolor{ZdSBoxBackgroundWarning}{HTML}{\iftoggle{nocolor}{FFFFFF}{FCF4E5}}
+\definecolor{ZdSBoxBorderWarning}{HTML}{\iftoggle{nocolor}{4D4D4D}{E3DBCC}}
+\definecolor{ZdSBoxLogoBackgroundWarning}{HTML}{\iftoggle{nocolor}{808080}{F39539}}
 
 % ERROR
-\definecolor{ZdSBoxForegroundError}{HTML}{A94442}
-\definecolor{ZdSBoxBackgroundError}{HTML}{F2DEDE}
-\definecolor{ZdSBoxBorderError}{HTML}{D9C5C5}
-\definecolor{ZdSBoxLogoBackgroundError}{HTML}{C21936}
+\definecolor{ZdSBoxForegroundError}{HTML}{\iftoggle{nocolor}{424242}{A94442}}
+\definecolor{ZdSBoxBackgroundError}{HTML}{\iftoggle{nocolor}{FFFFFF}{F2DEDE}}
+\definecolor{ZdSBoxBorderError}{HTML}{\iftoggle{nocolor}{4D4D4D}{D9C5C5}}
+\definecolor{ZdSBoxLogoBackgroundError}{HTML}{\iftoggle{nocolor}{808080}{C21936}}
 
 % SPOILER
 \definecolor{ZdSBoxForegroundSpoiler}{HTML}{555555}
@@ -172,11 +187,6 @@
 \end{tikzpicture}}
 
 %%% CLASS OPTIONS --------------------------------------------------------------
-
-%%% PRINTING OPTION
-\DeclareOption{print}{
-   \renewcommand{\externalLink}[2]{\textbf{[#1](#2)}}
-}
 
 %%% SECTIONNING OPTIONS
 \lohead{\headmark}
@@ -229,13 +239,6 @@
    \automark[chapter]{part}
 }
 
-%%% NOCOLOR
-\DeclareOption{nocolor}{
-   \definecolor{titlePageBackgroundColor}{HTML}{FFFFFF}
-   \definecolor{titlePageEditorColor}{HTML}{000000}
-   \definecolor{titlePageTextColor}{HTML}{000000}
-}
-
 %%% PROCESSING
 \ProcessOptions
 
@@ -252,8 +255,14 @@
 %%% CUSTOMS ENVIRONMENTS AND MACROS ------------------------------------------
 
 %%% LINKS
-\newcommand{\externalLink}[2]{\href{#2}{\color{externalLinkColor}{#1~\linkIcon}}}
-\newcommand{\@titlePageLink}[2]{\href{#2}{\color{white}{#1}}}
+\newcommand{\externalLink}[2]{
+   \iftoggle{print}{%
+      \textbf{[#1](#2)}%
+   }{%
+      \href{#2}{\color{externalLinkColor}{#1~\linkIcon}}%
+   }
+}
+\newcommand{\@titlePageLink}[2]{\href{#2}{\color{alternativeTextColor}{#1}}}
 
 %%% ZDS BOX
 \newcommand{\newZdSBox}[3]{{%
@@ -392,22 +401,38 @@
    \begin{xlrbox}{spoilerSavebox\the@spoilerCounter}\begin{minipage}{\linewidth}\begin{NoHyper}%
 }{
    \vspace*{1em}\end{NoHyper}\end{minipage}\end{xlrbox}%
-   \hypertarget{voir:\thepart\thechapter\the@spoilerCounter}{}
+   \hypertarget{show:\thepart\thechapter\the@spoilerCounter}{}
+   \label{show:\the@spoilerCounter}
    \begin{SpoilerBox}
       \hyperlink{secret:\thepart\thechapter\the@spoilerCounter}{%
-      \color{ZdSBoxForegroundSpoiler}\spoilerIcon~Afficher le contenu masqué\color{defaultColor}}
+         \color{ZdSBoxForegroundSpoiler}\spoilerIcon~
+         \iftoggle{print}{%
+            Contenu masqué~n°\the@spoilerCounter,~disponible à la page~\pageref{secret:\the@spoilerCounter}%
+         }{%
+            Afficher le contenu masqué%
+         }
+         \color{defaultColor}
+      }
    \end{SpoilerBox}
    \listgadd{\@spoilerList}{\xusebox{spoilerSavebox\the@spoilerCounter}}
 }
 
 \newcommand{\displaySpoilers}{%
    \setcounter{@spoilerCounter}{1}
-   \ifdefvoid{\@spoilerList}{}{\levelSpoilerTitle{Blocs secrets}}
+   \ifdefvoid{\@spoilerList}{}{\levelSpoilerTitle{Contenu masqué}}
    \def\do{}
    \renewcommand{\do}[1]{%
-      \levelSpoiler*{Secret \the@spoilerCounter}%
+      \levelSpoiler*{Contenu~\the@spoilerCounter}%
+      \label{secret:\the@spoilerCounter}%
       \hypertarget{secret:\thepart\thechapter\the@spoilerCounter}{}
-      \expandafter{##1}\\ \hfill \hyperlink{voir:\thepart\thechapter\the@spoilerCounter}{Retourner au texte.}
+      \expandafter{##1}\\ \hfill \hyperlink{show:\thepart\thechapter\the@spoilerCounter}{
+         \iftoggle{print}{%
+            Référencé page~\pageref{show:\the@spoilerCounter}%
+         }{%
+            Retourner au texte.%
+         }
+      }
+
       \addtocounter{@spoilerCounter}{1}
    }
    \expandafter\dolistloop{\@spoilerList}
@@ -429,7 +454,7 @@
 
 \newcommand{\licence}[3][]{%
    \ifthenelse{\isempty{#1}}%
-   {\def\@licence{\color{white}Licence~:~\@titlePageLink{#2}{#3}}}
+   {\def\@licence{\color{alternativeTextColor}Licence~:~\@titlePageLink{#2}{#3}}}
    {\def\@licence{\@titlePageLink{\includegraphics[width=0.5\textwidth]{#1}}{#3}}}
 }
 
@@ -499,7 +524,7 @@
             \ifcsdef{@editorLogo}{%
             \begin{center}
                \includegraphics[max width=8cm, max height=2cm, keepaspectratio]{\@editorLogo} \\
-               \ifcsdef{@editorLogoSentence}{\color{white} \@editorLogoSentence}{}
+               \ifcsdef{@editorLogoSentence}{\color{alternativeTextColor} \@editorLogoSentence}{}
             \end{center}
             }{}
             \normalcolor
@@ -509,7 +534,7 @@
    \restoregeometry
    \newpage
    \newpagecolor{white}
-   \color{black}
+   \color{defaultColor}
    % flyleaf
    \strut
    \thispagestyle{empty}

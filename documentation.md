@@ -18,7 +18,8 @@
 # Class options
 
 1. `big`, `middle` or `small` provide different levels of document sectioning (see section macros below).
-1. `print` adapts the style for printing. The link are not clickable: they are formatted as **\[text](link)**.
+2. `print` adapts the style for printing. The link are not clickable: they are formatted as **\[text](link)**. Spoiler contains the page number of the contente.
+3. `nocolor` adapts the style in black and white. 
 
 # Class macros
 
