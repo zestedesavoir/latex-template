@@ -39,9 +39,7 @@ function install_texlive() {
 
 if [[ -f $HOME/.texlive/bin/x86_64-linux/tlmgr ]]; then
   if [[ -f $EXTRA_PACKAGES_CACHE ]]; then
-      CACHE_CONTENT=$(cat $EXTRA_PACKAGES_CACHE)
-      echo $CACHE_CONTENT
-      if [[ "$CACHE_CONTENT" -ne "$EXTRA_PACKAGES" ]]; then
+      if [[ $(cat $EXTRA_PACKAGES_CACHE) != $EXTRA_PACKAGES ]]; then
         install_texlive
       else
         echo "using cached texlive"
