@@ -7,6 +7,7 @@ This is a proposal for the [zmarkown](https://github.com/zestedesavoir/zmarkdown
 Credits go to :
 
 + [Karnaj](https://github.com/Karnaj), for the original template and many improvements.
++ [Heziode](https://github.com/Heziode), for later improvements.
 + [pierre-24](https://github.com/pierre-24), maintainer of the repository.
 
 # Installation
