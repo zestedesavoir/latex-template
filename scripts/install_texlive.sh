@@ -32,7 +32,7 @@ function install_texlive() {
   $HOME/.texlive/bin/x86_64-linux/tlmgr update --self
   
   # save list of extra packages
-  echo $EXTRA_PACKAGES_CACHE
+  echo 
   echo $EXTRA_PACKAGES > $EXTRA_PACKAGES_CACHE
   cat $EXTRA_PACKAGES_CACHE
   
@@ -40,6 +40,9 @@ function install_texlive() {
 }
 
 if [[ -f $HOME/.texlive/bin/x86_64-linux/tlmgr ]]; then
+  ls $HOME/.texlive/
+  echo $EXTRA_PACKAGES_CACHE
+  cat $EXTRA_PACKAGES_CACHE
   if [[ `cat $EXTRA_PACKAGES_CACHE` -ne $EXTRA_PACKAGES ]]; then
     install_texlive
   else
