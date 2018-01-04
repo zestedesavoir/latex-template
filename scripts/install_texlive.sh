@@ -46,7 +46,7 @@ if [[ -f $HOME/.texlive/bin/x86_64-linux/tlmgr ]]; then
         echo "! no change detected: using cached texlive"
       fi
   else
-    echo "! extra packages cache not found"
+    echo "! extra packages cache not found in $EXTRA_PACKAGES_CACHE"
     install_texlive
   fi
 else
