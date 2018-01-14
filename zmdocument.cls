@@ -364,7 +364,7 @@
    coltitle=defaultColor
 }
 
-\DeclareTotalTCBox{\CodeInline}{ O{text} v }{%
+\DeclareTotalTCBox{\CodeInline}{m}{%
    verbatim,
    enlarge top initially by=0mm,
    enlarge bottom finally by=0mm,
@@ -374,7 +374,7 @@
    boxrule=0.5pt,
    arc=0.0pt
 }
-{\mintinline{#1}{#2}}
+{\texttt{#1}}
 
 %%% IFRAMES
 \newenvironment{Iframe}[1]{%
