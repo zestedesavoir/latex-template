@@ -43,11 +43,9 @@ Add licence with `\licence[path/to/image]{Licence name}{URL}`.
 
 ## Inline source code 
 
-Create a inline source code with `\CodeInline[bash]{make test}`.
+Create a inline source code with `\CodeInline{make test}`.
 
-*Note: special chars doesn't need to be escaped.*
-
-So this code is valid: `\CodeInline[bash]{cd ${TMP%xy}z && make test_inline}` 
+*Note: special chars should be escaped* 
 
 ## Section macros
 
