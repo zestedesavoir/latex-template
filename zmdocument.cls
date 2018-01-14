@@ -18,7 +18,7 @@
 \RequirePackage{newfloat}
 \RequirePackage{ifthen}
 \RequirePackage{xifthen}
-\usepackage{luacode}
+\RequirePackage{luacode}
 
 %% LATEX 3 PACKAGES
 \RequirePackage{etoolbox}
