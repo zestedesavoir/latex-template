@@ -138,6 +138,12 @@
 \definecolor{ZdSBoxBorderError}{HTML}{\iftoggle{nocolor}{4D4D4D}{D9C5C5}}
 \definecolor{ZdSBoxLogoBackgroundError}{HTML}{\iftoggle{nocolor}{808080}{C21936}}
 
+% NEUTRAL
+\definecolor{ZdSBoxForegroundNeutral}{HTML}{\iftoggle{nocolor}{424242}{424242}}
+\definecolor{ZdSBoxBackgroundNeutral}{HTML}{\iftoggle{nocolor}{FFFFFF}{FFFFFF}}
+\definecolor{ZdSBoxBorderNeutral}{HTML}{\iftoggle{nocolor}{4D4D4D}{4D4D4D}}
+\definecolor{ZdSBoxLogoBackgroundNeutral}{HTML}{\iftoggle{nocolor}{808080}{808080}}
+
 % SPOILER
 \definecolor{ZdSBoxForegroundSpoiler}{HTML}{555555}
 \definecolor{ZdSBoxBackgroundSpoiler}{HTML}{EEEEEE}
@@ -294,28 +300,35 @@
 %%% DEFAULT BOX THEME
 
 \tcbsetforeverylayer{%
+   enhanced,
    enlarge top initially by=5mm,
    boxrule=0.5pt,
    breakable,
-   enhanced,
-   attach boxed title to top center={yshift=-2mm},
-   arc=0.0pt
+   arc=0.0pt,
 }
 
-\newcommand{\newBox}[6]{%
-   \newtcolorbox{#1}{
+\NewDocumentCommand\newBox{m m m m m o}{%
+   \DeclareTColorBox{#1}{ o }{
       colback=#2,
       coltext=#3,
       colframe=#4,
-      overlay={\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
+      colbacktitle=#5,
+      titlerule=0mm,
+      IfValueTF={##1}{title=##1}{},
+      overlay={
+         \IfValueTF{#6}
+         {\node at (frame.north west) {\createBoxIcon{#5}{#6}};}
+         {}
+      }
    }%
 }
 
-\newBox{Success}{ZdSBoxBackgroundSuccess}{ZdSBoxForegroundSuccess}{ZdSBoxBorderSuccess}{ZdSBoxLogoBackgroundSuccess}{\checkmark}
-\newBox{Information}{ZdSBoxBackgroundInformation}{ZdSBoxForegroundInformation}{ZdSBoxBorderInformation}{ZdSBoxLogoBackgroundInformation}{i}
-\newBox{Question}{ZdSBoxBackgroundQuestion}{ZdSBoxForegroundQuestion}{ZdSBoxBorderQuestion}{ZdSBoxLogoBackgroundQuestion}{?}
-\newBox{Warning}{ZdSBoxBackgroundWarning}{ZdSBoxForegroundWarning}{ZdSBoxBorderWarning}{ZdSBoxLogoBackgroundWarning}{!}
-\newBox{Error}{ZdSBoxBackgroundError}{ZdSBoxForegroundError}{ZdSBoxBorderError}{ZdSBoxLogoBackgroundError}{\times}
+\newBox{Success}{ZdSBoxBackgroundSuccess}{ZdSBoxForegroundSuccess}{ZdSBoxBorderSuccess}{ZdSBoxLogoBackgroundSuccess}[\checkmark]
+\newBox{Information}{ZdSBoxBackgroundInformation}{ZdSBoxForegroundInformation}{ZdSBoxBorderInformation}{ZdSBoxLogoBackgroundInformation}[i]
+\newBox{Question}{ZdSBoxBackgroundQuestion}{ZdSBoxForegroundQuestion}{ZdSBoxBorderQuestion}{ZdSBoxLogoBackgroundQuestion}[?]
+\newBox{Warning}{ZdSBoxBackgroundWarning}{ZdSBoxForegroundWarning}{ZdSBoxBorderWarning}{ZdSBoxLogoBackgroundWarning}[!]
+\newBox{Error}{ZdSBoxBackgroundError}{ZdSBoxForegroundError}{ZdSBoxBorderError}{ZdSBoxLogoBackgroundError}[\times]
+\newBox{Neutral}{ZdSBoxBackgroundNeutral}{ZdSBoxForegroundNeutral}{ZdSBoxBorderNeutral}{ZdSBoxLogoBackgroundNeutral}
 
 %%% QUOTATION
 \DeclareTColorBox{Quotation}{ o }{%
