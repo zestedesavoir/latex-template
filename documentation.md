@@ -51,23 +51,23 @@ Create a inline source code with `\CodeInline{make test}`.
 
 The different title levels get adapted depending on the class option used.
 
-| | `small` | `middle` | `big` |
-|-|---------|----------------|-----|
-|`\levelOneTitle` | `\section` | `\chapter` | `\part`|
-|`\levelTwoTitle` | `\subsection` | `\section` | `\chapter`|
-|`\levelThreeTitle` | `\subsubsection` | `\subsection` | `\section`|
-|`\levelFourTitle`| `\paragraph` | `\subsubsection` | `\subsection` |
-|`\levelFiveTitle` |  `\subparagraph` | `\paragraph` | `\subsubsection`|
-|`\levelSixTitle` | *n.a.* |  `\subparagraph` | `\paragraph` |
-|`\levelSevenTitle` | *n.a.* | *n.a.* |  `\subparagraph`|
+|                    | `small`          | `middle`         | `big`            |
+| ------------------ | ---------------- | ---------------- | ---------------- |
+| `\levelOneTitle`   | `\section`       | `\chapter`       | `\part`          |
+| `\levelTwoTitle`   | `\subsection`    | `\section`       | `\chapter`       |
+| `\levelThreeTitle` | `\subsubsection` | `\subsection`    | `\section`       |
+| `\levelFourTitle`  | `\paragraph`     | `\subsubsection` | `\subsection`    |
+| `\levelFiveTitle`  | `\subparagraph`  | `\paragraph`     | `\subsubsection` |
+| `\levelSixTitle`   | *n.a.*           | `\subparagraph`  | `\paragraph`     |
+| `\levelSevenTitle` | *n.a.*           | *n.a.*           | `\subparagraph`  |
 
 For introduction and conclusion, macros are also defined. They don’t take parameters and they are titled "Introduction" / "Conclusion".
 
-| | `small` | `middle` | `big` |
-|-|---------|----------------|-----|
-|`\levelOneIntroduction` and `\levelOneConclusion` | Document introduction/conclusion | Document introduction/conclusion | Document introduction/conclusion|
-|`\levelTwoIntroduction` and `\levelOneConclusion` | *n.a.* | Chapter introduction/conclusion | Part introduction/conclusion|
-|`\levelThreeIntroduction` and `\levelThreeConclusion` | *n.a.* | *n.a.* | Chapter introduction/conclusion |
+|                                          | `small`                          | `middle`                         | `big`                            |
+| ---------------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
+| `\levelOneIntroduction` and `\levelOneConclusion` | Document introduction/conclusion | Document introduction/conclusion | Document introduction/conclusion |
+| `\levelTwoIntroduction` and `\levelOneConclusion` | *n.a.*                           | Chapter introduction/conclusion  | Part introduction/conclusion     |
+| `\levelThreeIntroduction` and `\levelThreeConclusion` | *n.a.*                           | *n.a.*                           | Chapter introduction/conclusion  |
 
 ## Title page macros (`\website`, `\authorlink`, `\editor`, `\editorLogo` and `\logo`)
 
@@ -103,6 +103,16 @@ Arguments in square brackets are optional (`\iframe{url}` is enough). The defaul
 ## `Information`, `Question`, `Warning` and `Error`
 
 Mimic the corresponding markdown blocks.
+
+It can take an optional parameter that corresponding to the block title.
+
+Example:
+
+```latex
+\begin{Question}[My optional title]
+Content of my block
+\end{Question}
+```
 
 ## Quotes
 
