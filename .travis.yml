@@ -32,7 +32,7 @@ install:
 
 script:
     - CURR=$(pwd)
-    - TEMPLATEDIR=$HOME/.texlive/texmf-local/tex/generic/latex-template
+    - TEMPLATEDIR=$HOME/.texlive/texmf-local/tex/latex/latex-template
     - TESTDIR=/tmp/latex-template-test
     - mkdir -p $TEMPLATEDIR && cp -r . $TEMPLATEDIR && texhash
     - mkdir -p $TESTDIR && cp -r ./tests/* $TESTDIR
