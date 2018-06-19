@@ -12,6 +12,8 @@ Credits go to :
 
 # Installation
 
+## Basics
+
 You need a standard (full) LaTeX distribution:
 
 + Windows: [MikTeX](https://miktex.org/download)
@@ -24,10 +26,6 @@ Since this template uses the [minted](https://github.com/gpoore/minted/) package
 pip install Pygments
 ```
 
-This repo uses submodules. After clone this repo, in root folder of the project, execute this command to download submodule: `git submodule update --init --recursive`
-
-Note that this package requires latex to be called with the `-shell-escape` option.
-
 You also need these fonts:
 
 - [Source Code Pro](https://www.fontsquirrel.com/fonts/source-code-pro)
@@ -35,16 +33,24 @@ You also need these fonts:
 
 ## Other images formats
 
-To be abble to use GIF and SVG images in your documents, two extra programs are needed:
+To be able to use GIF and SVG images in your documents, two extra programs are needed:
 
 + [librsvg](https://github.com/GNOME/librsvg), which uses cairo to convert svg to pdf, and is available under the name `librsvg2-bin` in many package managers ; 
 + The `convert` program, part of the [imagemagick](http://www.imagemagick.org/) tools suite, to convert GIF to PNG. It is probably also available in your package manager.
 
+## Package installation
+
+If you are a developer wanting to help, you can clone this package anywhere and just use the Makefile to run the tests (see [`CONTRIBUTING.md`](./CONTRIBUTING.md)).
+
+To use this package normally, you need to clone it into your `TXMFHOME` directory (you can know to which location it corresponds by running `kpsewhich -var-value TEXMFHOME`) and then run `texhash`.
+
+This repo uses submodules. After clone this repo, in root folder of the project, execute this command to download the submodules: `git submodule update --init --recursive`.
+
+Note that this package requires `lualatex` to be called with the `-shell-escape` option (because of minted).
+
 # Testing and using
 
 The different macros and environment are defined in [`zmdocument.cls`](./zmdocument.cls) and documented in [`documentation.md`](./documentation.md).
-This file can be placed in the same directory as the `.tex` file (or in [your `texmf` directory](http://www.math.illinois.edu/~ajh/tex/tips-customstyles.html)).
-
 Here is a skeleton on what your LaTeX document should contain:
 
 ```latex
