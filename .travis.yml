@@ -31,17 +31,13 @@ install:
   - pip install Pygments
 
 script:
-    - TMPL=$HOME/.texlive/texmf-local/tex/generic/latex-template
-    - mkdir -p $TMPL
-    - cp -r . $TMPL
-    - ls $TMPL
-    - texhash
     - CURR=$(pwd)
+    - TEMPLATEDIR=$HOME/.texlive/texmf-local/tex/generic/latex-template
     - TESTDIR=/tmp/latex-template-test
-    - mkdir -p $TESTDIR
-    - cp -r ./tests/* $TESTDIR
+    - mkdir -p $TEMPLATEDIR && cp -r . $TEMPLATEDIR && texhash
+    - mkdir -p $TESTDIR && cp -r ./tests/* $TESTDIR
     - cd $TESTDIR
+    - patch Makefile < travis.patch # no cheating
     - make tests
     - cd $CURR
-    - rm -R $TESTDIR
-    - rm -R $TMPL # avoid the package to be cached!
+    - rm -Rf $TESTDIR && rm -Rf $TEMPLATEDIR # avoid the package to be cached!
