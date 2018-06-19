@@ -41,3 +41,4 @@ script:
     - make tests
     - cd $CURR
     - rm -Rf $TESTDIR && rm -Rf $TEMPLATEDIR # avoid the package to be cached!
+    - texhash # avoid weird stuffs
