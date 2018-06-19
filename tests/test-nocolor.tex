@@ -1,12 +1,13 @@
-\documentclass[small]{zmdocument}
+\documentclass[small, print, nocolor]{zmdocument}
 
 \usepackage{blindtext}
 
 \title{Ceci est un titre}
-\author{Karnaj, pierre\_24, Heziode, Clem}
-\licence[./img/license/cc-by-nc-nd_icon.svg]{CC-BY-NC-ND}{https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode}
+\author{SpaceFox, elyppire, adri1, Fumble, viki53, tcit, Taurre, Algue-Rythme, informaticienzero, Aabu, Roipoussiere, Glordim, Holosmos, Saroupille, Gabbrovictor, artragis, Sandhose, gcodeur, ache}
+\licence[./test-images/cc-by-nc-nd_icon.svg]{CC-BY-NC-ND}{https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode}
 
-\editorLogo[La connaissance pour tous et sans pépins]{./img/logo/zestedesavoir.svg}
+\logo{./test-images/tuto_logo.png}
+\editorLogo[La connaissance pour tous et sans pépins]{./test-images/zestedesavoir-dark.svg}
 
 \smileysPath{./test-smileys}
 \makeglossaries
@@ -86,7 +87,7 @@ La suite, avec des touches \keys{CTRL + A}. Et on peut avoir une ligne avec
 
 \horizontalLine
 
-Voici un peu de code inline: \CodeInline{make test}. Et voici quelques exemples de code python :
+Voici un peu de code inline: \CodeInline[bash]{make test}. Et voici quelques exemples de code python :
 
 \begin{CodeBlock}{python}
 def foo(bar):
@@ -132,12 +133,12 @@ Bien sûr, on peut écrire des maths, et on peut même leur mettre une légende.
 
 Une image hors-texte :
 
-\image{logo.png}[Légende de l’image]
+\image{./test-images/logo.png}[Légende de l’image]
 
-On peut aussi avoir une image dans le texte \inlineImage{logo.png}, mais dans ce cas, pas de légende.
+On peut aussi avoir une image dans le texte \inlineImage{./test-images/logo.png}, mais dans ce cas, pas de légende.
 
 \begin{center}
-\includegraphics[width=\linewidth]{logo.png}
+\includegraphics[width=\linewidth]{./test-images/logo.png}
 \captionof{figure}{Légende}
 \end{center}
 
@@ -169,14 +170,6 @@ def foo(bar):
 \begin{Error}
 \blindtext
 \end{Error}
-
-\begin{Information}[Titre d'une information méga importante]
-\blindtext
-\end{Information}
-
-\begin{Neutral}[Titre de mon bloc neutre]
-Un bloc neutre, pour contenir un théorème ou une équation par exemple.
-\end{Neutral}
 
 Et finalement, un tableau:
 
@@ -223,7 +216,7 @@ def test(a):
 Et une image:
 
 \begin{center}
-\includegraphics[width=\linewidth]{logo.png}
+\includegraphics[width=\linewidth]{./test-images/logo.png}
 \captionof{figure}{Légende}
 \end{center}
 
