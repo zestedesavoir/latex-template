@@ -2,14 +2,22 @@
 
 ## Testing
 
+All test files are located into the `tests/` directory.
+
 There is a Makefile to ease testing:
 
 ```bash
 make clean # clean all the LaTeX auxiliary files
-make test # compile test.tex into a pdf using zmdocument.cls
+make simple-test # compile test.tex into a pdf using zmdocument.cls
 
-# If you have installed extra tools for image conversion
-make test-images
+# If you have installed the extra tools for image conversion
+make images-test
+
+# if you want to lanch all the tests
+make tests
+
+# to clean up:
+make clean
 ```
 
 ## Contribution rules

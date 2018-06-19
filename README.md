@@ -63,7 +63,7 @@ Here is a skeleton on what your LaTeX document should contain:
 \end{document}
 ```
 
-See [`test.tex`](./test.tex) for an example usage of the document class.
+See [the `test.tex` file in tests](./tests/test.tex) for an example usage of the document class.
 
 
 # Contributing
