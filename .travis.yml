@@ -31,9 +31,10 @@ install:
   - pip install Pygments
 
 script:
-    - TMPL=$HOME/texmf/tex/generic/latex-template
+    - TMPL=$HOME/.texlive/texmf-local/tex/generic/latex-template
     - mkdir -p $TMPL
     - cp -r . $TMPL
+    - ls $TMPL
     - texhash
     - CURR=$(pwd)
     - TESTDIR=/tmp/latex-template-test
@@ -43,3 +44,4 @@ script:
     - make tests
     - cd $CURR
     - rm -R $TESTDIR
+    - rm -R $TMPL # avoid the package to be cached!
