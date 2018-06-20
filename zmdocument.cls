@@ -60,7 +60,7 @@
 \setmonofont{Source Code Pro}
 
 %%% Lua scripts
-\directlua{dofile("zmdocument.lua")}
+\directlua{require("zmdocument.lua")}
 
 %%%  NOCOLOR OPTION
 %%% Define if it's in nocolor mode
