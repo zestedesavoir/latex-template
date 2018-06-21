@@ -1,5 +1,5 @@
 TEX = lualatex
-DRAFTFLAG = -draftmode
+DRAFTFLAG = # -draftmode
 TEXFLAGS = -shell-escape -interaction=nonstopmode
 
 all: help
@@ -33,6 +33,8 @@ test-nocolor.pdf: test-nocolor.tex
 nocolor-test: create-nocolor test-nocolor.pdf
 
 tests: simple-test author-test images-test nocolor-test
+
+tmp: test-absolute.pdf
 
 clean:
 	rm -f test-nocolor.tex
