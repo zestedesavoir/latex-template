@@ -5,6 +5,7 @@
 
 %%% PACKAGES -------------------------------------------------------------------
 
+\RequirePackage{luatex85}
 \RequirePackage{fontspec}
 \RequirePackage{scrhack}
 \RequirePackage[dvipsnames,table]{xcolor}
