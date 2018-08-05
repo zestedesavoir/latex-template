@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{zmdocument}
 
-\LoadClass[fontsize=12pt,twoside=false,numbers=enddot,parskip=half]{scrbook}
+\LoadClass[a4paper,fontsize=12pt,twoside=false,numbers=enddot,parskip=half]{scrbook}
 
 %%% PACKAGES -------------------------------------------------------------------
 
@@ -20,6 +20,7 @@
 \RequirePackage{ifthen}
 \RequirePackage{xifthen}
 \RequirePackage{luacode}
+\RequirePackage{soul}
 
 %% LATEX 3 PACKAGES
 \RequirePackage{etoolbox}
@@ -260,6 +261,10 @@
 
 \setcounter{secnumdepth}{4}
 
+%%% GEOMETRY -----------------------------------------------------------------
+
+\newgeometry{top=2.5cm, bottom=2.5cm, right=2cm,left=2cm}
+
 %%% CUSTOMS ENVIRONMENTS AND MACROS ------------------------------------------
 
 %%% LINKS
@@ -379,17 +384,8 @@
    coltitle=defaultColor
 }
 
-\DeclareTotalTCBox{\CodeInline}{m}{%
-   verbatim,
-   enlarge top initially by=0mm,
-   enlarge bottom finally by=0mm,
-   colback=codeBackgroundColor,
-   coltext=defaultColor,
-   colframe=ZdSBoxBorderSpoiler,
-   boxrule=0.5pt,
-   arc=0.0pt
-}
-{\texttt{#1}}
+\sethlcolor{codeBackgroundColor}
+\newcommand{\CodeInline}[1]{\hl{\texttt{#1}}}
 
 %%% IFRAMES
 \newenvironment{Iframe}[1]{%
