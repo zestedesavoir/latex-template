@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{zmdocument}
 
-\LoadClass[fontsize=12pt,twoside=false,numbers=enddot,parskip=half]{scrbook}
+\LoadClass[a4paper,fontsize=12pt,twoside=false,numbers=enddot,parskip=half]{scrbook}
 
 %%% PACKAGES -------------------------------------------------------------------
 
@@ -260,6 +260,10 @@
 \addtokomafont{subparagraph}{\color{subparagraphColor}}
 
 \setcounter{secnumdepth}{4}
+
+%%% GEOMETRY -----------------------------------------------------------------
+
+\newgeometry{top=2.5cm, bottom=2.5cm, right=2cm,left=2cm}
 
 %%% CUSTOMS ENVIRONMENTS AND MACROS ------------------------------------------
 
