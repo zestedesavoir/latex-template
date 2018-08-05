@@ -20,6 +20,7 @@
 \RequirePackage{ifthen}
 \RequirePackage{xifthen}
 \RequirePackage{luacode}
+\RequirePackage{soul}
 
 %% LATEX 3 PACKAGES
 \RequirePackage{etoolbox}
@@ -379,17 +380,8 @@
    coltitle=defaultColor
 }
 
-\DeclareTotalTCBox{\CodeInline}{m}{%
-   verbatim,
-   enlarge top initially by=0mm,
-   enlarge bottom finally by=0mm,
-   colback=codeBackgroundColor,
-   coltext=defaultColor,
-   colframe=ZdSBoxBorderSpoiler,
-   boxrule=0.5pt,
-   arc=0.0pt
-}
-{\texttt{#1}}
+\sethlcolor{codeBackgroundColor}
+\newcommand{\CodeInline}[1]{\hl{\texttt{#1}}}
 
 %%% IFRAMES
 \newenvironment{Iframe}[1]{%
