@@ -39,6 +39,7 @@
 \RequirePackage[export]{adjustbox}
 \RequirePackage{epstopdf}
 \RequirePackage{geometry}
+\RequirePackage{grffile}
 
 \epstopdfDeclareGraphicsRule{.gif}{png}{.png}{convert gif:#1 png:\OutputFile}
 \AppendGraphicsExtensions{.gif}
