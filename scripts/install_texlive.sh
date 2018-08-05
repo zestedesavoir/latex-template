@@ -3,7 +3,7 @@
 # Forked from Zeste de Savoir:
 # https://github.com/zestedesavoir/zds-site/blob/a16c5fc932b361cbee5c6e61b24167605e24cd8b/scripts/install_texlive.sh
 
-EXTRA_PACKAGES="adjustbox blindtext capt-of catoptions cm-super collectbox framed fvextra glossaries ifplatform menukeys minted multirow ntheorem pagecolor relsize tabu varwidth xpatch xstring mfirstuc xfor datatool substr tracklang xsavebox media9 tcolorbox environ etoolbox trimspaces ifthen geometry xifthen ifmtarg fontspec luacode ctablestack luatex85"
+EXTRA_PACKAGES=$(cat $(dirname "$0")/packages)
 EXTRA_PACKAGES_CACHE="$HOME/.texlive/extra_packages_cache.txt"
 
 function install_texlive() {
