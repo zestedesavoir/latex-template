@@ -27,15 +27,10 @@ xsavebox
 media9
 tcolorbox
 environ
-etoolbox
 trimspaces
-ifthen
-geometry
 xifthen
 ifmtarg
-fontspec
 luacode
 ctablestack
 luatex85
-grffile
 soul
