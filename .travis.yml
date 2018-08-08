@@ -24,7 +24,6 @@ addons:
     - librsvg2-bin
 
 install:
-  - mkdir -p $HOME/bin
   - ./scripts/install_font.sh
   - ./scripts/install_texlive.sh
   - export PATH=$HOME/.texlive/bin/x86_64-linux:$PATH

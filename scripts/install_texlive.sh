@@ -53,8 +53,3 @@ else
   echo "! previous installation not found"
   install_texlive
 fi
-
-# Symlink the binaries to ~/bin
-for i in $HOME/.texlive/bin/x86_64-linux/*; do
-  ln -sf $i $HOME/bin/
-done
