@@ -15,7 +15,6 @@ cache:
   apt: true
   directories:
     - $HOME/.texlive
-    - $HOME/bin
 
 addons:
   apt:
