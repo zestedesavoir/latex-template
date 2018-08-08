@@ -32,8 +32,8 @@ function install_texlive {
   fi
 
   # Install extra latex packages
+  echo "Installing extra packages"
   $HOME/.texlive/bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
-  $HOME/.texlive/bin/x86_64-linux/tlmgr update --self
   
   # save list of extra packages
   printf "$EXTRA_PACKAGES" > $EXTRA_PACKAGES_CACHE
@@ -43,7 +43,6 @@ function install_texlive {
 
 if [[ -f $HOME/.texlive/bin/x86_64-linux/tlmgr ]]; then
   if [[ -f $EXTRA_PACKAGES_CACHE ]]; then
-      echo "<$(cat $EXTRA_PACKAGES_CACHE)> <$EXTRA_PACKAGES>"
       if [[ $(cat $EXTRA_PACKAGES_CACHE) != $EXTRA_PACKAGES ]]; then
         echo "! found change in extra packages"
         install_texlive 1
