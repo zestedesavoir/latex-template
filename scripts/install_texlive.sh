@@ -33,6 +33,7 @@ function install_texlive {
 
   # Install extra latex packages
   echo "Installing extra packages"
+  $HOME/.texlive/bin/x86_64-linux/tlmgr update --self
   $HOME/.texlive/bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
   
   # save list of extra packages
