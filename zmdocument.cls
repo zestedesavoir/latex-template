@@ -572,7 +572,4 @@
 \newcommand{\horizontalLine}{{\color{horizontalLineColor}\rule{\textwidth}{1.0pt}}}
 
 %%% ABBREVIATIONS
-\newcommand{\abbr}[2]{%
-   \newglossaryentry{#1}{name=#1, description={#2}}%
-   \dotuline{\gls{#1}}
-}
+\newcommand{\abbr}[2]{\newglossaryentry{#1}{name=#1, description={#2}}\gls{#1}}
