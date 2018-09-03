@@ -268,13 +268,7 @@
 %%% CUSTOMS ENVIRONMENTS AND MACROS ------------------------------------------
 
 %%% LINKS
-\newcommand{\externalLink}[2]{
-   \iftoggle{print}{%
-      \textbf{[#1](#2)}%
-   }{%
-      \href{#2}{\color{externalLinkColor}{#1~\linkIcon}}%
-   }
-}
+\newcommand{\externalLink}[2]{\iftoggle{print}{\textbf{[#1](#2)}}{\href{#2}{\color{externalLinkColor}{#1~\linkIcon}}}}
 \newcommand{\@titlePageLink}[2]{\href{#2}{\color{alternativeTextColor}{#1}}}
 
 %%% ZDS BOX
