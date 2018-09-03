@@ -171,7 +171,7 @@
 
 \def\boxIcon{[draw=none] circle (0.4cm)}
 
-\def\linkIcon{\tikz[x=1.2ex, y=1.2ex, baseline=-0.05ex]{%
+\DeclareRobustCommand{\linkIcon}{\tikz[x=1.2ex, y=1.2ex, baseline=-0.05ex]{%
 \begin{scope}[x=1ex, y=1ex]
    \clip (-0.1,-0.1)
    --++ (-0, 1.2)
