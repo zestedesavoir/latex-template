@@ -399,13 +399,19 @@
 \let\levelSpoiler\subsection
 
 \newcounter{@spoilerCounter}
+\setcounter{@spoilerCounter}{1}
+\newcounter{@spoilerCounterStart}
+\setcounter{@spoilerCounterStart}{1}
+
 \def\@spoilerList{}
 
+\newcommand{\spoilerFileName}[1]{\jobname-spoiler-#1.splr}
+
 \newenvironment{Spoiler}{%
-   \addtocounter{@spoilerCounter}{1}%
-   \begin{xlrbox}{spoilerSavebox\the@spoilerCounter}\begin{minipage}{\linewidth}\begin{NoHyper}%
+   \setbox\@tempboxa\hbox\bgroup
+   \VerbatimOut{\spoilerFileName{\the@spoilerCounter}}%
 }{
-   \vspace*{1em}\end{NoHyper}\end{minipage}\end{xlrbox}%
+   \endVerbatimOut\egroup%
    \hypertarget{show:\thepart\thechapter\the@spoilerCounter}{}
    \label{show:\the@spoilerCounter}
    \begin{SpoilerBox}
@@ -414,35 +420,37 @@
          \iftoggle{print}{%
             Contenu masqué~n°\the@spoilerCounter,~disponible à la page~\pageref{secret:\the@spoilerCounter}%
          }{%
-            Afficher le contenu masqué%
+            Aller au contenu masqué~n°\the@spoilerCounter%
          }
          \color{defaultColor}
       }
    \end{SpoilerBox}
-   \listgadd{\@spoilerList}{\xusebox{spoilerSavebox\the@spoilerCounter}}
+   \listgadd{\@spoilerList}{\the@spoilerCounter}%
+   \addtocounter{@spoilerCounter}{1}
 }
 
 \newcommand{\displaySpoilers}{%
-   \setcounter{@spoilerCounter}{1}
+   \setcounter{@spoilerCounter}{\the@spoilerCounterStart}
    \ifdefvoid{\@spoilerList}{}{\levelSpoilerTitle{Contenu masqué}}
    \def\do{}
    \renewcommand{\do}[1]{%
-      \levelSpoiler*{Contenu~\the@spoilerCounter}%
+      \levelSpoiler*{Contenu masqué~n°\the@spoilerCounter}%
       \label{secret:\the@spoilerCounter}%
       \hypertarget{secret:\thepart\thechapter\the@spoilerCounter}{}
-      \expandafter{##1}\\ \hfill \hyperlink{show:\thepart\thechapter\the@spoilerCounter}{
+      \input{\spoilerFileName{\the@spoilerCounter}}
+      \hfill \hyperlink{show:\thepart\thechapter\the@spoilerCounter}{
          \iftoggle{print}{%
             Référencé page~\pageref{show:\the@spoilerCounter}%
          }{%
             Retourner au texte.%
          }
       }
-
+      
       \addtocounter{@spoilerCounter}{1}
    }
    \expandafter\dolistloop{\@spoilerList}
    \def\@spoilerList{}
-   \setcounter{@spoilerCounter}{0}
+   \setcounter{@spoilerCounterStart}{\the@spoilerCounter}
 }
 
 \AtEndDocument{%

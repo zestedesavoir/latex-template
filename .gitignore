@@ -16,6 +16,7 @@
 .idea
 _minted*
 *converted-to*
+*.splr
 
 # Other craps:
 Thumbs.db

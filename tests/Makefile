@@ -36,6 +36,6 @@ tests: simple-test author-test images-test nocolor-test
 
 clean:
 	rm -f test-nocolor.tex
-	rm -f *.aux *.log *.out *.pdf *.thm *.toc *.glg *.glo *.gls *.glsdefs *.ist *.gz *.listing
+	rm -f *.aux *.log *.out *.pdf *.thm *.toc *.glg *.glo *.gls *.glsdefs *.ist *.gz *.listing *.splr
 	rm -rf _minted-*
 	rm -f test-images/*converted-to*
