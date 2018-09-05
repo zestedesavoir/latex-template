@@ -171,7 +171,7 @@
 
 \def\boxIcon{[draw=none] circle (0.4cm)}
 
-\def\linkIcon{\tikz[x=1.2ex, y=1.2ex, baseline=-0.05ex]{%
+\DeclareRobustCommand{\linkIcon}{\tikz[x=1.2ex, y=1.2ex, baseline=-0.05ex]{%
 \begin{scope}[x=1ex, y=1ex]
    \clip (-0.1,-0.1)
    --++ (-0, 1.2)
@@ -268,13 +268,7 @@
 %%% CUSTOMS ENVIRONMENTS AND MACROS ------------------------------------------
 
 %%% LINKS
-\newcommand{\externalLink}[2]{
-   \iftoggle{print}{%
-      \textbf{[#1](#2)}%
-   }{%
-      \href{#2}{\color{externalLinkColor}{#1~\linkIcon}}%
-   }
-}
+\newcommand{\externalLink}[2]{\iftoggle{print}{\textbf{[#1](#2)}}{\href{#2}{\color{externalLinkColor}{#1~\linkIcon}}}}
 \newcommand{\@titlePageLink}[2]{\href{#2}{\color{alternativeTextColor}{#1}}}
 
 %%% ZDS BOX
@@ -385,7 +379,7 @@
 }
 
 \sethlcolor{codeBackgroundColor}
-\newcommand{\CodeInline}[1]{\hl{\texttt{#1}}}
+\newcommand{\CodeInline}[1]{\texorpdfstring{\hl{\texttt{#1}}}{#1}}
 
 %%% IFRAMES
 \newenvironment{Iframe}[1]{%
@@ -405,13 +399,19 @@
 \let\levelSpoiler\subsection
 
 \newcounter{@spoilerCounter}
+\setcounter{@spoilerCounter}{1}
+\newcounter{@spoilerCounterStart}
+\setcounter{@spoilerCounterStart}{1}
+
 \def\@spoilerList{}
 
+\newcommand{\spoilerFileName}[1]{\jobname-spoiler-#1.splr}
+
 \newenvironment{Spoiler}{%
-   \addtocounter{@spoilerCounter}{1}%
-   \begin{xlrbox}{spoilerSavebox\the@spoilerCounter}\begin{minipage}{\linewidth}\begin{NoHyper}%
+   \setbox\@tempboxa\hbox\bgroup
+   \VerbatimOut{\spoilerFileName{\the@spoilerCounter}}%
 }{
-   \vspace*{1em}\end{NoHyper}\end{minipage}\end{xlrbox}%
+   \endVerbatimOut\egroup%
    \hypertarget{show:\thepart\thechapter\the@spoilerCounter}{}
    \label{show:\the@spoilerCounter}
    \begin{SpoilerBox}
@@ -420,35 +420,37 @@
          \iftoggle{print}{%
             Contenu masqué~n°\the@spoilerCounter,~disponible à la page~\pageref{secret:\the@spoilerCounter}%
          }{%
-            Afficher le contenu masqué%
+            Aller au contenu masqué~n°\the@spoilerCounter%
          }
          \color{defaultColor}
       }
    \end{SpoilerBox}
-   \listgadd{\@spoilerList}{\xusebox{spoilerSavebox\the@spoilerCounter}}
+   \listgadd{\@spoilerList}{\the@spoilerCounter}%
+   \addtocounter{@spoilerCounter}{1}
 }
 
 \newcommand{\displaySpoilers}{%
-   \setcounter{@spoilerCounter}{1}
+   \setcounter{@spoilerCounter}{\the@spoilerCounterStart}
    \ifdefvoid{\@spoilerList}{}{\levelSpoilerTitle{Contenu masqué}}
    \def\do{}
    \renewcommand{\do}[1]{%
-      \levelSpoiler*{Contenu~\the@spoilerCounter}%
+      \levelSpoiler*{Contenu masqué~n°\the@spoilerCounter}%
       \label{secret:\the@spoilerCounter}%
       \hypertarget{secret:\thepart\thechapter\the@spoilerCounter}{}
-      \expandafter{##1}\\ \hfill \hyperlink{show:\thepart\thechapter\the@spoilerCounter}{
+      \input{\spoilerFileName{\the@spoilerCounter}}
+      \hfill \hyperlink{show:\thepart\thechapter\the@spoilerCounter}{
          \iftoggle{print}{%
             Référencé page~\pageref{show:\the@spoilerCounter}%
          }{%
             Retourner au texte.%
          }
       }
-
+      
       \addtocounter{@spoilerCounter}{1}
    }
    \expandafter\dolistloop{\@spoilerList}
    \def\@spoilerList{}
-   \setcounter{@spoilerCounter}{0}
+   \setcounter{@spoilerCounterStart}{\the@spoilerCounter}
 }
 
 \AtEndDocument{%
@@ -578,7 +580,4 @@
 \newcommand{\horizontalLine}{{\color{horizontalLineColor}\rule{\textwidth}{1.0pt}}}
 
 %%% ABBREVIATIONS
-\newcommand{\abbr}[2]{%
-   \newglossaryentry{#1}{name=#1, description={#2}}%
-   \dotuline{\gls{#1}}
-}
+\newcommand{\abbr}[2]{\newglossaryentry{#1}{name=#1, description={#2}}\gls{#1}}
