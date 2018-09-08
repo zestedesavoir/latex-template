@@ -421,7 +421,7 @@
    \end{SpoilerBox}%
    \begingroup\tcbverbatimwrite{\spoilerFileName{\the@spoilerCounter}}}{
    \endtcbverbatimwrite\endgroup
-   \listgadd{\@spoilerList}{\the@spoilerCounter}%
+   \listgadd{\@spoilerList}{\IfNoValueTF{#1}{}{#1}}%
    \addtocounter{@spoilerCounter}{1}
 }
 
@@ -430,7 +430,7 @@
    \ifdefvoid{\@spoilerList}{}{\levelSpoilerTitle{Contenu masqué}}
    \def\do{}
    \renewcommand{\do}[1]{%
-      \levelSpoiler*{Contenu masqué~n°\the@spoilerCounter}%
+      \levelSpoiler*{Contenu masqué~n°\the@spoilerCounter\if##1\empty\else~:\\##1\fi}%
       \label{secret:\the@spoilerCounter}%
       \hypertarget{secret:\thepart\thechapter\the@spoilerCounter}{}
       \input{\spoilerFileName{\the@spoilerCounter}}
