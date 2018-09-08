@@ -106,6 +106,7 @@
 \definecolor{codeBackgroundColor}{HTML}{F7F7F7}
 \definecolor{highlightCodeColor}{HTML}{E3E3E3}
 \definecolor{lineNumberSeparatorCodeColor}{HTML}{BEBEC5}
+\definecolor{lineNumberCodeColor}{HTML}{AEAEB5}
 
 \definecolor{horizontalLineColor}{HTML}{CCCCCC}
 
@@ -354,6 +355,8 @@
 
 \setminted{breaklines, breaksymbolleft=\hspace{2em}, highlightcolor=highlightCodeColor, linenos, fontsize=\small,baselinestretch=1}
 
+\renewcommand\theFancyVerbLine{\small\textcolor{lineNumberCodeColor}{\arabic{FancyVerbLine}}}
+
 \DeclareTCBListing{CodeBlock}{O{}O{}O{1}m}{%
    enlarge top initially by=5mm,
    enlarge bottom finally by=1mm,
@@ -379,7 +382,7 @@
 }
 
 \sethlcolor{codeBackgroundColor}
-\newcommand{\CodeInline}[1]{\texorpdfstring{\hl{\texttt{#1}}}{#1}}
+\newcommand{\CodeInline}[1]{\texorpdfstring{\hl{\texttt{\small  #1}}}{#1}}
 
 %%% IFRAMES
 \newenvironment{Iframe}[1]{%
