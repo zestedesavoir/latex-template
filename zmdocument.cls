@@ -379,7 +379,7 @@
 }
 
 \sethlcolor{codeBackgroundColor}
-\newcommand{\CodeInline}[1]{\texorpdfstring{\hl{\texttt{#1}}}{#1}}
+\newcommand{\CodeInline}[1]{\texorpdfstring{\hl{\texttt{\small  #1}}}{#1}}
 
 %%% IFRAMES
 \newenvironment{Iframe}[1]{%
