@@ -7,13 +7,25 @@ ARRAY_AUTHORS      = {}
 ARRAY_AUTHORS_SIZE = 0
 NUMBER_OF_COLUMNS  = 1
 
+-- Dump the content of a table, usefull for debuging purpose
+-- source: https://stackoverflow.com/a/27028488
+function dump(o)
+   if type(o) == 'table' then
+      local s = '{ '
+      for k,v in pairs(o) do
+         if type(k) ~= 'number' then k = '"'..k..'"' end
+         s = s .. '['..k..'] = ' .. dump(v) .. ','
+      end
+      return s .. '} '
+   else
+      return tostring(o)
+   end
+end
+
 --  Split and Join a string into / from a table
 --  source: http://www.wellho.net/resources/ex.php4?item=u105/spjo
 function implode (delimiter, list)
    local len = #list
-   if len == 0 then
-      return ""
-   end
    local string = list[0]
    for i = 1, len do
       string = string .. delimiter .. list[i]
