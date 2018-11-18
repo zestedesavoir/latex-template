@@ -30,6 +30,9 @@ install:
 
 script:
     - CURR=$(pwd)
+    - cd tests/  # run lua test first, otherwise it will not find zmdocument.lua
+    - make lua-test
+    - cd ..
     - TEMPLATEDIR=$HOME/.texlive/texmf-local/tex/latex/latex-template
     - TESTDIR=/tmp/latex-template-test
     - mkdir -p $TEMPLATEDIR && cp -r . $TEMPLATEDIR && texhash
