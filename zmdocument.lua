@@ -1,4 +1,5 @@
-utf8 = require "utf8.lua/utf8.lua"
+package.path = 'utf8.lua/?.lua;' .. package.path
+utf8 = require 'utf8'
 
 AUTHOR_MAX_SIZE    = 15
 AUTHOR_MAX_DISPLAY = 11
@@ -64,9 +65,9 @@ function makeAuthorsArray (authors)
    ARRAY_AUTHORS_SIZE = index
 end
 
---  Display athors
---  If "all" parameter is not nil, this will display all authors
-function displayAuthors (all)
+--  Create the string with authors
+--  If "all" parameter is not nil, this will include all authors
+function createStrAuthors(all)
    all         = all or false
    local index = ARRAY_AUTHORS_SIZE
 
@@ -77,7 +78,12 @@ function displayAuthors (all)
    local tab = {}
 
    for i = 0, index do
-      tab[i] = "\\href{" .. AUTHOR_LINK .. "/" .. ARRAY_AUTHORS[i].name .. "/}{\\color{titlePageAuthorColor}\\bsc{" .. ARRAY_AUTHORS[i].display_name .. "}}\\\\"
+      local display_name = ARRAY_AUTHORS[i].display_name
+      if all then
+        display_name = ARRAY_AUTHORS[i].name
+      end
+      
+      tab[i] = "\\href{" .. AUTHOR_LINK .. "/" .. ARRAY_AUTHORS[i].name .. "/}{\\color{titlePageAuthorColor}\\bsc{" .. display_name .. "}}\\\\"
    end
 
    local strAuthors = implode (",", tab)
@@ -87,8 +93,12 @@ function displayAuthors (all)
          (ARRAY_AUTHORS_SIZE - AUTHOR_MAX_DISPLAY) .. " autre(s) auteur(s)}}\\\\"
    end
 
-   print (strAuthors)
+   return strAuthors
+end
 
+--  Display athors
+--  If "all" parameter is not nil, this will display all authors
+function displayAuthors (strAuthors)
    tex.print ("\\expandafter\\docsvlist\\expandafter{" .. strAuthors .. "}")
 end
 
@@ -101,10 +111,16 @@ function getAuthorsNumberMaxDisplayed ()
    end
 end
 
---  Format authors for displaying on cover
-function formatAuthors (authors, link)
+--  Format the author list and return the string
+function formatAuthorsBase (authors, link, all)
    makeAuthorsArray (authors)
    AUTHOR_LINK = link
+   
+   return createStrAuthors(all) 
+end
+
+--  Format authors for displaying on cover
+function formatAuthors (authors, link)
    local authorsByColumn = 5
    local authorsNumber = getAuthorsNumberMaxDisplayed ()
 
@@ -114,7 +130,7 @@ function formatAuthors (authors, link)
       tex.print ("\\begin{multicols}{" .. NUMBER_OF_COLUMNS .. "}")
    end
 
-   displayAuthors ()
+   displayAuthors (formatAuthorsBase(authors, link, false))
 
    if NUMBER_OF_COLUMNS > 1 then
       tex.print ("\\end{multicols}")
@@ -127,14 +143,20 @@ function makeAuthorsPage ()
       --  Displaying this page only if all authors are not displayed on cover
       return
    end
+   
+   tex.print ("\\section*{\\hypertarget{authorsList}{Auteurs}}")
 
    if NUMBER_OF_COLUMNS > 1 then
-      tex.print ("\\begin{center}\\section*{\\hypertarget{authorsList}{Auteurs}}\\end{center}\\begin{multicols}{" .. NUMBER_OF_COLUMNS .. "}")
+      tex.print ("\\begin{multicols}{" .. NUMBER_OF_COLUMNS .. "}")
    end
 
-   displayAuthors(true)
+   displayAuthors (createStrAuthors(true))
 
    if NUMBER_OF_COLUMNS > 1 then
       tex.print ("\\end{multicols}\\newpage")
    end
 end
+
+local zmdocument = {}
+zmdocument.formatAuthorsBase = formatAuthorsBase
+return zmdocument

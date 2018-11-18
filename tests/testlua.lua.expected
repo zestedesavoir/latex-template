@@ -1,0 +1,10 @@
+% one author:
+\href{/Eskimon/}{\color{titlePageAuthorColor}\bsc{Eskimon}}\\
+% three authors:
+\href{/Karnaj/}{\color{titlePageAuthorColor}\bsc{Karnaj}}\\,\href{/Heziode/}{\color{titlePageAuthorColor}\bsc{Heziode}}\\,\href{/pierre_24/}{\color{titlePageAuthorColor}\bsc{pierre_24}}\\
+% one author with link:
+\href{http://test.com/author/Eskimon/}{\color{titlePageAuthorColor}\bsc{Eskimon}}\\
+% one author with long name:
+\href{/that_author_with_a_very_long_name/}{\color{titlePageAuthorColor}\bsc{that_author_...}}\\
+% one author with long name (but in author list, so full name):
+\href{/that_author_with_a_very_long_name/}{\color{titlePageAuthorColor}\bsc{that_author_with_a_very_long_name}}\\
