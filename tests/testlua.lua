@@ -2,6 +2,7 @@
 package.path = '../utf8.lua/?.lua;../?.lua;' .. package.path
 zmd = require 'zmdocument'
 
+-- run some tests
 print('% one author:')
 print(zmd.formatAuthorsBase('Eskimon', '', false))
 
