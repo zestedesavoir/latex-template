@@ -35,7 +35,7 @@ test-nocolor.pdf: test-nocolor.tex
 
 nocolor-test: create-nocolor test-nocolor.pdf
 
-tests: simple-test author-test images-test nocolor-test lua-test
+tests: simple-test author-test images-test nocolor-test
 
 clean:
 	rm -f test-nocolor.tex
