@@ -568,15 +568,32 @@
    \end{center}
 }
 
-\newcommand{\inlineImage}[1]{\includegraphics[max size={\textwidth}{\textheight}, keepaspectratio]{#1}}
+\DeclareRobustCommand*{\inlineImage}[1]{\includegraphics[max size={\textwidth}{\textheight}, keepaspectratio]{#1}}
 
 %%% SMILEYS
 \def\@smileysPath{./smileys}
 \newcommand{\smileysPath}[1]{\def\@smileysPath{#1}}
-\newcommand{\smiley}[1]{\raisebox{-3pt}{\includegraphics[height=15pt]{\@smileysPath/#1}} }
+\DeclareRobustCommand*{\smiley}[1]{\raisebox{-3pt}{\includegraphics[height=15pt]{\@smileysPath/#1}} }
 
 %%% HORIZONTAL LINE
 \newcommand{\horizontalLine}{{\color{horizontalLineColor}\rule{\textwidth}{1.0pt}}}
 
 %%% ABBREVIATIONS
 \newcommand{\abbr}[2]{\newglossaryentry{#1}{name=#1, description={#2}}\gls{#1}}
+
+
+%%% Hyperref -------------------------------------------------------------------
+
+
+% Hyperref tries to use the content of the title to generate the PDF table of contents, 
+% but generate some errors in the process (since only letters are allowed there).
+% Here, you can neuter the effect of some commands.
+
+\pdfstringdefDisableCommands{
+   \def\sout#1{}%
+   \def\smiley#1{}%
+   \def\externalLink#1#2{#1}%
+   \def\inlineImage#1{}%
+}
+
+
