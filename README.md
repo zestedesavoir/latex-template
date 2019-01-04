@@ -42,7 +42,9 @@ To be able to use GIF and SVG images in your documents, two extra programs are n
 
 If you are a developer wanting to help, you can clone this package anywhere and just use the Makefile to run the tests (see [`CONTRIBUTING.md`](./CONTRIBUTING.md)).
 
-To use this package normally, you need to clone it into your `TXMFHOME/tex/latex/` directory (you can know to which location `TXMFHOME` corresponds by running `kpsewhich -var-value TEXMFHOME`, but probably `$HOME/texmf/`) and then run `texhash`. More information is given for example [here](https://faculty.math.illinois.edu/~hildebr/tex/tips-customstyles.html).
+To use this package normally, you need to clone it into your `TXMFHOME/tex/latex/` directory (you can know to which location `TXMFHOME` corresponds by running `kpsewhich -var-value TEXMFHOME`, but probably `$HOME/texmf/`). 
+Note that you don't need to run `texhash`. 
+More information is given for example [here](https://faculty.math.illinois.edu/~hildebr/tex/tips-customstyles.html).
 
 This repo uses submodules. After clone this repo, in root folder of the project, execute this command to download the submodules: `git submodule update --init --recursive`.
 
