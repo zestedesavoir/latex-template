@@ -11,6 +11,7 @@
 \RequirePackage[dvipsnames,table]{xcolor}
 \RequirePackage{scrlayer-scrpage}
 \RequirePackage{minted}
+\RequirePackage{accsupp}
 \RequirePackage{amsmath,amssymb}
 \RequirePackage[french]{babel}
 \RequirePackage[babel=true]{microtype}
@@ -356,7 +357,11 @@
 
 \setminted{breaklines, breaksymbolleft=\hspace{2em}, highlightcolor=highlightCodeColor, linenos, fontsize=\small,baselinestretch=1}
 
-\renewcommand\theFancyVerbLine{\small\textcolor{lineNumberCodeColor}{\arabic{FancyVerbLine}}}
+\renewcommand\theFancyVerbLine{%
+   \BeginAccSupp{ActualText={}}%
+      \small\textcolor{lineNumberCodeColor}{\arabic{FancyVerbLine}}%
+   \EndAccSupp{}%
+}
 
 \DeclareTCBListing{CodeBlock}{O{}O{}O{1}m}{%
    enlarge top initially by=5mm,
