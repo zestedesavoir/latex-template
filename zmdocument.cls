@@ -578,7 +578,7 @@
 \newcommand{\horizontalLine}{{\color{horizontalLineColor}\rule{\textwidth}{1.0pt}}}
 
 %%% ABBREVIATIONS
-\newcommand{\abbr}[2]{%
-   \newglossaryentry{#1}{name=#1, description={#2}}%
-   \dotuline{\gls{#1}}
+\NewDocumentCommand{\abbr}{mom}{%
+   \newglossaryentry{\IfNoValueTF{#2}{#1}{#2}}{name=#1, description={#3}}%
+   \gls{\IfNoValueTF{#2}{#1}{#2}}%
 }

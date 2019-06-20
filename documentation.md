@@ -28,6 +28,8 @@
 To add an abbreviation, use `\abbr{word}{definition}`. Abbreviations will be listed in a glossary at the end of the document.
 
 **Warning**: `word` should not contain accented characters or other special characters because of the *glossaries* package.
+If so, there is an optional parameter to provide a alternate key: `\abbr{AT\&T}[AT(and)T]{American Telephone and Telegraph Company}`. 
+`\gls{AT(and)T}` should then be used later in the text if the abbreviation is re-used.
 
 ## Thematic break
 
