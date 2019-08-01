@@ -586,8 +586,8 @@
 
 %%% ABBREVIATIONS
 \NewDocumentCommand{\abbr}{mom}{%
-   \newglossaryentry{\IfNoValueTF{#2}{#1}{#2}}{name=#1, description={#3}}%
-   \gls{\IfNoValueTF{#2}{#1}{#2}}%
+   \newglossaryentry{\IfNoValueTF{#2}{\directlua{cleanAbbrvLabel(\luastringO{#1})}}{#2}}{name=#1, description={#3}}%
+   \gls{\IfNoValueTF{#2}{\directlua{cleanAbbrvLabel(\luastringO{#1})}}{#2}}%
 }
 
 %%% Hyperref -------------------------------------------------------------------
