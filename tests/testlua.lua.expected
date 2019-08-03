@@ -1,3 +1,4 @@
+% --- Test authors
 % one author:
 \href{/Eskimon/}{\color{titlePageAuthorColor}\bsc{Eskimon}}\\
 % three authors:
@@ -8,3 +9,7 @@
 \href{/that_author_with_a_very_long_name/}{\color{titlePageAuthorColor}\bsc{that_author_...}}\\
 % one author with long name (but in author list, so full name):
 \href{/that_author_with_a_very_long_name/}{\color{titlePageAuthorColor}\bsc{that_author_with_a_very_long_name}}\\
+% --- Test abbrv
+AT(amp)T
+pierre(und)24
+(num)hashtag

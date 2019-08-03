@@ -8,6 +8,15 @@ ARRAY_AUTHORS      = {}
 ARRAY_AUTHORS_SIZE = 0
 NUMBER_OF_COLUMNS  = 1
 
+SPECIAL_CHARS      = {
+   ['\\&'] = '(amp)', 
+   ['\\_'] = '(und)',
+   ['\\{'] = '(lbr)', 
+   ['\\}'] = '(rbr)', 
+   ['\\#'] = '(num)', 
+   ['\\$'] = '(dol)', 
+}
+
 -- Dump the content of a table, usefull for debuging purpose
 -- source: https://stackoverflow.com/a/27028488
 function dump(o)
@@ -33,6 +42,21 @@ function implode (delimiter, list)
    end
    return string
 end
+
+-- Clean a string so that it makes a correct label for abbreviations (remove special characters)
+-- input: input
+function cleanSpecialCharacters(input)
+   local r = input
+   for w, e in pairs(SPECIAL_CHARS) do
+      r = r:gsub(w, e)
+   end
+   return r
+end
+
+function cleanAbbrvLabel(input)
+   tex.print(cleanSpecialCharacters(input))
+end
+
 
 --  Create array of authors which contains for all author
 --  - name: default name
@@ -159,4 +183,5 @@ end
 
 local zmdocument = {}
 zmdocument.formatAuthorsBase = formatAuthorsBase
+zmdocument.cleanSpecialCharacters = cleanSpecialCharacters
 return zmdocument

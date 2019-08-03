@@ -28,6 +28,8 @@
 To add an abbreviation, use `\abbr{word}{definition}`. Abbreviations will be listed in a glossary at the end of the document.
 
 **Warning**: `word` should not contain accented characters or other special characters because of the *glossaries* package.
+If it is the case, [a lua function](./zmdocument.lua#L48) that convert most of the special character. Thus, `\abbr{AT\&T}{American Telephone and Telegraph Company}` will work correctly, despite the `\&` (that will be converted into `(amp)`).
+If there is an issue, there is an optional parameter to provide manually a alternate key. For example, `\abbr{AT\&T}[AT-and-T]{American Telephone and Telegraph Company}`.
 
 ## Thematic break
 
