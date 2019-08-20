@@ -214,9 +214,9 @@
    \newcommand{\levelOneIntroduction}{\addsec{Introduction}}
    \newcommand{\levelOneConclusion}{\addsec{Conclusion}}
    \def\thesection{\arabic{section}}
-   \def\thefigure{\arabic{section}}
-   \def\thetable{\arabic{section}}
-   \def\theequationFloat{\arabic{section}}
+   \def\thefigure{\thesection.\arabic{figure}}
+   \def\thetable{\thesection.\arabic{table}}
+   \def\theequationFloat{\thesection.\arabic{equationFloat}}
    \automark[subsection]{section}
 }
 
