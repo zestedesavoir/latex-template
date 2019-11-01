@@ -428,7 +428,8 @@
       \color{defaultColor}
    }
    \end{SpoilerBox}%
-   \begingroup\tcbverbatimwrite{\spoilerFileName{\the@spoilerCounter}}}{
+   \begingroup\tcbverbatimwrite{\spoilerFileName{\the@spoilerCounter}}\%
+}{
    \endtcbverbatimwrite\endgroup
    \listgadd{\@spoilerList}{\IfNoValueTF{#1}{}{#1}}%
    \addtocounter{@spoilerCounter}{1}
