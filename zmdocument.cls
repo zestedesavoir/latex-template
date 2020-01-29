@@ -42,7 +42,7 @@
 \RequirePackage{epstopdf}
 \RequirePackage{geometry}
 \RequirePackage{grffile}
-\let\quote@name\unquote@name % Fix grffile 
+\let\quote@name\unquote@name % Fix grffile
 
 \epstopdfDeclareGraphicsRule{.gif}{png}{.png}{convert gif:#1 png:\OutputFile}
 \AppendGraphicsExtensions{.gif}
@@ -429,7 +429,8 @@
       \color{defaultColor}
    }
    \end{SpoilerBox}%
-   \begingroup\tcbverbatimwrite{\spoilerFileName{\the@spoilerCounter}}}{
+   \begingroup\tcbverbatimwrite{\spoilerFileName{\the@spoilerCounter}}\%
+   }{
    \endtcbverbatimwrite\endgroup
    \listgadd{\@spoilerList}{\IfNoValueTF{#1}{}{#1}}%
    \addtocounter{@spoilerCounter}{1}
@@ -451,7 +452,7 @@
             Retourner au texte.%
          }
       }
-      
+
       \addtocounter{@spoilerCounter}{1}
    }
    \expandafter\dolistloop{\@spoilerList}
@@ -594,7 +595,7 @@
 %%% Hyperref -------------------------------------------------------------------
 
 
-% Hyperref tries to use the content of the title to generate the PDF table of contents, 
+% Hyperref tries to use the content of the title to generate the PDF table of contents,
 % but generate some errors in the process (since only letters are allowed there).
 % Here, you can neuter the effect of some commands.
 
