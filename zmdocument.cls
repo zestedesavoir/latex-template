@@ -42,6 +42,7 @@
 \RequirePackage{epstopdf}
 \RequirePackage{geometry}
 \RequirePackage{grffile}
+\let\quote@name\unquote@name % Fix grffile 
 
 \epstopdfDeclareGraphicsRule{.gif}{png}{.png}{convert gif:#1 png:\OutputFile}
 \AppendGraphicsExtensions{.gif}
