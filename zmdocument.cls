@@ -607,3 +607,6 @@
 }
 
 
+%%% MathJax and KaTeX
+\newcommand{\gt}{>}
+\newcommand{\lt}{<}
