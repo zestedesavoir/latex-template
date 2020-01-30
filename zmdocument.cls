@@ -250,6 +250,7 @@
    \newcommand{\levelThreeIntroduction}{\addsec{Introduction}}
    \newcommand{\levelThreeConclusion}{\addsec{Conclusion}}
    \automark[chapter]{part}
+   \counterwithin{chapter}{part}
 }
 
 %%% PROCESSING
