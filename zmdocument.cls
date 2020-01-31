@@ -249,8 +249,8 @@
    \newcommand{\levelTwoConclusion}{\displaySpoilers \addchap{Conclusion}}
    \newcommand{\levelThreeIntroduction}{\addsec{Introduction}}
    \newcommand{\levelThreeConclusion}{\addsec{Conclusion}}
-   \automark[chapter]{part}
    \counterwithin{chapter}{part}
+   \automark[chapter]{part}
 }
 
 %%% PROCESSING
