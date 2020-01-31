@@ -10,7 +10,7 @@ EXTRA_PACKAGES_CACHE="$HOME/.texlive/extra_packages_cache.txt"
 
 function install_texlive {
   touch $HOME/.cache_updated # Force cache upload after successful build
-  
+
   if [[ $1 == "0" ]]; then # full install
       echo "Installing texlive to \$HOME/.texlive"
       rm -rf $HOME/.texlive
@@ -35,10 +35,14 @@ function install_texlive {
   echo "Installing extra packages"
   $HOME/.texlive/bin/x86_64-linux/tlmgr update --self
   $HOME/.texlive/bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
-  
+
+  # Install tabu-fixed packages
+  mkdir -p $HOME/.texlive/texmf-local/tex/latex/tabu
+  wget -P $HOME/.texlive/texmf-local/tex/latex/tabu https://raw.githubusercontent.com/tabu-issues-for-future-maintainer/tabu/master/tabu.sty
+
   # save list of extra packages
   printf "$EXTRA_PACKAGES" > $EXTRA_PACKAGES_CACHE
-  
+
   echo "Installation complete !"
 }
 
