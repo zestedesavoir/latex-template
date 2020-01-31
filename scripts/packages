@@ -14,7 +14,6 @@ multirow
 ntheorem
 pagecolor
 relsize
-tabu
 varwidth
 xpatch
 xstring
