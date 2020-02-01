@@ -230,6 +230,25 @@ element & element & element\\ \hline
 \caption{Légende}
 \end{longtabu}
 
+
+Notons que si une image est dans un tableau, elle est redimensionnée si elle est trop grande.
+De même la largeur des lignes horizontales est adaptée si on est dans un tableau.
+De plus, on peut faire des tableaux compliqués, avec de la fusion de ligne ou de colonnes, et même des paragraphes
+dans les cases du tableau.
+
+\begin{longtabu}{|m{\dimexpr(\linewidth) / 3}|m{\dimexpr(\linewidth) / 3}|m{\dimexpr(\linewidth) / 3}|} \hline
+    1 - 1 & \multirow{2}{*}{\parbox{\linewidth}{\centering 1 - 2 \endgraf 2 - 2}} & 1 \par 32 \par 4 \\ \cline{1-1} \cline{3-3}
+    \rowfont[l]{}
+    2 - 1 &  & 2 - 3 \\ \hline
+    \rule{\linewidth}{1.0pt} & 3 - 2 & 3 - 3 \\ \hline
+ \end{longtabu}
+
+\begin{longtabu}{|m{\dimexpr(\linewidth) / 3}|m{\dimexpr(\linewidth) / 3}|m{\dimexpr(\linewidth) / 3}|} \hline
+    Colonne 1 & Colonne 2 & \inlineImage{test-images/logo.png} \\ \hline
+    \rule{\linewidth}{1.0pt} & 3 - 2 & 3 - 3 \\ \hline
+ \end{longtabu}
+
+
 \levelOneConclusion
 
 \begin{Spoiler}
