@@ -570,12 +570,12 @@
 %%% IMAGES
 \NewDocumentCommand{\image}{mo}{%
    \begin{center}
-      \includegraphics[max size={\textwidth}{0.9\textheight}, keepaspectratio]{#1}
+      \includegraphics[max size={\linewidth}{0.9\textheight}, keepaspectratio]{#1}
       \IfValueT{#2}{\captionof{figure}{#2}}
    \end{center}
 }
 
-\DeclareRobustCommand*{\inlineImage}[1]{\includegraphics[max size={\textwidth}{\textheight}, keepaspectratio]{#1}}
+\DeclareRobustCommand*{\inlineImage}[1]{\includegraphics[max size={\linewidth}{\textheight}, keepaspectratio]{#1}}
 
 %%% SMILEYS
 \def\@smileysPath{./smileys}
@@ -583,7 +583,7 @@
 \DeclareRobustCommand*{\smiley}[1]{\raisebox{-3pt}{\includegraphics[height=15pt]{\@smileysPath/#1}} }
 
 %%% HORIZONTAL LINE
-\newcommand{\horizontalLine}{{\color{horizontalLineColor}\rule{\textwidth}{1.0pt}}}
+\newcommand{\horizontalLine}{{\color{horizontalLineColor}\rule{\linewidth}{1.0pt}}}
 
 %%% ABBREVIATIONS
 \NewDocumentCommand{\abbr}{mom}{%
