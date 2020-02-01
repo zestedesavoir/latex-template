@@ -23,8 +23,6 @@ xfor
 datatool
 substr
 tracklang
-xsavebox
-media9
 tcolorbox
 environ
 trimspaces

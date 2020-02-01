@@ -26,7 +26,6 @@
 %% LATEX 3 PACKAGES
 \RequirePackage{etoolbox}
 \RequirePackage{xparse}
-\RequirePackage{xsavebox}
 
 \RequirePackage{multicol}
 \RequirePackage{pagecolor}
