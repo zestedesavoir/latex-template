@@ -248,6 +248,7 @@
    \newcommand{\levelTwoConclusion}{\displaySpoilers \addchap{Conclusion}}
    \newcommand{\levelThreeIntroduction}{\addsec{Introduction}}
    \newcommand{\levelThreeConclusion}{\addsec{Conclusion}}
+   \counterwithin{chapter}{part}
    \automark[chapter]{part}
 }
 
