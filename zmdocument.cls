@@ -610,3 +610,7 @@
 %%% MathJax and KaTeX
 \newcommand{\gt}{>}
 \newcommand{\lt}{<}
+
+
+
+\newcommand{\ping}[2]{\href{#2}{\textbf{#1}}}
