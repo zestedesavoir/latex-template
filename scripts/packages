@@ -17,9 +17,9 @@ ifplatform
 letltxmacro
 luacode
 luatex85
-mhchem
 menukeys
 mfirstuc
+mhchem
 minted
 multirow
 ntheorem
