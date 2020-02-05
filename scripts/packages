@@ -17,6 +17,7 @@ ifplatform
 letltxmacro
 luacode
 luatex85
+mhchem
 menukeys
 mfirstuc
 minted
