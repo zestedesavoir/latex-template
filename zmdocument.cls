@@ -22,6 +22,7 @@
 \RequirePackage{xifthen}
 \RequirePackage{luacode}
 \RequirePackage{soul}
+\RequirePackage{mhchem}
 
 %% LATEX 3 PACKAGES
 \RequirePackage{etoolbox}
