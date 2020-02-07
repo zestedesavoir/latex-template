@@ -612,5 +612,8 @@
 \newcommand{\lt}{<}
 
 
+%%% Ping
 
-\newcommand{\ping}[2]{\href{#2}{\textbf{#1}}}
+\def\@profileLink{https://zestedesavoir.com/membres/voir/}
+\newcommand{\profileLink}[1]{\def\@profileLink{#1}}
+\newcommand{\ping}[1]{\href{\@profileLink#1}{\textbf{@#1}}}
