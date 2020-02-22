@@ -94,6 +94,10 @@ To obtain a smiley, use `\smiley{xxx}` where `xxx` is a file from the smileys di
 \smileysPath{/path/to/smileys} % path to the directory containing the images of the smileys
 ```
 
+## Pings
+
+To obtain a link to a profile page use `\ping{username}`. The link is `<base>/<username>`, where `base` can be modified by using `\profileLink{url}`. By default, the base url is `https://zestedesavoir.com/membres/voir/`.
+
 ## Iframes
 
 To add an iframe block (for example Youtube videos), use `\iframe`: `\iframe{url}[iframe type][caption]`.
