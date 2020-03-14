@@ -461,8 +461,67 @@
    \setcounter{@spoilerCounterStart}{\the@spoilerCounter}
 }
 
+
+%%% FOOTNOTES APPENDIX
+\let\levelAppendixTitle\addsec
+\let\levelAppendix\subsection
+
+\newcounter{@appendixCounter}
+\setcounter{@appendixCounter}{1}
+\newcounter{@appendixCounterStart}
+\setcounter{@appendixCounterStart}{1}
+
+\def\@appendixList{}
+
+\newcommand{\appendixFileName}[1]{\jobname-appendix-#1.splr}
+
+\NewDocumentEnvironment{Appendix}{}{%
+   \hypertarget{show-annexe:\the@appendixCounter}{}
+   \label{show-annexe:\the@appendixCounter}
+   \hyperlink{annexe:\the@appendixCounter}{%
+      (Voir contenu en annexe~n°\the@appendixCounter%
+      \iftoggle{print}{%
+         ~(disponible à la page~\pageref{annexe:\the@appendixCounter})}{}%
+      )
+   }
+   \begingroup\tcbverbatimwrite{\appendixFileName{\the@appendixCounter}}\%
+   }{
+   \endtcbverbatimwrite\endgroup
+   \listgadd{\@appendixList}{{1}}%
+   \addtocounter{@appendixCounter}{1}
+}
+
+\newcommand{\displayAppendices}{%
+   \setcounter{@appendixCounter}{\the@appendixCounterStart}
+   \ifdefvoid{\@appendixList}{}{\levelAppendixTitle{Annexes}}
+   \appendix
+   \def\do{}
+   \renewcommand{\do}[1]{%
+      \levelAppendix*{Annexe~n°\the@appendixCounter}%
+      \label{annexe:\the@appendixCounter}%
+      \hypertarget{annexe:\the@appendixCounter}{}
+      \input{\appendixFileName{\the@appendixCounter}}
+      \hfill \hyperlink{show-annexe:\the@appendixCounter}{
+         \iftoggle{print}{%
+            Référencé page~\pageref{show-annexe:\the@appendixCounter}%
+         }{%
+            Retourner au texte.%
+         }
+      }
+      \addtocounter{@appendixCounter}{1}
+   }
+   \expandafter\dolistloop{\@appendixList}
+   \def\@appendixList{}
+   \setcounter{@appendixCounterStart}{\the@appendixCounter}
+}
+
+
+\VerbatimFootnotes
+
+
 \AtEndDocument{%
    \displaySpoilers
+   \displayAppendices
    \printglossary[title=Liste des abréviations]
 }
 
