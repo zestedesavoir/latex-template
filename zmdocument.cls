@@ -10,7 +10,7 @@
 \RequirePackage{scrhack}
 \RequirePackage[dvipsnames,table]{xcolor}
 \RequirePackage{scrlayer-scrpage}
-\RequirePackage{minted}
+\RequirePackage[cache=false]{minted}
 \RequirePackage{accsupp}
 \RequirePackage{amsmath,amssymb}
 \RequirePackage[french]{babel}
