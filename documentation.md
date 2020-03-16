@@ -19,7 +19,7 @@
 
 1. `big`, `middle` or `small` provide different levels of document sectioning (see section macros below).
 2. `print` adapts the style for printing. The link are not clickable: they are formatted as **\[text](link)**. Spoiler contains the page number of the contente.
-3. `nocolor` adapts the style in black and white. 
+3. `nocolor` adapts the style in black and white.
 
 # Class macros
 
@@ -43,11 +43,11 @@ Create a link with `\externalLink{text}{URL}`.
 
 Add licence with `\licence[path/to/image]{Licence name}{URL}`.
 
-## Inline source code 
+## Inline source code
 
 Create a inline source code with `\CodeInline{make test}`.
 
-*Note: special chars should be escaped* 
+*Note: special chars should be escaped*
 
 ## Section macros
 
@@ -152,3 +152,7 @@ In addition to standard float (`table`, `figure`), the `equationFloat` could be 
 \]
 \captionof{equationfloat}{A sum}
 ```
+
+## Appendices
+
+To add an appendix, use the `Appendix` environment. Appendix will be grouped in order of apparition at the end of the document.
