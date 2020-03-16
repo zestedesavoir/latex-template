@@ -26,6 +26,8 @@ images-test: test-with-images.pdf
 
 big-test: test-big.pdf
 
+big-toc-test: test-big-toc.pdf
+
 create-nocolor:
 	cp test.tex test-nocolor.tex
 	patch test-nocolor.tex < nocolor.patch
@@ -37,7 +39,7 @@ test-nocolor.pdf: test-nocolor.tex
 
 nocolor-test: create-nocolor test-nocolor.pdf
 
-tests: simple-test author-test images-test nocolor-test big-test
+tests: simple-test author-test images-test nocolor-test big-test big-toc-test
 
 clean:
 	rm -f test-nocolor.tex

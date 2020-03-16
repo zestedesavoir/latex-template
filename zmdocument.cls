@@ -23,6 +23,7 @@
 \RequirePackage{luacode}
 \RequirePackage{soul}
 \RequirePackage{mhchem}
+\RequirePackage{tocbasic}
 
 %% LATEX 3 PACKAGES
 \RequirePackage{etoolbox}
@@ -242,7 +243,7 @@
    \let\levelFourTitle\subsection
    \let\levelFiveTitle\subsubsection
    \let\levelSixTitle\paragraph
-   \let\levelSevenTitle\subparagaph
+   \let\levelSevenTitle\subparagraph
    \newcommand{\levelOneIntroduction}{\addpart{Introduction}}
    \newcommand{\levelOneConclusion}{\displaySpoilers \addpart{Conclusion}}
    \newcommand{\levelTwoIntroduction}{\addchap{Introduction}}
@@ -252,6 +253,8 @@
    \counterwithin{chapter}{part}
    \automark[chapter]{part}
 }
+
+\RedeclareSectionCommands[tocdynnumwidth]{part,chapter,section,subsection,subsubsection}
 
 %%% PROCESSING
 \ProcessOptions
