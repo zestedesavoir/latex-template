@@ -220,6 +220,9 @@
    \def\thetable{\thesection.\arabic{table}}
    \def\theequationFloat{\thesection.\arabic{equationFloat}}
    \automark[subsection]{section}
+
+   \newenvironment{LevelOneIntroduction}{\addsec{Introduction}}{}
+   \newenvironment{LevelOneConclusion}{\addsec{Conclusion}}{}
 }
 
 \DeclareOption{middle}{
@@ -234,6 +237,17 @@
    \newcommand{\levelTwoIntroduction}{\addsec{Introduction}}
    \newcommand{\levelTwoConclusion}{\addsec{Conclusion}}
    \automark[section]{chapter}
+
+   \newenvironment{LevelTwoIntroduction}{\addsec{Introduction}}{}
+   \newenvironment{LevelTwoConclusion}{\addsec{Conclusion}}{}
+
+   \newenvironment{LevelOneIntroduction}{
+      \addsec{Introduction}
+      \let\levelTwoTitle\
+   }{
+
+   }
+   \newenvironment{LevelOneConclusion}{\addsec{Conclusion}}{}
 }
 
 \DeclareOption{big}{
@@ -252,6 +266,9 @@
    \newcommand{\levelThreeConclusion}{\addsec{Conclusion}}
    \counterwithin{chapter}{part}
    \automark[chapter]{part}
+
+   \newenvironment{LevelThreeIntroduction}{\addsec{Introduction}}{}
+   \newenvironment{LevelThreeConclusion}{\addsec{Conclusion}}{}
 }
 
 \RedeclareSectionCommands[tocdynnumwidth]{part,chapter,section,subsection,subsubsection}
