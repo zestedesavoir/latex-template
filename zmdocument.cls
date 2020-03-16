@@ -209,12 +209,12 @@
 
 \newcommand{\addsubsec}[1]{
    \subsection*{#1}
-   \addxcontentsline{toc}{subsection}{#1}
+   %\addxcontentsline{toc}{subsection}{#1}
 }
 
 \newcommand{\addsubsubsec}[1]{
    \subsubsection*{#1}
-   \addxcontentsline{toc}{subsubsection}{#1}
+   %\addxcontentsline{toc}{subsubsection}{#1}
 }
 
 \newcommand{\addpar}[1]{
