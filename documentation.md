@@ -170,3 +170,7 @@ In addition to standard float (`table`, `figure`), the `equationFloat` could be 
 \]
 \captionof{equationfloat}{A sum}
 ```
+
+## Appendices
+
+To add an appendix, use the `Appendix` environment. Appendix will be grouped in order of apparition at the end of the document.
