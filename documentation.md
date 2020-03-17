@@ -108,12 +108,12 @@ printed without numerotation.
 
 |                          | `small`    | `middle`   | `big`      |
 | ------------------------ | ---------- | ---------- | ---------- |
-| `levelOneIntroduction`   | `\section` | `\chapter` | `\part`    |
-| `levelOneConclusion`     | `\section` | `\chapter` | `\part`    |
-| `levelTwoIntroduction`   | *n.a.*     | `\section` | `\chapter` |
-| `levelTwoConclusion`     | *n.a.*     | `\section` | `\chapter` |
-| `levelThreeIntroduction` | *n.a.*     | *n.a.*     | `\section` |
-| `levelThreeConclusion`   | *n.a.*     | *n.a.*     | `\section` |
+| `LevelOneIntroduction`   | `\section` | `\chapter` | `\part`    |
+| `LevelOneConclusion`     | `\section` | `\chapter` | `\part`    |
+| `LevelTwoIntroduction`   | *n.a.*     | `\section` | `\chapter` |
+| `LevelTwoConclusion`     | *n.a.*     | `\section` | `\chapter` |
+| `LevelThreeIntroduction` | *n.a.*     | *n.a.*     | `\section` |
+| `LevelThreeConclusion`   | *n.a.*     | *n.a.*     | `\section` |
 
 In these environments, the sectionning commands are redefined such that
 
