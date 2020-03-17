@@ -19,7 +19,7 @@
 
 1. `big`, `middle` or `small` provide different levels of document sectioning (see section macros below).
 2. `print` adapts the style for printing. The link are not clickable: they are formatted as **\[text](link)**. Spoiler contains the page number of the contente.
-3. `nocolor` adapts the style in black and white. 
+3. `nocolor` adapts the style in black and white.
 
 # Class macros
 
@@ -43,11 +43,11 @@ Create a link with `\externalLink{text}{URL}`.
 
 Add licence with `\licence[path/to/image]{Licence name}{URL}`.
 
-## Inline source code 
+## Inline source code
 
 Create a inline source code with `\CodeInline{make test}`.
 
-*Note: special chars should be escaped* 
+*Note: special chars should be escaped*
 
 ## Section macros
 
@@ -63,13 +63,7 @@ The different title levels get adapted depending on the class option used.
 | `\levelSixTitle`   | *n.a.*           | `\subparagraph`  | `\paragraph`     |
 | `\levelSevenTitle` | *n.a.*           | *n.a.*           | `\subparagraph`  |
 
-For introduction and conclusion, macros are also defined. They don’t take parameters and they are titled "Introduction" / "Conclusion".
-
-|                                          | `small`                          | `middle`                         | `big`                            |
-| ---------------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `\levelOneIntroduction` and `\levelOneConclusion` | Document introduction/conclusion | Document introduction/conclusion | Document introduction/conclusion |
-| `\levelTwoIntroduction` and `\levelOneConclusion` | *n.a.*                           | Chapter introduction/conclusion  | Part introduction/conclusion     |
-| `\levelThreeIntroduction` and `\levelThreeConclusion` | *n.a.*                           | *n.a.*                           | Chapter introduction/conclusion  |
+The class provides environments for introductions and conclusions.
 
 ## Title page macros (`\website`, `\authorlink`, `\editor`, `\editorLogo` and `\logo`)
 
@@ -105,6 +99,30 @@ To add an iframe block (for example Youtube videos), use `\iframe`: `\iframe{url
 Arguments in square brackets are optional (`\iframe{url}` is enough). The default `iframe type` parameter is "vidéo" and the default `caption` value is blank.
 
 # Class environments
+
+## Introduction and Conclusion
+
+The environments print "Introduction" or "Conclusion" using a sectionning
+command (the level is adapted depending on the class option used). They are
+printed without numerotation.
+
+|                          | `small`    | `middle`   | `big`      |
+| ------------------------ | ---------- | ---------- | ---------- |
+| `levelOneIntroduction`   | `\section` | `\chapter` | `\part`    |
+| `levelOneConclusion`     | `\section` | `\chapter` | `\part`    |
+| `levelTwoIntroduction`   | *n.a.*     | `\section` | `\chapter` |
+| `levelTwoConclusion`     | *n.a.*     | `\section` | `\chapter` |
+| `levelThreeIntroduction` | *n.a.*     | *n.a.*     | `\section` |
+| `levelThreeConclusion`   | *n.a.*     | *n.a.*     | `\section` |
+
+In these environments, the sectionning commands are redefined such that
+
+- `\levelTwoTitle` corresponds to `\subsection`,
+- `\levelThreeTitle` corresponds to `\subsubsection`,
+- `\levelFourTitle` corresponds to `\paragraph`,
+- `\levelFiveTitle` corresponds to `\subparagraph`.
+
+Hence, these sectionning commands does not depend on the level of introduction.
 
 ## `Information`, `Question`, `Warning` and `Error`
 
