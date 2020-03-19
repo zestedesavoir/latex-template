@@ -54,10 +54,6 @@
 \RequirePackage[amsmath,hyperref]{ntheorem}
 \RequirePackage[hyperrefcolorlinks]{menukeys}
 
-%%% BOX
-\PassOptionsToPackage{cache=false}{minted}
-\RequirePackage[skins, breakable, minted, xparse]{tcolorbox}
-
 %%% ABBREVIATIONS PACKAGES
 \RequirePackage{glossaries}
 
@@ -78,7 +74,21 @@
 \newtoggle{print}
 \togglefalse{print}
 \DeclareOption{print}{\toggletrue{print}}
+
+%%% CACHE OPTION
+\newtoggle{cache}
+\togglefalse{cache}
+\DeclareOption{cache}{\toggletrue{cache}}
 \ProcessOptions\relax
+
+%%% BOX
+\iftoggle{cache}{
+   \PassOptionsToPackage{cache=true}{minted}
+}{
+   \PassOptionsToPackage{cache=false}{minted}
+}
+\RequirePackage[skins, minted, breakable, xparse]{tcolorbox}
+
 
 %%% COLORS ---------------------------------------------------------------------
 
