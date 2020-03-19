@@ -104,7 +104,9 @@ Arguments in square brackets are optional (`\iframe{url}` is enough). The defaul
 
 The environments print "Introduction" or "Conclusion" using a sectionning
 command (the level is adapted depending on the class option used). They are
-printed without numerotation.
+printed without numerotation. The text printed could be changed using
+`\introductionName{text}` and `\conclusionName{text}`.
+
 
 |                          | `small`    | `middle`   | `big`      |
 | ------------------------ | ---------- | ---------- | ---------- |
@@ -115,7 +117,7 @@ printed without numerotation.
 | `LevelThreeIntroduction` | *n.a.*     | *n.a.*     | `\section` |
 | `LevelThreeConclusion`   | *n.a.*     | *n.a.*     | `\section` |
 
-In these environments, the sectionning commands are redefined such that
+In these environments, the sectionning commands are redefined such that:
 
 - `\levelTwoTitle` corresponds to `\subsection`,
 - `\levelThreeTitle` corresponds to `\subsubsection`,

@@ -225,6 +225,10 @@
    \subparagraph*{#1}
 }
 
+\def\@introductionName{Introduction}
+\def\@conclusionName{Conclusion}
+\newcommand{\introductionName}[1]{\def\@introductionName{#1}}
+\newcommand{\conclusionName}[1]{\def\@conclusionName{#1}}
 
 \newcommand{\sectionningGenerator}[3]{
    \newenvironment{#1}{
@@ -248,8 +252,8 @@
    \def\thetable{\thesection.\arabic{table}}
    \def\theequationFloat{\thesection.\arabic{equationFloat}}
    \automark[subsection]{section}
-   \sectionningGenerator{LevelOneIntroduction}{Introduction}{addsec}
-   \sectionningGenerator{LevelOneConclusion}{Conclusion}{addsec}
+   \sectionningGenerator{LevelOneIntroduction}{\@introductionName}{addsec}
+   \sectionningGenerator{LevelOneConclusion}{\@conclusionName}{addsec}
 }
 
 
@@ -261,10 +265,10 @@
    \let\levelFiveTitle\paragraph
    \let\levelSixTitle\subparagaph
    \automark[section]{chapter}
-   \sectionningGenerator{LevelOneIntroduction}{Introduction}{addchap}
-   \sectionningGenerator{LevelOneConclusion}{Conclusion}{addchap}
-   \sectionningGenerator{LevelTwoIntroduction}{Introduction}{addsec}
-   \sectionningGenerator{LevelTwoConclusion}{Conclusion}{addsec}
+   \sectionningGenerator{LevelOneIntroduction}{\@introductionName}{addchap}
+   \sectionningGenerator{LevelOneConclusion}{\@conclusionName}{addchap}
+   \sectionningGenerator{LevelTwoIntroduction}{\@introductionName}{addsec}
+   \sectionningGenerator{LevelTwoConclusion}{\@conclusionName}{addsec}
 }
 
 \DeclareOption{big}{
@@ -277,12 +281,12 @@
    \let\levelSevenTitle\subparagraph
    \counterwithin{chapter}{part}
    \automark[chapter]{part}
-   \sectionningGenerator{LevelOneIntroduction}{Introduction}{addpart}
-   \sectionningGenerator{LevelOneConclusion}{Conclusion}{addpart}
-   \sectionningGenerator{LevelTwoIntroduction}{Introduction}{addchap}
-   \sectionningGenerator{LevelTwoConclusion}{Conclusion}{addchap}
-   \sectionningGenerator{LevelThreeIntroduction}{Introduction}{addsec}
-   \sectionningGenerator{LevelThreeConclusion}{Conclusion}{addsec}
+   \sectionningGenerator{LevelOneIntroduction}{\@introductionName}{addpart}
+   \sectionningGenerator{LevelOneConclusion}{\@conclusionName}{addpart}
+   \sectionningGenerator{LevelTwoIntroduction}{\@introductionName}{addchap}
+   \sectionningGenerator{LevelTwoConclusion}{\@conclusionName}{addchap}
+   \sectionningGenerator{LevelThreeIntroduction}{\@introductionName}{addsec}
+   \sectionningGenerator{LevelThreeConclusion}{\@conclusionName}{addsec}
 }
 
 \RedeclareSectionCommands[tocdynnumwidth]{part,chapter,section,subsection,subsubsection}
