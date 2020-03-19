@@ -63,13 +63,7 @@ The different title levels get adapted depending on the class option used.
 | `\levelSixTitle`   | *n.a.*           | `\subparagraph`  | `\paragraph`     |
 | `\levelSevenTitle` | *n.a.*           | *n.a.*           | `\subparagraph`  |
 
-For introduction and conclusion, macros are also defined. They don’t take parameters and they are titled "Introduction" / "Conclusion".
-
-|                                          | `small`                          | `middle`                         | `big`                            |
-| ---------------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- |
-| `\levelOneIntroduction` and `\levelOneConclusion` | Document introduction/conclusion | Document introduction/conclusion | Document introduction/conclusion |
-| `\levelTwoIntroduction` and `\levelOneConclusion` | *n.a.*                           | Chapter introduction/conclusion  | Part introduction/conclusion     |
-| `\levelThreeIntroduction` and `\levelThreeConclusion` | *n.a.*                           | *n.a.*                           | Chapter introduction/conclusion  |
+The class provides environments for introductions and conclusions.
 
 ## Title page macros (`\website`, `\authorlink`, `\editor`, `\editorLogo` and `\logo`)
 
@@ -105,6 +99,32 @@ To add an iframe block (for example Youtube videos), use `\iframe`: `\iframe{url
 Arguments in square brackets are optional (`\iframe{url}` is enough). The default `iframe type` parameter is "vidéo" and the default `caption` value is blank.
 
 # Class environments
+
+## Introduction and Conclusion
+
+The environments print "Introduction" or "Conclusion" using a sectionning
+command (the level is adapted depending on the class option used). They are
+printed without numerotation. The text printed could be changed using
+`\introductionName{text}` and `\conclusionName{text}`.
+
+
+|                          | `small`    | `middle`   | `big`      |
+| ------------------------ | ---------- | ---------- | ---------- |
+| `LevelOneIntroduction`   | `\section` | `\chapter` | `\part`    |
+| `LevelOneConclusion`     | `\section` | `\chapter` | `\part`    |
+| `LevelTwoIntroduction`   | *n.a.*     | `\section` | `\chapter` |
+| `LevelTwoConclusion`     | *n.a.*     | `\section` | `\chapter` |
+| `LevelThreeIntroduction` | *n.a.*     | *n.a.*     | `\section` |
+| `LevelThreeConclusion`   | *n.a.*     | *n.a.*     | `\section` |
+
+In these environments, the sectionning commands are redefined such that:
+
+- `\levelTwoTitle` corresponds to `\subsection`,
+- `\levelThreeTitle` corresponds to `\subsubsection`,
+- `\levelFourTitle` corresponds to `\paragraph`,
+- `\levelFiveTitle` corresponds to `\subparagraph`.
+
+Hence, these sectionning commands does not depend on the level of introduction.
 
 ## `Information`, `Question`, `Warning` and `Error`
 

@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{zmdocument}
 
-\LoadClass[a4paper,fontsize=12pt,twoside=false,numbers=enddot,parskip=half]{scrbook}
+\LoadClass[a4paper,fontsize=12pt,twoside=false,numbers=enddot,parskip=half,toc=indentunnumbered]{scrbook}
 
 %%% PACKAGES -------------------------------------------------------------------
 
@@ -207,20 +207,55 @@
 \chead{}
 \pagestyle{scrheadings}
 
+\newcommand{\addsubsec}[1]{
+   \subsection*{#1}
+   %\addxcontentsline{toc}{subsection}{#1}
+}
+
+\newcommand{\addsubsubsec}[1]{
+   \subsubsection*{#1}
+   %\addxcontentsline{toc}{subsubsection}{#1}
+}
+
+\newcommand{\addpar}[1]{
+   \paragraph*{#1}
+}
+
+\newcommand{\addsubpar}[1]{
+   \subparagraph*{#1}
+}
+
+\def\@introductionName{Introduction}
+\def\@conclusionName{Conclusion}
+\newcommand{\introductionName}[1]{\def\@introductionName{#1}}
+\newcommand{\conclusionName}[1]{\def\@conclusionName{#1}}
+
+\newcommand{\sectionningGenerator}[3]{
+   \newenvironment{#1}{
+      \csname#3\endcsname{#2}
+      \let\levelTwoTitle\addsubsec
+      \let\levelThreeTitle\addsubsubsec
+      \let\levelFourTitle\addpar
+      \let\levelFiveTitle\addsubparq
+   }{}
+}
+
+
 \DeclareOption{small}{
    \let\levelOneTitle\section
    \let\levelTwoTitle\subsection
    \let\levelThreeTitle\subsubsection
    \let\levelFourTitle\paragraph
    \let\levelFiveTitle\subparagraph
-   \newcommand{\levelOneIntroduction}{\addsec{Introduction}}
-   \newcommand{\levelOneConclusion}{\addsec{Conclusion}}
    \def\thesection{\arabic{section}}
    \def\thefigure{\thesection.\arabic{figure}}
    \def\thetable{\thesection.\arabic{table}}
    \def\theequationFloat{\thesection.\arabic{equationFloat}}
    \automark[subsection]{section}
+   \sectionningGenerator{LevelOneIntroduction}{\@introductionName}{addsec}
+   \sectionningGenerator{LevelOneConclusion}{\@conclusionName}{addsec}
 }
+
 
 \DeclareOption{middle}{
    \newcommand{\levelOneTitle}[1]{\displaySpoilers \chapter{#1}}
@@ -229,11 +264,11 @@
    \let\levelFourTitle\subsubsection
    \let\levelFiveTitle\paragraph
    \let\levelSixTitle\subparagaph
-   \newcommand{\levelOneIntroduction}{\addchap{Introduction}}
-   \newcommand{\levelOneConclusion}{\displaySpoilers \addchap{Conclusion}}
-   \newcommand{\levelTwoIntroduction}{\addsec{Introduction}}
-   \newcommand{\levelTwoConclusion}{\addsec{Conclusion}}
    \automark[section]{chapter}
+   \sectionningGenerator{LevelOneIntroduction}{\@introductionName}{addchap}
+   \sectionningGenerator{LevelOneConclusion}{\@conclusionName}{addchap}
+   \sectionningGenerator{LevelTwoIntroduction}{\@introductionName}{addsec}
+   \sectionningGenerator{LevelTwoConclusion}{\@conclusionName}{addsec}
 }
 
 \DeclareOption{big}{
@@ -244,14 +279,14 @@
    \let\levelFiveTitle\subsubsection
    \let\levelSixTitle\paragraph
    \let\levelSevenTitle\subparagraph
-   \newcommand{\levelOneIntroduction}{\addpart{Introduction}}
-   \newcommand{\levelOneConclusion}{\displaySpoilers \addpart{Conclusion}}
-   \newcommand{\levelTwoIntroduction}{\addchap{Introduction}}
-   \newcommand{\levelTwoConclusion}{\displaySpoilers \addchap{Conclusion}}
-   \newcommand{\levelThreeIntroduction}{\addsec{Introduction}}
-   \newcommand{\levelThreeConclusion}{\addsec{Conclusion}}
    \counterwithin{chapter}{part}
    \automark[chapter]{part}
+   \sectionningGenerator{LevelOneIntroduction}{\@introductionName}{addpart}
+   \sectionningGenerator{LevelOneConclusion}{\@conclusionName}{addpart}
+   \sectionningGenerator{LevelTwoIntroduction}{\@introductionName}{addchap}
+   \sectionningGenerator{LevelTwoConclusion}{\@conclusionName}{addchap}
+   \sectionningGenerator{LevelThreeIntroduction}{\@introductionName}{addsec}
+   \sectionningGenerator{LevelThreeConclusion}{\@conclusionName}{addsec}
 }
 
 \RedeclareSectionCommands[tocdynnumwidth]{part,chapter,section,subsection,subsubsection}
