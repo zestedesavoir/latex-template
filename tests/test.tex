@@ -17,14 +17,15 @@
 \tableofcontents
 \newpage
 
-\levelOneIntroduction
+\begin{LevelOneIntroduction}
+\end{LevelOneIntroduction}
 
 Ce message s’adresse principalement aux bon connaisseurs de LaTeX : l’équipe de développement a besoin de vous ! \smiley{clin}
 
 \begin{Spoiler}
-Voici un secret
+   Voici un secret
 
-Avec un \externalLink{lien}{https://zestedesavoir.com}!!
+   Avec un \externalLink{lien}{https://zestedesavoir.com}!!
 \end{Spoiler}
 
 \levelOneTitle{Contexte}
@@ -250,8 +251,6 @@ dans les cases du tableau.
  \end{longtabu}
 
 
-\levelOneConclusion
-
 \begin{Spoiler}
 Et un secret ici pour finir en beauté, avec du code dans le dedans !
 
@@ -296,8 +295,8 @@ A & = \frac{\pi r^2}{2} \\
 Notons qu'on a $a \gt b$ avec \CodeInline{a \gt b} et $a \lt b$ avec \CodeInline{a \lt b}
 \end{Spoiler}
 
-Conclusion
 
+\begin{LevelOneConclusion}
 \levelTwoTitle{
 Un titre avec des trucs dangereux:
 C\textsubscript{6}H\textsubscript{6}, \textsuperscript{13}C ,
@@ -310,4 +309,34 @@ C\textsubscript{6}H\textsubscript{6}, \textsuperscript{13}C ,
 }
 
 Voilà le LaTeX pour les pings, \ping{artragis} et \ping{pierre\_24}.
+
+On peut avoir des notes de bas de page avec du code
+\footnote{Exemple de note
+\begin{Appendix}
+\begin{CodeBlock}{latex}
+\begin{center}
+   centré
+\end{center}
+\end{CodeBlock}
+\end{Appendix}
+où il y a du code
+}
+ou des tableaux
+\footnote{Exemple de note
+\begin{Appendix}
+\begin{longtabu}{|c|c|c|} \hline
+   element & element & element\\ \hline
+   element & element & element\\ \hline
+   element & element & element\\ \hline
+   element & element & element\\ \hline
+   element & element & element\\ \hline
+   \caption{Légende du tableau}
+   \end{longtabu}
+\end{Appendix}
+où il y a un tableau
+} ;
+ceux-ci seront alors placés en annexe.
+\end{LevelOneConclusion}
+
+
 \end{document}
