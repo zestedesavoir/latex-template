@@ -10,7 +10,6 @@
 \RequirePackage{scrhack}
 \RequirePackage[dvipsnames,table]{xcolor}
 \RequirePackage{scrlayer-scrpage}
-\RequirePackage{minted}
 \RequirePackage{accsupp}
 \RequirePackage{amsmath,amssymb}
 \RequirePackage[french]{babel}
@@ -56,9 +55,6 @@
 \RequirePackage[amsmath,hyperref]{ntheorem}
 \RequirePackage[hyperrefcolorlinks]{menukeys}
 
-%%% BOX
-\RequirePackage[skins, breakable, minted, xparse]{tcolorbox}
-
 %%% ABBREVIATIONS PACKAGES
 \RequirePackage{glossaries}
 
@@ -79,7 +75,21 @@
 \newtoggle{print}
 \togglefalse{print}
 \DeclareOption{print}{\toggletrue{print}}
+
+%%% CACHE OPTION
+\newtoggle{cache}
+\togglefalse{cache}
+\DeclareOption{cache}{\toggletrue{cache}}
 \ProcessOptions\relax
+
+%%% BOX
+\iftoggle{cache}{
+   \PassOptionsToPackage{cache=true}{minted}
+}{
+   \PassOptionsToPackage{cache=false}{minted}
+}
+\RequirePackage[skins, minted, breakable, xparse]{tcolorbox}
+
 
 %%% COLORS ---------------------------------------------------------------------
 
@@ -395,7 +405,14 @@
 %%% CODE MANAGEMENT
 \tcbsetforeverylayer{} % Reset style
 
-\setminted{breaklines, breaksymbolleft=\hspace{2em}, highlightcolor=highlightCodeColor, linenos, fontsize=\small,baselinestretch=1}
+\setminted{
+   breaklines,
+   breaksymbolleft=\hspace{2em},
+   highlightcolor=highlightCodeColor,
+   linenos,
+   fontsize=\small,
+   baselinestretch=1
+}
 
 \renewcommand\theFancyVerbLine{%
    \BeginAccSupp{ActualText={}}%

@@ -17,9 +17,10 @@
 
 # Class options
 
-1. `big`, `middle` or `small` provide different levels of document sectioning (see section macros below).
+1. `big`, `middle` or `small` provides different levels of document sectioning (see section macros below).
 2. `print` adapts the style for printing. The link are not clickable: they are formatted as **\[text](link)**. Spoiler contains the page number of the contente.
 3. `nocolor` adapts the style in black and white.
+4. `cache` enables cache for some files (minted), speed up document compilation.
 
 # Class macros
 
