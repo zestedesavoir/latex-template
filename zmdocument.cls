@@ -479,11 +479,11 @@
    \label{show:\the@spoilerCounter}
    \begin{SpoilerBox}
    \hyperlink{secret:\thepart\thechapter\the@spoilerCounter}{%
-     \color{ZdSBoxForegroundSpoiler}\spoilerIcon~
-     \IfNoValueTF{#1}{Contenu masqué~n°\the@spoilerCounter}{#1}
-     \iftoggle{print}{%
-        ~(disponible à la page~\pageref{secret:\the@spoilerCounter})}{}
-     \color{defaultColor}
+      \color{ZdSBoxForegroundSpoiler}\spoilerIcon~
+      \IfNoValueTF{#1}{Contenu masqué~n°\the@spoilerCounter}{#1}
+      \iftoggle{print}{%
+         ~(disponible à la page~\pageref{secret:\the@spoilerCounter})}{}
+      \color{defaultColor}
    }
    \end{SpoilerBox}%
    \listgadd{\@spoilerList}{\IfNoValueTF{#1}{}{#1}}%
