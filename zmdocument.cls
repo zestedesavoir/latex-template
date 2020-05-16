@@ -473,22 +473,34 @@
 
 \newcommand{\spoilerFileName}[1]{\jobname-spoiler-#1.splr}
 
-\NewDocumentEnvironment{Spoiler}{ o }{%
+
+\NewDocumentCommand{\FetchoptionalArgAndCallVerbatim}{o}{%
    \hypertarget{show:\thepart\thechapter\the@spoilerCounter}{}
    \label{show:\the@spoilerCounter}
    \begin{SpoilerBox}
    \hyperlink{secret:\thepart\thechapter\the@spoilerCounter}{%
-      \color{ZdSBoxForegroundSpoiler}\spoilerIcon~
-      \IfNoValueTF{#1}{Contenu masqué~n°\the@spoilerCounter}{#1}
-      \iftoggle{print}{%
-         ~(disponible à la page~\pageref{secret:\the@spoilerCounter})}{}
-      \color{defaultColor}
+     \color{ZdSBoxForegroundSpoiler}\spoilerIcon~
+     \IfNoValueTF{#1}{Contenu masqué~n°\the@spoilerCounter}{#1}
+     \iftoggle{print}{%
+        ~(disponible à la page~\pageref{secret:\the@spoilerCounter})}{}
+     \color{defaultColor}
    }
    \end{SpoilerBox}%
-   \begingroup\tcbverbatimwrite{\spoilerFileName{\the@spoilerCounter}}\%
-   }{
-   \endtcbverbatimwrite\endgroup
    \listgadd{\@spoilerList}{\IfNoValueTF{#1}{}{#1}}%
+   \begingroup\tcbverbatimwrite{\spoilerFileName{\the@spoilerCounter}}
+}%
+
+\newenvironment{Spoiler}{%
+  \begingroup
+  \let\do\@makeother
+  \dospecials
+  \@vobeyspaces
+  \obeylines
+  \kernel@ifnextchar[%
+                    {\endgroup\FetchoptionalArgAndCallVerbatim}%
+                    {\endgroup\FetchoptionalArgAndCallVerbatim \relax}%
+}{%
+   \endtcbverbatimwrite\endgroup
    \addtocounter{@spoilerCounter}{1}
 }
 
