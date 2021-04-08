@@ -411,7 +411,8 @@
    highlightcolor=highlightCodeColor,
    linenos,
    fontsize=\small,
-   baselinestretch=1
+   baselinestretch=1,
+   breakanywhere=true
 }
 
 \renewcommand\theFancyVerbLine{%
