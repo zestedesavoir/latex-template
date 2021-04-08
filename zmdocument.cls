@@ -246,7 +246,7 @@
       \let\levelTwoTitle\addsubsec
       \let\levelThreeTitle\addsubsubsec
       \let\levelFourTitle\addpar
-      \let\levelFiveTitle\addsubparq
+      \let\levelFiveTitle\addsubpar
    }{}
 }
 
