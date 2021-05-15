@@ -246,7 +246,7 @@
       \let\levelTwoTitle\addsubsec
       \let\levelThreeTitle\addsubsubsec
       \let\levelFourTitle\addpar
-      \let\levelFiveTitle\addsubparq
+      \let\levelFiveTitle\addsubpar
    }{}
 }
 
@@ -411,7 +411,8 @@
    highlightcolor=highlightCodeColor,
    linenos,
    fontsize=\small,
-   baselinestretch=1
+   baselinestretch=1,
+   breakanywhere=true
 }
 
 \renewcommand\theFancyVerbLine{%
