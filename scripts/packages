@@ -24,10 +24,12 @@ minted
 multirow
 ntheorem
 pagecolor
+pdfcol
 relsize
 soul
 substr
 tcolorbox
+tikzfill
 tracklang
 trimspaces
 varwidth
