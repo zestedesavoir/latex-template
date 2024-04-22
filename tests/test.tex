@@ -238,17 +238,19 @@ De même la largeur des lignes horizontales est adaptée si on est dans un table
 De plus, on peut faire des tableaux compliqués, avec de la fusion de ligne ou de colonnes, et même des paragraphes
 dans les cases du tableau.
 
-%\begin{zdstblr}{|m{\dimexpr(\linewidth) / 3}|m{\dimexpr(\linewidth) / 3}|m{\dimexpr(\linewidth) / 3}|}
-%    1 - 1 & \multirow{2}{*}{\parbox{\linewidth}{\centering 1 - 2 \endgraf 2 - 2}} & 1 \par 32 \par 4 \\ \cline{1-1} \cline{3-3}
-%    \rowfont[l]{}
-%    2 - 1 &  & 2 - 3 \\
-%    \rule{\linewidth}{1.0pt} & 3 - 2 & 3 - 3 \\
-%\end{zdstblr}
+\begin{zdstblr}{colspec={X[-1] X[-1] X[-1] X[-1]},rowhead=1,row{1}={font=\bfseries}}
+	Header 1 & Header 2 & Header 3 & Header 4 \\
+	Cell 1 & Cell 2 & Cell 3 & Cell 4 \\
+	Cell 5 & Cell 6 & Cell 7 & Cell 8 \\
+\end{zdstblr}
 
-%\begin{zdstblr}{|m{\dimexpr(\linewidth) / 3}|m{\dimexpr(\linewidth) / 3}|m{\dimexpr(\linewidth) / 3}|}
-%    Colonne 1 & Colonne 2 & \inlineImage{test-images/logo.png} \\
-%    \rule{\linewidth}{1.0pt} & 3 - 2 & 3 - 3 \\
-%\end{zdstblr}
+\begin{zdstblr}{colspec={X[-1] X[-1] X[-1] X[-1]},rowhead=2,row{1,2}={font=\bfseries}}
+	\SetCell[c=2]{l} Table Headings &  & Here \\
+	Sub & Headings & Too \\
+	\SetCell[r=2]{l} cell \endgraf spans \endgraf rows & \SetCell[c=2]{l} column spanning &  \\
+	& normal & cell \\
+	multi \endgraf line \endgraf \endgraf cells \endgraf too & \SetCell[c=2]{l} cells can be \endgraf \textit{formatted} \endgraf \textbf{paragraphs} &  \\
+\end{zdstblr}
 
 
 \begin{Spoiler}
