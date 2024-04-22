@@ -1,9 +1,0 @@
-1c1
-< \documentclass[small]{zmdocument}
----
-> \documentclass[small, print, nocolor]{zmdocument}
-10c10
-< \editorLogo[La connaissance pour tous et sans pépins]{./test-images/zestedesavoir.svg}
----
-> \editorLogo[La connaissance pour tous et sans pépins]{./test-images/zestedesavoir-dark.svg}
-

@@ -1,3 +1,0 @@
-14,15d13
-< 	export TEXINPUTS=".:../:$${TEXINPUTS}";\
-< 	export LUAINPUTS=".:../:$${LUAINPUTS}";\

@@ -11,8 +11,6 @@ help:
 	@echo "  help       to get this help"
 
 %.pdf: %.tex
-	export TEXINPUTS=".:../:$${TEXINPUTS}";\
-	export LUAINPUTS=".:../:$${LUAINPUTS}";\
 	$(TEX) $(TEXFLAGS) $(DRAFTFLAG) $<;\
 	$(TEX) $(TEXFLAGS) $(DRAFTFLAG) $<;\
 	makeglossaries $(basename $<); \
