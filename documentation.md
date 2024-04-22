@@ -165,13 +165,26 @@ A \LaTeX command.
 
 ## Float environments
 
-In addition to standard float (`table`, `figure`), the `equationFloat` could be used to have mathematics floats or to add a caption to an equation.
+In addition to standard float (`figure`), the `equationFloat` could be used to have mathematics floats or to add a caption to an equation.
 
 ```latex
 \[
     \sum_{k = 0}^n = \frac{n(n + 1)}{2}
 \]
 \captionof{equationfloat}{A sum}
+```
+
+## Tabl
+
+This template now relies on [`tabularray`](https://github.com/lvjr/tabularray), and one should thus use the specific `zdstblr` environment to create table.
+
+```latex
+\begin{zdstblr}{ccc}
+element & element & element\\
+element & element & element\\
+element & element & element\\
+\end{zdstblr}
+\captionof{table}{Légende du tableau}
 ```
 
 ## Appendices

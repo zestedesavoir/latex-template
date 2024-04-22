@@ -35,17 +35,24 @@ jobs:
         ./scripts/install_font.sh
         ./scripts/install_texlive.sh
         echo "PATH=${HOME}/.texlive/bin/x86_64-linux:$PATH" >> $GITHUB_ENV
+    - name: Set up template
+      run: |
+        mkdir -p ${{ env.TEXMFDIR }}
+        ln -s ${PWD} ${{ env.TEXMFDIR }}/latex-template
+        texhash
     - name: Test Lua
       run: |
         cd tests
         make lua-test
     - name: Test LaTeX
       run: |
-        mkdir -p ${{ env.TEXMFDIR }}
-        ln -s ${PWD} ${{ env.TEXMFDIR }}/latex-template
-        texhash
         cd tests
+        make simple-test
         make author-test
+        make images-test 
+        make nocolor-test 
+        make big-test 
+        make big-toc-test
     - name: Remove template from TeXLive before caching
       run: |
         rm ${{ env.TEXMFDIR }}/latex-template
