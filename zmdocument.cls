@@ -32,9 +32,7 @@
 \RequirePackage{pagecolor}
 
 %%% TABLE PACKAGES
-\RequirePackage{multirow}
-\RequirePackage{longtable}
-\RequirePackage{tabu}
+\RequirePackage{tabularray}
 
 %%% GRAPHIC PACKAGES
 \RequirePackage{graphicx}
@@ -592,6 +590,18 @@
    \displayAppendices
    \printglossary[title=Liste des abréviations]
 }
+
+%%% TABLES
+% Remove default caption
+\DefTblrTemplate{contfoot-text}{default}{}
+\DefTblrTemplate{conthead-text}{default}{}
+\DefTblrTemplate{caption}{default}{}
+\DefTblrTemplate{conthead}{default}{}
+\DefTblrTemplate{capcont}{default}{}
+
+\NewTblrEnviron{zdstblr}
+\SetTblrInner[zdstblr]{hlines,vlines,hspan=minimal}
+\SetTblrOuter[zdstblr]{long}
 
 %%% TITLE PAGE
 
