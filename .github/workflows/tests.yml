@@ -1,0 +1,39 @@
+name: Run tests
+
+env:
+  TEMPLATEDIR: $HOME/.texlive/texmf-local/tex/latex/latex-template
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12'
+    - name: Install dependencies
+      run: |
+        sudo apt-get install imagemagick librsvg2-bin
+        pip install Pygments
+    - name: Install LaTeX
+      run: |
+        ./scripts/install_font.sh
+        ./scripts/install_texlive.sh
+    - name: Test Lua
+      run: |
+        export PATH=$HOME/.texlive/bin/x86_64-linux:$PATH
+        cd tests
+        make lua-test
+    - name: Test LaTeX
+      run: |
+        export PATH=$HOME/.texlive/bin/x86_64-linux:$PATH
+        mkdir -p ${TEMPLATEDIR} && cp -r . ${TEMPLATEDIR} && texhash
+        make tests
