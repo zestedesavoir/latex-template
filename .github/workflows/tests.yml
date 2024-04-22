@@ -23,31 +23,29 @@ jobs:
       run: |
         sudo apt-get install imagemagick librsvg2-bin
         pip install Pygments
-    - name: use cache of TeXLive
+    - name: Use cache
       id: cache-install
       uses: actions/cache@v3
       with:
         path: |
-          $HOME/.texlive
+          ${HOME}/.texlive
         key: texlive
-    - name: Install TeXLive
-      if: steps.cache-install.outputs.cache-hit != 'true'
+    - name: Set up TeXLive
       run: |
         ./scripts/install_font.sh
         ./scripts/install_texlive.sh
-        echo "PATH=$HOME/.texlive/bin/x86_64-linux:$PATH" >> $GITHUB_ENV
+        echo "PATH=${HOME}/.texlive/bin/x86_64-linux:$PATH" >> $GITHUB_ENV
     - name: Test Lua
       run: |
         cd tests
         make lua-test
     - name: Test LaTeX
       run: |
-        mkdir -p ${TEMPLATEDIR}
-        cp -r . ${TEMPLATEDIR}
+        mkdir -p ${{ env.TEMPLATEDIR }}
+        cp -r * ${{ env.TEMPLATEDIR }}
         texhash
         make tests
     - name: Remove template from TeXLive before caching
-      if: steps.cache-install.outputs.cache-hit != 'true'
       run: |
-        rm ${TEMPLATEDIR}
+        rm ${{ env.TEMPLATEDIR }}
         texhash
