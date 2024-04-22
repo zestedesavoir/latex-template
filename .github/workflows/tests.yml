@@ -44,8 +44,9 @@ jobs:
         mkdir -p ${{ env.TEMPLATEDIR }}
         cp -r * ${{ env.TEMPLATEDIR }}
         texhash
-        make tests
+        cd tests
+        make author-test
     - name: Remove template from TeXLive before caching
       run: |
-        rm ${{ env.TEMPLATEDIR }}
+        rm -Rf ${{ env.TEMPLATEDIR }}
         texhash
