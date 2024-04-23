@@ -389,6 +389,7 @@
    borderline west={1mm}{0pt}{ZdSBoxBorderLeftQuotation},
    coltext=ZdSBoxForegroundQuotation,
    left=18pt,
+   parbox=false,
    IfValueTF={#1}{after upper={\par\center\textit{#1}}}{}
 }
 
