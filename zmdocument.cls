@@ -637,7 +637,7 @@
 
 \renewcommand{\maketitle}{%
    \setcounter{page}{0}
-   \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/membres/voir}}
+   \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/@}}
    \ifcsdef{@website}{}{\website{https://zestedesavoir.com}}
    \ifcsdef{@editor}{}{\editor{https://zestedesavoir.com}}
    \ifcsdef{@logo}{}{\logo{default_logo.png}}
