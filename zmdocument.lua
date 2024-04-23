@@ -1,7 +1,7 @@
 package.path = 'utf8.lua/?.lua;' .. package.path
 utf8 = require 'utf8'
 
-AUTHOR_MAX_SIZE    = 15
+AUTHOR_MAX_SIZE    = 25
 AUTHOR_MAX_DISPLAY = 11
 AUTHOR_LINK        = ""
 ARRAY_AUTHORS      = {}
@@ -107,14 +107,21 @@ function createStrAuthors(all)
         display_name = ARRAY_AUTHORS[i].name
       end
       
-      tab[i] = "\\href{" .. AUTHOR_LINK .. ARRAY_AUTHORS[i].name .. "}{\\color{titlePageAuthorColor}\\bsc{" .. display_name .. "}}\\\\"
+      tab[i] = "\\href{" .. AUTHOR_LINK .. ARRAY_AUTHORS[i].name .. "}{\\color{titlePageAuthorColor}{" .. display_name .. "}}\\\\"
    end
 
    local strAuthors = implode (",", tab)
 
    if ARRAY_AUTHORS_SIZE > AUTHOR_MAX_DISPLAY and not all then
-      strAuthors = strAuthors .. ", \\hyperlink{authorsList}{\\color{titlePageAuthorColor}\\bsc{et " ..
-         (ARRAY_AUTHORS_SIZE - AUTHOR_MAX_DISPLAY) .. " autre(s) auteur(s)}}\\\\"
+      strAuthors = strAuthors .. ", \\hyperlink{authorsList}{\\color{titlePageAuthorColor}{et " .. (ARRAY_AUTHORS_SIZE - AUTHOR_MAX_DISPLAY) 
+      
+      if (ARRAY_AUTHORS_SIZE - AUTHOR_MAX_DISPLAY) > 1 then
+         strAuthors = strAuthors .. " autres auteurs"
+      else
+         strAuthors = strAuthors .. " autre auteur"
+      end
+         
+      strAuthors = strAuthors .. ".}}\\\\"
    end
 
    return strAuthors
