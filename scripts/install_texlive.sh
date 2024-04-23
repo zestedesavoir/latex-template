@@ -36,10 +36,6 @@ function install_texlive {
   $HOME/.texlive/bin/x86_64-linux/tlmgr update --self
   $HOME/.texlive/bin/x86_64-linux/tlmgr install $EXTRA_PACKAGES
 
-  # Install tabu-fixed packages
-  mkdir -p $HOME/.texlive/texmf-local/tex/latex/tabu
-  wget -P $HOME/.texlive/texmf-local/tex/latex/tabu https://raw.githubusercontent.com/tabu-issues-for-future-maintainer/tabu/master/tabu.sty
-
   # save list of extra packages
   printf "$EXTRA_PACKAGES" > $EXTRA_PACKAGES_CACHE
 

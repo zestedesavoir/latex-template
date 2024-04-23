@@ -1,0 +1,59 @@
+name: Run tests
+
+env:
+  TEXMFDIR: ${HOME}/.texlive/texmf-local/tex/latex/
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.12'
+    - name: Install dependencies
+      run: |
+        sudo apt-get install imagemagick librsvg2-bin
+        pip install Pygments
+    - name: Use cache
+      id: cache-install
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.texlive
+        key: texlive
+    - name: Set up TeXLive
+      run: |
+        ./scripts/install_font.sh
+        ./scripts/install_texlive.sh
+        echo "PATH=${HOME}/.texlive/bin/x86_64-linux:$PATH" >> $GITHUB_ENV
+    - name: Set up template
+      run: |
+        mkdir -p ${{ env.TEXMFDIR }}
+        ln -s ${PWD} ${{ env.TEXMFDIR }}/latex-template
+        texhash
+    - name: Test Lua
+      run: |
+        cd tests
+        make lua-test
+    - name: Test LaTeX
+      run: |
+        cd tests
+        make simple-test
+        make author-test
+        make images-test 
+        make nocolor-test 
+        make big-test 
+        make big-toc-test
+    - name: Remove template from TeXLive before caching
+      run: |
+        rm ${{ env.TEXMFDIR }}/latex-template
+        texhash

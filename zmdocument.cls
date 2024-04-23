@@ -160,6 +160,12 @@
 \definecolor{ZdSBoxBorderNeutral}{HTML}{\iftoggle{nocolor}{4D4D4D}{4D4D4D}}
 \definecolor{ZdSBoxLogoBackgroundNeutral}{HTML}{\iftoggle{nocolor}{808080}{808080}}
 
+% Iframe
+\definecolor{ZdSBoxForegroundIframe}{HTML}{\iftoggle{nocolor}{424242}{7BB027}}
+\definecolor{ZdSBoxBackgroundIframe}{HTML}{\iftoggle{nocolor}{FFFFFF}{F3FDE2}}
+\definecolor{ZdSBoxBorderIframe}{HTML}{\iftoggle{nocolor}{4D4D4D}{7BB027}}
+\definecolor{ZdSBoxLogoBackgroundIframe}{HTML}{\iftoggle{nocolor}{808080}{7BB027}}
+
 % SPOILER
 \definecolor{ZdSBoxForegroundSpoiler}{HTML}{555555}
 \definecolor{ZdSBoxBackgroundSpoiler}{HTML}{EEEEEE}
@@ -339,8 +345,6 @@
                       {\end{#2}\end{minipage}}
 }
 
-\newZdSBox{IframeBox}{Élément externe}{iframeColor}
-
 % Create box icon
 \newcommand{\createBoxIcon}[2]{
    \begin{tikzpicture} %
@@ -381,6 +385,7 @@
 \newBox{Warning}{ZdSBoxBackgroundWarning}{ZdSBoxForegroundWarning}{ZdSBoxBorderWarning}{ZdSBoxLogoBackgroundWarning}[!]
 \newBox{Error}{ZdSBoxBackgroundError}{ZdSBoxForegroundError}{ZdSBoxBorderError}{ZdSBoxLogoBackgroundError}[\times]
 \newBox{Neutral}{ZdSBoxBackgroundNeutral}{ZdSBoxForegroundNeutral}{ZdSBoxBorderNeutral}{ZdSBoxLogoBackgroundNeutral}
+\newBox{Iframe}{ZdSBoxBackgroundIframe}{ZdSBoxForegroundIframe}{ZdSBoxBorderIframe}{ZdSBoxLogoBackgroundIframe}[\#]
 
 %%% QUOTATION
 \DeclareTColorBox{Quotation}{ o }{%
@@ -389,6 +394,7 @@
    borderline west={1mm}{0pt}{ZdSBoxBorderLeftQuotation},
    coltext=ZdSBoxForegroundQuotation,
    left=18pt,
+   parbox=false,
    IfValueTF={#1}{after upper={\par\center\textit{#1}}}{}
 }
 
@@ -447,14 +453,8 @@
 \newcommand{\CodeInline}[1]{\texorpdfstring{\hl{\texttt{\small  #1}}}{#1}}
 
 %%% IFRAMES
-\newenvironment{Iframe}[1]{%
-   ~\\ \begin{minipage}{\linewidth}\begin{IframeBox}[#1]
-}{%
-   \end{IframeBox}\end{minipage}
-}
-
 \NewDocumentCommand\iframe{mO{vidéo}o}{%
-   \begin{Iframe}{#2}
+   \begin{Iframe}[#2]
       Consultez cet élément à l'adresse \url{#1}.\IfValueT{#3}{\\ #3}
    \end{Iframe}
 }
@@ -636,7 +636,7 @@
 
 \renewcommand{\maketitle}{%
    \setcounter{page}{0}
-   \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/membres/voir}}
+   \ifcsdef{@authorlink}{}{\authorlink{https://zestedesavoir.com/@}}
    \ifcsdef{@website}{}{\website{https://zestedesavoir.com}}
    \ifcsdef{@editor}{}{\editor{https://zestedesavoir.com}}
    \ifcsdef{@logo}{}{\logo{default_logo.png}}

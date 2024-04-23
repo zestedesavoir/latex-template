@@ -1,14 +1,14 @@
 % --- Test authors
 % one author:
-\href{/Eskimon/}{\color{titlePageAuthorColor}\bsc{Eskimon}}\\
+\href{Eskimon}{\color{titlePageAuthorColor}{Eskimon}}\\
 % three authors:
-\href{/Karnaj/}{\color{titlePageAuthorColor}\bsc{Karnaj}}\\,\href{/Heziode/}{\color{titlePageAuthorColor}\bsc{Heziode}}\\,\href{/pierre_24/}{\color{titlePageAuthorColor}\bsc{pierre_24}}\\
+\href{Karnaj}{\color{titlePageAuthorColor}{Karnaj}}\\,\href{Heziode}{\color{titlePageAuthorColor}{Heziode}}\\,\href{pierre_24}{\color{titlePageAuthorColor}{pierre_24}}\\
 % one author with link:
-\href{http://test.com/author/Eskimon/}{\color{titlePageAuthorColor}\bsc{Eskimon}}\\
+\href{http://test.com/authorEskimon}{\color{titlePageAuthorColor}{Eskimon}}\\
 % one author with long name:
-\href{/that_author_with_a_very_long_name/}{\color{titlePageAuthorColor}\bsc{that_author_...}}\\
+\href{that_author_with_a_very_long_name}{\color{titlePageAuthorColor}{that_author_with_a_ver...}}\\
 % one author with long name (but in author list, so full name):
-\href{/that_author_with_a_very_long_name/}{\color{titlePageAuthorColor}\bsc{that_author_with_a_very_long_name}}\\
+\href{that_author_with_a_very_long_name}{\color{titlePageAuthorColor}{that_author_with_a_very_long_name}}\\
 % --- Test abbrv
 AT(amp)T
 pierre(und)24
